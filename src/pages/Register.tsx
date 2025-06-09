@@ -2,7 +2,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerUser } from "../services/authService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 // Schema validation using Zod
 const registerSchema = z
@@ -22,6 +24,8 @@ type RegisterFormData = z.infer<typeof registerSchema>;
 export default function Register() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -31,24 +35,30 @@ export default function Register() {
     resolver: zodResolver(registerSchema),
   });
 
-async function onSubmit(data: RegisterFormData) {
-  try {
-    setErrorMessage("");
-    await registerUser({
-      name: data.name,
-      email: data.email,
-      password: data.password,
-    });
-    setSuccessMessage("User successfully registered!");
-  } catch (error: unknown) {
-    // unknown forces you to check the type before accessing properties, avoiding type any
-    if (error instanceof Error) {
-      setErrorMessage(error.message);
-    } else {
-      setErrorMessage("Registration failed.");
+  async function onSubmit(data: RegisterFormData) {
+    try {
+      setErrorMessage("");
+      await registerUser({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+      setSuccessMessage("User successfully registered!");
+    } catch (error: unknown) {
+      // unknown forces you to check the type before accessing properties, avoiding type any
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage("Registration failed.");
+      }
     }
   }
-}
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md">

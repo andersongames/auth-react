@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
 import { loginUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +12,6 @@ const loginSchema = z.object({
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
-
 export default function Login() {
   const {
     register,
@@ -20,9 +20,10 @@ export default function Login() {
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
   });
-
+  
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   async function onSubmit(data: LoginFormData) {
     try {
@@ -37,6 +38,12 @@ export default function Login() {
       }
     }
   }
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md">

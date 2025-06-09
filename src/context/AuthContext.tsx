@@ -4,12 +4,14 @@ type AuthContextType = {
   isAuthenticated: boolean;
   userId: number | null;
   logout: () => void;
+  loading: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [userId, setUserId] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const stored = localStorage.getItem("mock_auth");
@@ -17,6 +19,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const data = JSON.parse(stored);
       setUserId(data.userId);
     }
+    setLoading(false);
   }, []);
 
   const logout = () => {
@@ -30,6 +33,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         isAuthenticated: !!userId,
         userId,
         logout,
+        loading,
       }}
     >
       {children}
