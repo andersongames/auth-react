@@ -35,3 +35,26 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
     }, 1000); // simulate network delay
   });
 }
+
+export async function loginUser(email: string, password: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const users: StoredUser[] = JSON.parse(
+        localStorage.getItem("mock_users") || "[]"
+      );
+
+      const user = users.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (!user) {
+        reject(new Error("Invalid email or password."));
+        return;
+      }
+
+      // Simulate auth token/session
+      localStorage.setItem("mock_auth", JSON.stringify({ userId: user.id }));
+      resolve();
+    }, 1000);
+  });
+}
