@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import type { StoredUser } from "../services/authService";
 
 type AuthContextType = {
   isAuthenticated: boolean;
-  userId: number | null;
+  user: { id: string; name: string } | null;
   logout: () => void;
   loading: boolean;
 };
@@ -10,28 +11,36 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [userId, setUserId] = useState<number | null>(null);
+  const [user, setUser] = useState<{ id: string; name: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem("mock_auth");
-    if (stored) {
-      const data = JSON.parse(stored);
-      setUserId(data.userId);
+    const auth = localStorage.getItem("mock_auth");
+    const users = localStorage.getItem("mock_users");
+
+    if (auth && users) {
+      const { userId } = JSON.parse(auth);
+      const parsedUsers: StoredUser[] = JSON.parse(users);
+      const currentUser = parsedUsers.find((u) => u.id === userId);
+
+      if (currentUser) {
+        setUser({ id: currentUser.id, name: currentUser.name });
+      }
     }
+
     setLoading(false);
   }, []);
 
   const logout = () => {
     localStorage.removeItem("mock_auth");
-    setUserId(null);
+    setUser(null);
   };
 
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: !!userId,
-        userId,
+        isAuthenticated: !!user,
+        user,
         logout,
         loading,
       }}

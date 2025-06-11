@@ -43,7 +43,13 @@ export default function Register() {
         email: data.email,
         password: data.password,
       });
+
       setSuccessMessage("User successfully registered!");
+
+      // Redirect after short delay
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000); // 2 seconds
     } catch (error: unknown) {
       // unknown forces you to check the type before accessing properties, avoiding type any
       if (error instanceof Error) {

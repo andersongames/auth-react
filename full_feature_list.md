@@ -9,9 +9,10 @@
 - [x] Contexto de autenticação global (`AuthContext`)
 - [x] Redirecionar usuários autenticados da página de login
 - [x] Redirecionar usuários autenticados da página de registro
-- [ ] Redirecionar usuário automaticamente para `/dashboard` após login
-- [ ] Redirecionar usuário automaticamente para `/login` após registro
+- [x] Redirecionar usuário automaticamente para `/dashboard` após login
+- [x] Redirecionar usuário automaticamente para `/login` após registro
 - [ ] Expiração de sessão (por inatividade ou tempo fixo)
+- [x] Migrar `id` do usuário para tipo `string` com UUID
 
 ---
 
@@ -28,7 +29,7 @@
 ## 🌙 Tema e Estilo
 - [ ] Implementar modo escuro (Dark Mode Toggle)
 - [ ] Layout com design mais moderno e acessível
-- [ ] Mostrar nome do usuário logado no `Dashboard` (em vez do ID)
+- [x] Mostrar nome do usuário logado no `Dashboard` (em vez do ID)
 - [ ] Página de erro 404 / acesso não autorizado
 
 ---

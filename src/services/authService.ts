@@ -6,7 +6,7 @@ export type RegisterPayload = {
   password: string;
 };
 
-type StoredUser = {
+export type StoredUser = {
   id: string;
   name: string;
   email: string;
@@ -25,7 +25,7 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
       }
 
       const newUser = {
-        id: Date.now(),
+        id: crypto.randomUUID(),
         ...data,
       };
 
