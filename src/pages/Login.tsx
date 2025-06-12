@@ -53,7 +53,7 @@ export default function Login() {
         <p className="text-red-600 text-sm mb-2">{errorMessage}</p>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
           <label className="block">Email</label>
           <input
@@ -84,6 +84,13 @@ export default function Login() {
         >
           Login
         </button>
+
+        <p className="text-sm mt-4 text-center">
+          Don't have an account?{" "}
+          <a href="/register" className="text-blue-600 hover:underline">
+            Register
+          </a>
+        </p>
       </form>
     </div>
   );

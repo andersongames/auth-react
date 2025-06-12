@@ -71,7 +71,7 @@ export default function Register() {
       <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
       {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
       {successMessage && <p className="text-green-600 text-sm">{successMessage}</p>}
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
           <label className="block">Name</label>
           <input {...register("name")} className="w-full border p-2 rounded" />
@@ -124,6 +124,13 @@ export default function Register() {
         >
           Sign Up
         </button>
+
+        <p className="text-sm mt-4 text-center">
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-600 hover:underline">
+            Login
+          </a>
+        </p>
       </form>
     </div>
   );

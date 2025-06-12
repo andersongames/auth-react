@@ -11,6 +11,7 @@
 - [x] Redirecionar usuários autenticados da página de registro
 - [x] Redirecionar usuário automaticamente para `/dashboard` após login
 - [x] Redirecionar usuário automaticamente para `/login` após registro
+- [x] Adicionar navegação entre `/register` e `/login`
 - [ ] Expiração de sessão (por inatividade ou tempo fixo)
 - [x] Migrar `id` do usuário para tipo `string` com UUID
 
