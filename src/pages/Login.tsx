@@ -46,7 +46,7 @@ export default function Login() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md">
+    <div className="w-4/5 max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Login</h2>
 
       {errorMessage && (
@@ -80,7 +80,7 @@ export default function Login() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
         >
           Login
         </button>

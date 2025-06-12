@@ -67,7 +67,7 @@ export default function Register() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md">
+    <div className="w-4/5 max-w-md mx-auto p-6 border rounded-xl shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
       {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
       {successMessage && <p className="text-green-600 text-sm">{successMessage}</p>}
@@ -120,7 +120,7 @@ export default function Register() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
         >
           Sign Up
         </button>
