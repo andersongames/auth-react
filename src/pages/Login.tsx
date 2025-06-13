@@ -12,6 +12,7 @@ const loginSchema = z.object({
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
+
 export default function Login() {
   const {
     register,
@@ -20,7 +21,7 @@ export default function Login() {
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
   });
-  
+
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
@@ -46,7 +47,7 @@ export default function Login() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="w-4/5 max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md">
+    <div className="w-4/5 max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <h2 className="text-2xl font-semibold mb-4">Login</h2>
 
       {errorMessage && (
@@ -59,7 +60,7 @@ export default function Login() {
           <input
             type="email"
             {...register("email")}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -71,7 +72,7 @@ export default function Login() {
           <input
             type="password"
             {...register("password")}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
           />
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>

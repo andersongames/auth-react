@@ -51,7 +51,6 @@ export default function Register() {
         navigate("/login");
       }, 2000); // 2 seconds
     } catch (error: unknown) {
-      // unknown forces you to check the type before accessing properties, avoiding type any
       if (error instanceof Error) {
         setErrorMessage(error.message);
       } else {
@@ -67,14 +66,17 @@ export default function Register() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="w-4/5 max-w-md mx-auto p-6 border rounded-xl shadow-md">
+    <div className="w-4/5 max-w-md mx-auto p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
       {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
       {successMessage && <p className="text-green-600 text-sm">{successMessage}</p>}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
           <label className="block">Name</label>
-          <input {...register("name")} className="w-full border p-2 rounded" />
+          <input
+            {...register("name")}
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
+          />
           {errors.name && (
             <p className="text-red-500 text-sm">{errors.name.message}</p>
           )}
@@ -85,7 +87,7 @@ export default function Register() {
           <input
             type="email"
             {...register("email")}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -97,7 +99,7 @@ export default function Register() {
           <input
             type="password"
             {...register("password")}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
           />
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
@@ -109,7 +111,7 @@ export default function Register() {
           <input
             type="password"
             {...register("confirmPassword")}
-            className="w-full border p-2 rounded"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
           />
           {errors.confirmPassword && (
             <p className="text-red-500 text-sm">

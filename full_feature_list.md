@@ -28,7 +28,7 @@
 ---
 
 ## 🌙 Tema e Estilo
-- [ ] Implementar modo escuro (Dark Mode Toggle)
+- [x] Implementar modo escuro (Dark Mode Toggle)
 - [ ] Layout com design mais moderno e acessível
 - [x] Mostrar nome do usuário logado no `Dashboard` (em vez do ID)
 - [ ] Página de erro 404 / acesso não autorizado

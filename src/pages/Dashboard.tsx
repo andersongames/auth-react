@@ -4,7 +4,7 @@ export default function Dashboard() {
   const { user, logout } = useAuth();
 
   return (
-    <div className="w-4/5 max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md">
+    <div className="w-4/5 max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <h2 className="text-2xl font-semibold mb-4">Dashboard</h2>
       <p className="mb-4">
         Welcome, <strong>{user?.name}</strong>!
