@@ -24,6 +24,7 @@ type RegisterFormData = z.infer<typeof registerSchema>;
 export default function Register() {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -36,6 +37,7 @@ export default function Register() {
   });
 
   async function onSubmit(data: RegisterFormData) {
+    setIsLoading(true);
     try {
       setErrorMessage("");
       await registerUser({
@@ -56,6 +58,8 @@ export default function Register() {
       } else {
         setErrorMessage("Registration failed.");
       }
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -122,9 +126,14 @@ export default function Register() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer disabled:opacity-50"
+          disabled={isLoading}
         >
-          Sign Up
+          {isLoading ? (
+            <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+          ) : (
+            "Sign Up"
+          )}
         </button>
 
         <p className="text-sm mt-4 text-center">

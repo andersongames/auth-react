@@ -18,8 +18,8 @@
 ---
 
 ## 🎨 Experiência do Usuário (UX)
-- [ ] Feedback visual de carregamento (spinners) durante login, registro, etc.
-- [ ] Desabilitar botão de submit enquanto envia dados
+- [x] Feedback visual de carregamento (spinners) durante login, registro, etc.
+- [x] Desabilitar botão de submit enquanto envia dados
 - [ ] Mensagem de confirmação visual após logout
 - [ ] Navegação por teclado totalmente funcional
 - [ ] Labels associadas corretamente aos inputs (acessibilidade)

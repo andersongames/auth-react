@@ -23,10 +23,12 @@ export default function Login() {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
 
   async function onSubmit(data: LoginFormData) {
+    setIsLoading(true);
     try {
       setErrorMessage("");
       await loginUser(data.email, data.password);
@@ -37,6 +39,8 @@ export default function Login() {
       } else {
         setErrorMessage("Login failed.");
       }
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -81,9 +85,14 @@ export default function Login() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer disabled:opacity-50"
+          disabled={isLoading}
         >
-          Login
+          {isLoading ? (
+            <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+          ) : (
+            "Login"
+          )}
         </button>
 
         <p className="text-sm mt-4 text-center">

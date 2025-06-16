@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
 export default function Dashboard() {
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const { user, logout } = useAuth();
 
   return (
@@ -10,10 +12,21 @@ export default function Dashboard() {
         Welcome, <strong>{user?.name}</strong>!
       </p>
       <button
-        onClick={logout}
-        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer"
+        onClick={() => {
+          setIsLoggingOut(true);
+          setTimeout(() => {
+            logout();
+            setIsLoggingOut(false);
+          }, 1000);
+        }}
+        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer disabled:opacity-50"
+        disabled={isLoggingOut}
       >
-        Logout
+        {isLoggingOut ? (
+          <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+        ) : (
+          "Logout"
+        )}
       </button>
     </div>
   );
