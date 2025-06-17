@@ -58,3 +58,12 @@ export async function loginUser(email: string, password: string): Promise<void> 
     }, 1000);
   });
 }
+
+export async function logoutUser(): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      localStorage.removeItem("mock_auth");
+      resolve();
+    }, 1000);
+  });
+}

@@ -9,7 +9,7 @@
 - [x] Contexto de autenticação global (`AuthContext`)
 - [x] Redirecionar usuários autenticados da página de login
 - [x] Redirecionar usuários autenticados da página de registro
-- [x] Redirecionar usuário automaticamente para `/dashboard` após login
+- [ ] Redirecionar usuário automaticamente para `/dashboard` após login
 - [x] Redirecionar usuário automaticamente para `/login` após registro
 - [x] Adicionar navegação entre `/register` e `/login`
 - [ ] Expiração de sessão (por inatividade ou tempo fixo)

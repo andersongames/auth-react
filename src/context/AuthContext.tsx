@@ -32,7 +32,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("mock_auth");
     setUser(null);
   };
 

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../services/authService";
 
 export default function Dashboard() {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="w-4/5 max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
@@ -12,12 +15,15 @@ export default function Dashboard() {
         Welcome, <strong>{user?.name}</strong>!
       </p>
       <button
-        onClick={() => {
+        onClick={async () => {
           setIsLoggingOut(true);
-          setTimeout(() => {
-            logout();
-            setIsLoggingOut(false);
-          }, 1000);
+          logout(); // clear global state (AuthContext)
+          await logoutUser(); // clear session (authService)
+          navigate({
+            pathname: "/login",
+            search: "?loggedOut=true",
+          });
+          setIsLoggingOut(false);
         }}
         className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer disabled:opacity-50"
         disabled={isLoggingOut}

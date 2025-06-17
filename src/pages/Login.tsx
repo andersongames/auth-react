@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { loginUser } from "../services/authService";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -24,8 +24,10 @@ export default function Login() {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const loggedOut = new URLSearchParams(location.search).get("loggedOut");
 
   async function onSubmit(data: LoginFormData) {
     setIsLoading(true);
@@ -53,6 +55,12 @@ export default function Login() {
   return (
     <div className="w-4/5 max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <h2 className="text-2xl font-semibold mb-4">Login</h2>
+
+      {loggedOut === "true" && (
+        <p className="text-green-600 text-sm mb-2">
+          You have been logged out.
+        </p>
+      )}
 
       {errorMessage && (
         <p className="text-red-600 text-sm mb-2">{errorMessage}</p>
