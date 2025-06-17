@@ -36,7 +36,10 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
   });
 }
 
-export async function loginUser(email: string, password: string): Promise<void> {
+export async function loginUser(
+  email: string,
+  password: string
+): Promise<{ id: string; name: string }> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const users: StoredUser[] = JSON.parse(
@@ -54,7 +57,9 @@ export async function loginUser(email: string, password: string): Promise<void> 
 
       // Simulate auth token/session
       localStorage.setItem("mock_auth", JSON.stringify({ userId: user.id }));
-      resolve();
+
+      // ✅ Return user data
+      resolve({ id: user.id, name: user.name });
     }, 1000);
   });
 }

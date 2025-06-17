@@ -3,7 +3,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import { loginUser } from "../services/authService";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const loginSchema = z.object({
@@ -24,7 +23,7 @@ export default function Login() {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const loggedOut = new URLSearchParams(location.search).get("loggedOut");
@@ -33,7 +32,7 @@ export default function Login() {
     setIsLoading(true);
     try {
       setErrorMessage("");
-      await loginUser(data.email, data.password);
+      await login(data.email, data.password);
       navigate("/dashboard");
     } catch (error: unknown) {
       if (error instanceof Error) {

@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import type { StoredUser } from "../services/authService";
+import { loginUser, type StoredUser } from "../services/authService";
 
 type AuthContextType = {
   isAuthenticated: boolean;
   user: { id: string; name: string } | null;
+  login: (email: string, password: string) => Promise<void>;  
   logout: () => void;
   loading: boolean;
 };
@@ -31,6 +32,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setLoading(false);
   }, []);
 
+  const login = async (email: string, password: string) => {
+    const user = await loginUser(email, password);
+    setUser({ id: user.id, name: user.name });
+  };
+
   const logout = () => {
     setUser(null);
   };
@@ -40,6 +46,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         isAuthenticated: !!user,
         user,
+        login,
         logout,
         loading,
       }}
