@@ -70,16 +70,18 @@ export default function Register() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="w-4/5 max-w-md mx-auto p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
       {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
       {successMessage && <p className="text-green-600 text-sm">{successMessage}</p>}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
-          <label className="block">Name</label>
+          <label htmlFor="name" className="block text-sm sm:text-base">Name</label>
           <input
+            id="name"
+            autoComplete="name"
             {...register("name")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.name && (
             <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -87,11 +89,13 @@ export default function Register() {
         </div>
 
         <div>
-          <label className="block">Email</label>
+          <label htmlFor="email" className="block text-sm sm:text-base">Email</label>
           <input
+            id="email"
+            autoComplete="email"
             type="email"
             {...register("email")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -99,11 +103,13 @@ export default function Register() {
         </div>
 
         <div>
-          <label className="block">Password</label>
+          <label htmlFor="password" className="block text-sm sm:text-base">Password</label>
           <input
+            id="password"
+            autoComplete="new-password"
             type="password"
             {...register("password")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
@@ -111,11 +117,13 @@ export default function Register() {
         </div>
 
         <div>
-          <label className="block">Confirm Password</label>
+          <label htmlFor="confirmPassword" className="block text-sm sm:text-base">Confirm Password</label>
           <input
+            id="confirmPassword"
+            autoComplete="new-password"
             type="password"
             {...register("confirmPassword")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.confirmPassword && (
             <p className="text-red-500 text-sm">
@@ -126,7 +134,7 @@ export default function Register() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer disabled:opacity-50"
+          className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -136,7 +144,7 @@ export default function Register() {
           )}
         </button>
 
-        <p className="text-sm mt-4 text-center">
+        <p className="text-sm sm:text-base mt-4 text-center">
           Already have an account?{" "}
           <a href="/login" className="text-blue-600 hover:underline">
             Login

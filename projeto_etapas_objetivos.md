@@ -70,3 +70,20 @@
 - Alterar `loginUser()` para retornar os dados do usuário (`id`, `name`)
 - Criar função `login(email, password)` no `AuthContext`
 - Usar `login(...)` no `Login.tsx` para autenticar e atualizar o contexto diretamente
+
+---
+
+✅ **Etapa: Responsividade do Formulário de Registro**
+🎯 **Objetivo:**
+- Garantir que a tela de registro fique legível, fluida e bem espaçada em diferentes tamanhos de tela
+- Evitar overflow ou colapsos em dispositivos móveis
+- Aplicar boas práticas de responsividade com Tailwind
+
+---
+
+✅ **Etapa: Acessibilidade e Navegação por Teclado**
+🎯 **Objetivos:**
+- Permitir que todo o formulário seja navegado com Tab
+- Garantir que todos os inputs tenham labels associadas corretamente
+- Melhorar a usabilidade para usuários com leitores de tela ou mobilidade reduzida
+- Utilizar a propriedade autocomplete em campos como email, name, password, para facilitar o preenchimento automático

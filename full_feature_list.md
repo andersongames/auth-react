@@ -21,9 +21,9 @@
 - [x] Feedback visual de carregamento (spinners) durante login, registro, etc.
 - [x] Desabilitar botão de submit enquanto envia dados
 - [x] Mensagem de confirmação visual após logout
-- [ ] Navegação por teclado totalmente funcional
-- [ ] Labels associadas corretamente aos inputs (acessibilidade)
-- [ ] Responsividade completa em dispositivos móveis
+- [x] Navegação por teclado totalmente funcional
+- [x] Labels associadas corretamente aos inputs (acessibilidade)
+- [x] Responsividade completa em dispositivos móveis
 
 ---
 
