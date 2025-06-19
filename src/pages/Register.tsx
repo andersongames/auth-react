@@ -5,6 +5,7 @@ import { registerUser } from "../services/authService";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 // Schema validation using Zod
 const registerSchema = z
@@ -22,8 +23,6 @@ const registerSchema = z
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 export default function Register() {
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -39,14 +38,13 @@ export default function Register() {
   async function onSubmit(data: RegisterFormData) {
     setIsLoading(true);
     try {
-      setErrorMessage("");
       await registerUser({
         name: data.name,
         email: data.email,
         password: data.password,
       });
 
-      setSuccessMessage("User successfully registered!");
+      toast.success("User successfully registered!");
 
       // Redirect after short delay
       setTimeout(() => {
@@ -54,9 +52,9 @@ export default function Register() {
       }, 2000); // 2 seconds
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setErrorMessage(error.message);
+        toast.error(error.message);
       } else {
-        setErrorMessage("Registration failed.");
+        toast.error("Registration failed.");
       }
     } finally {
       setIsLoading(false);
@@ -72,8 +70,6 @@ export default function Register() {
   return (
     <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
-      {errorMessage && <p className="text-red-600 text-sm">{errorMessage}</p>}
-      {successMessage && <p className="text-green-600 text-sm">{successMessage}</p>}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
           <label htmlFor="name" className="block text-sm sm:text-base">Name</label>

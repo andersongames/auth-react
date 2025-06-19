@@ -5,10 +5,12 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import ThemeToggle from "./components/ThemeToggle";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <AuthProvider>
+      <Toaster position="top-center" reverseOrder={false} />
       <Router>
         <ThemeToggle />
         <Routes>

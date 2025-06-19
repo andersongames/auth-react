@@ -55,4 +55,4 @@
 ## 📄 Extras
 - [ ] Exibir erro padrão para qualquer falha inesperada
 - [ ] Separar as mensagens de erro em um arquivo utilitário para reutilização
-- [ ] Usar Toasts em vez de `<p>` para mensagens de sucesso/erro (usando `react-hot-toast` ou similar)
+- [x] Usar Toasts em vez de `<p>` para mensagens de sucesso/erro (usando `react-hot-toast` ou similar)

@@ -23,11 +23,11 @@
 
 ✅ **Etapa: Área Protegida (/dashboard) + Contexto de Autenticação**  
 🎯 **Objetivo:**
-1. Criar a página protegida visível apenas para usuários autenticados
-2. Proteger rotas com componente `ProtectedRoute`
-3. Criar `AuthContext` com estados: `user`, `isAuthenticated`, `loading`, `logout()`
-4. Recuperar sessão salva no `localStorage` (mock_auth)
-5. Exibir nome do usuário logado
+- Criar a página protegida visível apenas para usuários autenticados
+- Proteger rotas com componente `ProtectedRoute`
+- Criar `AuthContext` com estados: `user`, `isAuthenticated`, `loading`, `logout()`
+- Recuperar sessão salva no `localStorage` (mock_auth)
+- Exibir nome do usuário logado
 
 ---
 
@@ -87,3 +87,15 @@
 - Garantir que todos os inputs tenham labels associadas corretamente
 - Melhorar a usabilidade para usuários com leitores de tela ou mobilidade reduzida
 - Utilizar a propriedade autocomplete em campos como email, name, password, para facilitar o preenchimento automático
+
+---
+
+✅ **Etapa: Substituir mensagens por Toasts**
+🎯 **Objetivo:**
+- Trocar mensagens de erro/sucesso fixas (ex: <p className="text-red-600">...) por toasts flutuantes
+- Usar uma biblioteca leve e fácil de integrar como react-hot-toast
+- Garantir feedback rápido e não bloqueante em ações como:
+  - Cadastro
+  - Login
+  - Logout
+  - Falhas inesperadas

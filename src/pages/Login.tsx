@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -21,7 +22,6 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
@@ -31,14 +31,13 @@ export default function Login() {
   async function onSubmit(data: LoginFormData) {
     setIsLoading(true);
     try {
-      setErrorMessage("");
       await login(data.email, data.password);
       navigate("/dashboard");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setErrorMessage(error.message);
+        toast.error(error.message);
       } else {
-        setErrorMessage("Login failed.");
+        toast.error("Login failed.");
       }
     } finally {
       setIsLoading(false);
@@ -49,21 +48,15 @@ export default function Login() {
     if (isAuthenticated) {
       navigate("/dashboard");
     }
-  }, [isAuthenticated, navigate]);
+
+    if (loggedOut === "true") {
+      toast.success("You have been logged out.");
+    }
+  }, [isAuthenticated, navigate, loggedOut]);
 
   return (
     <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
       <h2 className="text-2xl font-semibold mb-4">Login</h2>
-
-      {loggedOut === "true" && (
-        <p className="text-green-600 text-sm mb-2">
-          You have been logged out.
-        </p>
-      )}
-
-      {errorMessage && (
-        <p className="text-red-600 text-sm mb-2">{errorMessage}</p>
-      )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
