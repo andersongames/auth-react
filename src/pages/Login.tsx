@@ -46,21 +46,23 @@ export default function Login() {
   }
 
   useEffect(() => {
-    let toastShown = false;
-
+    // Prevent duplicate toast messages when using React.StrictMode in development.
+    // React.StrictMode intentionally mounts and unmounts components twice to detect side effects.
+    // Without a static `id`, toast() would fire twice on first load (e.g. for logout or session expiration).
+    // Using a fixed `id` ensures each toast is shown only once per event.
+    
     if (isAuthenticated) {
       navigate("/dashboard");
+      return;
     }
 
-    if (loggedOut === "true" && !toastShown) {
-      toast.success("You have been logged out.");
-      toastShown = true;
+    if (loggedOut === "true") {
+      toast.success("You have been logged out.", { id: "logout-toast" });
       navigate("/login", { replace: true });
     }
 
-    if (expired === "true" && !toastShown) {
-      toast.error("Your session has expired.");
-      toastShown = true;
+    if (expired === "true") {
+      toast.error("Your session has expired.", { id: "expired-toast" });
       navigate("/login", { replace: true });
     }
   }, [isAuthenticated, loggedOut, expired, navigate]);
