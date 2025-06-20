@@ -16,11 +16,22 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const auth = localStorage.getItem("mock_auth");
+    const stored = localStorage.getItem("mock_auth");
     const users = localStorage.getItem("mock_users");
 
-    if (auth && users) {
-      const { userId } = JSON.parse(auth);
+    if (stored && users) {
+      const session = JSON.parse(stored);
+      const expiresAt = session.expiresAt;
+      const now = Date.now();
+
+      if (expiresAt && now > expiresAt) {
+        localStorage.removeItem("mock_auth");
+        setUser(null);
+        window.location.href = "/login?expired=true";
+        return;
+      }
+
+      const { userId } = session;
       const parsedUsers: StoredUser[] = JSON.parse(users);
       const currentUser = parsedUsers.find((u) => u.id === userId);
 
@@ -30,6 +41,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     setLoading(false);
+
+    // 🔁 Monitorar expiração a cada 30 segundos
+    const interval = setInterval(() => {
+      const sessionData = localStorage.getItem("mock_auth");
+      if (sessionData) {
+        const { expiresAt } = JSON.parse(sessionData);
+        if (expiresAt && Date.now() > expiresAt) {
+          localStorage.removeItem("mock_auth");
+          setUser(null);
+          window.location.href = "/login?expired=true";
+        }
+      }
+    }, 30000); // 30 segundos
+
+    return () => clearInterval(interval);
   }, []);
 
   const login = async (email: string, password: string) => {

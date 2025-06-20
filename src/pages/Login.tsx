@@ -27,6 +27,7 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const loggedOut = new URLSearchParams(location.search).get("loggedOut");
+  const expired = new URLSearchParams(location.search).get("expired");
 
   async function onSubmit(data: LoginFormData) {
     setIsLoading(true);
@@ -45,14 +46,24 @@ export default function Login() {
   }
 
   useEffect(() => {
+    let toastShown = false;
+
     if (isAuthenticated) {
       navigate("/dashboard");
     }
 
-    if (loggedOut === "true") {
+    if (loggedOut === "true" && !toastShown) {
       toast.success("You have been logged out.");
+      toastShown = true;
+      navigate("/login", { replace: true });
     }
-  }, [isAuthenticated, navigate, loggedOut]);
+
+    if (expired === "true" && !toastShown) {
+      toast.error("Your session has expired.");
+      toastShown = true;
+      navigate("/login", { replace: true });
+    }
+  }, [isAuthenticated, loggedOut, expired, navigate]);
 
   return (
     <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">

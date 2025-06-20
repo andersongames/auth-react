@@ -55,10 +55,16 @@ export async function loginUser(
         return;
       }
 
-      // Simulate auth token/session
-      localStorage.setItem("mock_auth", JSON.stringify({ userId: user.id }));
+      const expiration = new Date().getTime() + 5000; // 5 secs for testing
+      // const expiration = new Date().getTime() + 30 * 60 * 1000; // 30 minutes
 
-      // ✅ Return user data
+      // Simulate auth token/session
+      localStorage.setItem("mock_auth", JSON.stringify({
+        userId: user.id,
+        expiresAt: expiration
+      }));
+
+      // Return user data
       resolve({ id: user.id, name: user.name });
     }, 1000);
   });

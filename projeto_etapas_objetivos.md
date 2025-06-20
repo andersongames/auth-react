@@ -99,3 +99,11 @@
   - Login
   - Logout
   - Falhas inesperadas
+
+---
+
+✅ **Etapa: Expiração de Sessão**
+🎯 **Objetivo:**
+- Encerrar a sessão do usuário automaticamente após um tempo determinado (ex: 30 minutos)
+- Redirecionar para /login com uma mensagem “Your session has expired”
+- Mostrar toast de erro ao usuário (sem recarregar a página)
