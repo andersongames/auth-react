@@ -107,3 +107,13 @@
 - Encerrar a sessão do usuário automaticamente após um tempo determinado (ex: 30 minutos)
 - Redirecionar para /login com uma mensagem “Your session has expired”
 - Mostrar toast de erro ao usuário (sem recarregar a página)
+
+---
+
+✅ **Etapa: Páginas de Erro (404 e Acesso Não Autorizado)**
+🎯 **Objetivo:**
+- Exibir uma página amigável e clara para:
+  - Rotas inexistentes (404)
+  - Tentativas de acesso sem permissão/autenticação (401/403)
+- Garantir uma boa UX mesmo em casos de erro
+- Reforçar identidade visual e navegação (ex: botão “Voltar para login”)
