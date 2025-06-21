@@ -4,6 +4,7 @@ export type RegisterPayload = {
   name: string;
   email: string;
   password: string;
+  role?: string;
 };
 
 export type StoredUser = {
@@ -11,35 +12,49 @@ export type StoredUser = {
   name: string;
   email: string;
   password: string;
-}
+  role: string; // "admin", "user", etc.
+};
 
 export async function registerUser(data: RegisterPayload): Promise<void> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const users = JSON.parse(localStorage.getItem("mock_users") || "[]");
+      const users: StoredUser[] = JSON.parse(localStorage.getItem("mock_users") || "[]");
 
-      const userExists = users.some((user: StoredUser) => user.email === data.email);
+      const userExists = users.some((user) => user.email === data.email);
       if (userExists) {
         reject(new Error("Email already registered."));
         return;
       }
 
-      const newUser = {
+      // ✅ Validate role
+      const validRoles = ["user", "admin"];
+      const role = data.role || "user"; // default role if not provided
+
+      if (!validRoles.includes(role)) {
+        reject(new Error("Invalid user role."));
+        return;
+      }
+
+      // ✅ Create user
+      const newUser: StoredUser = {
         id: crypto.randomUUID(),
-        ...data,
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        role,
       };
 
       users.push(newUser);
       localStorage.setItem("mock_users", JSON.stringify(users));
       resolve();
-    }, 1000); // simulate network delay
+    }, 1000);
   });
 }
 
 export async function loginUser(
   email: string,
   password: string
-): Promise<{ id: string; name: string }> {
+): Promise<{ id: string; name: string, role: string }> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const users: StoredUser[] = JSON.parse(
@@ -65,7 +80,7 @@ export async function loginUser(
       }));
 
       // Return user data
-      resolve({ id: user.id, name: user.name });
+      resolve({ id: user.id, name: user.name, role: user.role });
     }, 1000);
   });
 }

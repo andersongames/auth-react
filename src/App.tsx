@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 import ThemeToggle from "./components/ThemeToggle";
 import { Toaster } from "react-hot-toast";
 import NotFound from "./pages/NotFound";
+import Unauthorized from "./pages/Unauthorized";
 
 function App() {
   return (
@@ -25,6 +26,15 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

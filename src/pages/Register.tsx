@@ -14,6 +14,9 @@ const registerSchema = z
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must have at least 6 characters"),
     confirmPassword: z.string(),
+    role: z.enum(["user", "admin"], {
+      errorMap: () => ({ message: "Please select a valid role." }),
+    }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -42,6 +45,7 @@ export default function Register() {
         name: data.name,
         email: data.email,
         password: data.password,
+         role: data.role,
       });
 
       toast.success("User successfully registered!");
@@ -126,6 +130,22 @@ export default function Register() {
               {errors.confirmPassword.message}
             </p>
           )}
+        </div>
+
+        {/* ⚠️ Role selection is only available here for demonstration/testing purposes.
+          In a real-world application, roles would be assigned server-side and not exposed in a public signup form. */}
+        <div className="mb-4">
+          <label htmlFor="role" className="block text-sm font-medium mb-1">
+            Select your role
+          </label>
+          <select
+            id="role"
+            {...register("role")}
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
 
         <button

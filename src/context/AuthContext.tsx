@@ -3,7 +3,7 @@ import { loginUser, type StoredUser } from "../services/authService";
 
 type AuthContextType = {
   isAuthenticated: boolean;
-  user: { id: string; name: string } | null;
+  user: { id: string; name: string; role: string } | null;
   login: (email: string, password: string) => Promise<void>;  
   logout: () => void;
   loading: boolean;
@@ -12,7 +12,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<{ id: string; name: string } | null>(null);
+  const [user, setUser] = useState<{ id: string; name: string; role: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const currentUser = parsedUsers.find((u) => u.id === userId);
 
       if (currentUser) {
-        setUser({ id: currentUser.id, name: currentUser.name });
+        setUser({ id: currentUser.id, name: currentUser.name, role: currentUser.role });
       }
     }
 
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const login = async (email: string, password: string) => {
     const user = await loginUser(email, password);
-    setUser({ id: user.id, name: user.name });
+    setUser({ id: user.id, name: user.name, role: user.role });
   };
 
   const logout = () => {

@@ -31,7 +31,7 @@
 - [x] Implementar modo escuro (Dark Mode Toggle)
 - [ ] Layout com design mais moderno e acessível
 - [x] Mostrar nome do usuário logado no `Dashboard` (em vez do ID)
-- [ ] Página de erro 404 / acesso não autorizado
+- [x] Página de erro 404 / acesso não autorizado
 
 ---
 
@@ -56,3 +56,4 @@
 - [ ] Exibir erro padrão para qualquer falha inesperada
 - [ ] Separar as mensagens de erro em um arquivo utilitário para reutilização
 - [x] Usar Toasts em vez de `<p>` para mensagens de sucesso/erro (usando `react-hot-toast` ou similar)
+- [ ] Extrair roles para constante global (ROLES.USER, ROLES.ADMIN, etc.)
