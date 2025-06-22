@@ -56,4 +56,3 @@
 - [ ] Exibir erro padrão para qualquer falha inesperada
 - [ ] Separar as mensagens de erro em um arquivo utilitário para reutilização
 - [x] Usar Toasts em vez de `<p>` para mensagens de sucesso/erro (usando `react-hot-toast` ou similar)
-- [ ] Extrair roles para constante global (ROLES.USER, ROLES.ADMIN, etc.)

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../services/authService";
+import RoleBased from "../components/RoleBased";
+import { ROLES } from "../constants/roles";
 
 export default function Dashboard() {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -14,6 +16,25 @@ export default function Dashboard() {
       <p className="mb-4 text-sm sm:text-base">
         Welcome, <strong>{user?.name}</strong>!
       </p>
+
+      <RoleBased allowedRoles={[ROLES.ADMIN]}>
+        <a
+          href="/admin-dashboard"
+          className="text-blue-600 underline hover:text-blue-800 my-4 block"
+        >
+          Go to Admin Panel
+        </a>
+      </RoleBased>
+
+      <RoleBased allowedRoles={[ROLES.USER]}>
+        <a
+          href="/user-settings"
+          className="text-blue-600 underline hover:text-blue-800 my-4 block"
+        >
+          Access Personal Settings
+        </a>
+      </RoleBased>
+
       <button
         onClick={async () => {
           setIsLoggingOut(true);

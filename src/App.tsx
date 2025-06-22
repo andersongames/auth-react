@@ -8,6 +8,8 @@ import ThemeToggle from "./components/ThemeToggle";
 import { Toaster } from "react-hot-toast";
 import NotFound from "./pages/NotFound";
 import Unauthorized from "./pages/Unauthorized";
+import AdminDashboard from "./pages/AdminDashboard";
+import UserSettings from "./pages/UserSettings";
 
 function App() {
   return (
@@ -27,10 +29,18 @@ function App() {
             }
           />
           <Route
-            path="/admin"
+            path="/admin-dashboard"
             element={
               <ProtectedRoute requiredRole="admin">
-                <Dashboard />
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user-settings"
+            element={
+              <ProtectedRoute requiredRole="user">
+                <UserSettings />
               </ProtectedRoute>
             }
           />

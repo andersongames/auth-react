@@ -117,3 +117,21 @@
   - Tentativas de acesso sem permissão/autenticação (401/403)
 - Garantir uma boa UX mesmo em casos de erro
 - Reforçar identidade visual e navegação (ex: botão “Voltar para login”)
+
+---
+
+✅ **Etapa: Encapsular controle de visibilidade por role**
+🎯 **Objetivo:**
+- Criar uma estrutura reutilizável que permita exibir elementos da interface somente para usuários com determinados papéis (roles)
+- Reduzir repetições e comparações diretas de user?.role === "admin" espalhadas pelo código
+- Melhorar legibilidade, escalabilidade e manutenção do controle de acesso baseado em papéis (RBAC)
+- Estabelecer uma fonte única de verdade para os papéis disponíveis no sistema, utilizando um arquivo de constantes roles.ts
+- Tornar mais clara a intenção de cada bloco condicional por meio de um componente semântico: <RoleBased allowedRoles={...}>...</RoleBased>
+
+---
+
+**Etapa: Página e Rota /user-settings (exclusiva para role "user")**
+🎯 **Objetivo:**
+- Criar uma página dedicada para usuários comuns
+- Proteger o acesso usando ProtectedRoute com requiredRole="user"
+- Demonstrar controle de acesso refinado por papel
