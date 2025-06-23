@@ -1,3 +1,6 @@
+// Protected page accessible only to users with the "user" role.
+// Intended for displaying or managing user-specific settings.
+
 export default function UserSettings() {
   return (
     <div className="min-h-screen flex items-center justify-center text-center p-6 text-gray-900 dark:text-white">

@@ -137,3 +137,12 @@
 - Demonstrar controle de acesso refinado por papel (RBAC)
 - Garantir que cada usuário veja apenas o conteúdo permitido de acordo com seu perfil
 - Exibir links condicionalmente usando o componente RoleBased, mantendo a navegação clara e segura
+
+---
+
+✅ **Etapa: Página pública com conteúdo dinâmico baseado na role (/about)**
+🎯 **Objetivo:**
+- Criar uma rota pública acessível a todos (visitantes e usuários autenticados)
+- Exibir mensagens ou blocos de conteúdo diferentes com base no papel (role) do usuário
+- Demonstrar domínio de renderização condicional usando o contexto de autenticação e o componente RoleBased
+- Reforçar o conceito de UX personalizada por tipo de perfil

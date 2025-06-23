@@ -1,3 +1,5 @@
+// Protected page accessible to any authenticated user, regardless of role.
+
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +18,13 @@ export default function Dashboard() {
       <p className="mb-4 text-sm sm:text-base">
         Welcome, <strong>{user?.name}</strong>!
       </p>
+
+      <a
+        href="/about"
+        className="text-blue-600 underline hover:text-blue-800 my-4 block"
+      >
+        Learn more about this app
+      </a>
 
       <RoleBased allowedRoles={[ROLES.ADMIN]}>
         <a

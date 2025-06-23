@@ -20,7 +20,7 @@
 ## 🎯 Controle de Acesso por Papel (RBAC)
 - [x] Página protegida exclusiva para usuários com role "admin" (`/admin-dashboard`)
 - [x] Página protegida exclusiva para usuários com role "user" (`/user-settings`)
-- [ ] Página pública com conteúdo dinâmico baseado na role (ex: /about)
+- [x] Página pública com conteúdo dinâmico baseado na role (ex: /about)
 - [ ] Suporte a múltiplas roles no ProtectedRoute (ex: ["admin", "editor"])
 - [ ] Exibir metadados do usuário logado na interface (ex: nome, role, email)
 - [ ] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)

@@ -1,3 +1,5 @@
+// Protected page accessible only to users with the "admin" role.
+// Demonstrates role-based access control using ProtectedRoute.
 
 export default function AdminDashboard() {
   return (
