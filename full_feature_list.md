@@ -6,8 +6,6 @@
 - [x] Logout com limpeza de sessão
 - [x] Persistência de sessão com localStorage
 - [x] Proteção de rotas via `ProtectedRoute`
-- [x] Página protegida exclusiva para usuários com role "admin" (`/admin-dashboard`)
-- [x] Página protegida exclusiva para usuários com role "user" (`/user-settings`)
 - [x] Contexto de autenticação global (`AuthContext`)
 - [x] Redirecionar usuários autenticados da página de login
 - [x] Redirecionar usuários autenticados da página de registro
@@ -16,6 +14,19 @@
 - [x] Adicionar navegação entre `/register` e `/login`
 - [x] Expiração de sessão (por inatividade ou tempo fixo)
 - [x] Migrar `id` do usuário para tipo `string` com UUID
+
+---
+
+## 🎯 Controle de Acesso por Papel (RBAC)
+- [x] Página protegida exclusiva para usuários com role "admin" (`/admin-dashboard`)
+- [x] Página protegida exclusiva para usuários com role "user" (`/user-settings`)
+- [ ] Página pública com conteúdo dinâmico baseado na role (ex: /about)
+- [ ] Suporte a múltiplas roles no ProtectedRoute (ex: ["admin", "editor"])
+- [ ] Exibir metadados do usuário logado na interface (ex: nome, role, email)
+- [ ] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)
+- [ ] Painel admin com listagem de todos os usuários mockados
+- [ ] Página de acesso negado com mensagem contextual baseada na role exigida
+- [ ] Alteração de role por parte do admin (promover/demover usuários)
 
 ---
 
@@ -42,6 +53,7 @@
 - [ ] Criar testes unitários para o formulário de login
 - [ ] Criar testes para o `AuthContext`
 - [ ] Criar testes para `ProtectedRoute`
+- [ ] Testes unitários para o componente ProtectedRoute
 - [ ] Validar navegação e redirecionamentos com testes e2e (Cypress ou Playwright)
 
 ---
