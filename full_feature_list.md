@@ -6,6 +6,8 @@
 - [x] Logout com limpeza de sessão
 - [x] Persistência de sessão com localStorage
 - [x] Proteção de rotas via `ProtectedRoute`
+- [x] Página protegida exclusiva para usuários com role "admin" (`/admin-dashboard`)
+- [x] Página protegida exclusiva para usuários com role "user" (`/user-settings`)
 - [x] Contexto de autenticação global (`AuthContext`)
 - [x] Redirecionar usuários autenticados da página de login
 - [x] Redirecionar usuários autenticados da página de registro

@@ -130,8 +130,10 @@
 
 ---
 
-**Etapa: Página e Rota /user-settings (exclusiva para role "user")**
+✅ **Etapa: Páginas e Rotas exclusivas por role (/admin-dashboard e /user-settings)**
 🎯 **Objetivo:**
-- Criar uma página dedicada para usuários comuns
-- Proteger o acesso usando ProtectedRoute com requiredRole="user"
-- Demonstrar controle de acesso refinado por papel
+- Criar páginas dedicadas para cada tipo de usuário (admin e user)
+- Proteger o acesso usando o componente ProtectedRoute com requiredRole
+- Demonstrar controle de acesso refinado por papel (RBAC)
+- Garantir que cada usuário veja apenas o conteúdo permitido de acordo com seu perfil
+- Exibir links condicionalmente usando o componente RoleBased, mantendo a navegação clara e segura
