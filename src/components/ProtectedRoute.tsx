@@ -16,8 +16,12 @@ export default function ProtectedRoute({ children, requiredRoles }: ProtectedRou
     return <Navigate to="/login" />;
   }
 
-  if (requiredRoles && (!user || !requiredRoles.includes(user.role as Role))) {
-    return <Navigate to="/unauthorized" />;
+  if (requiredRoles && (!user || !requiredRoles.includes(user.role))) {
+    const required = requiredRoles.length === 1
+      ? requiredRoles[0]
+      : requiredRoles.join(" or ");
+
+    return <Navigate to="/unauthorized" state={{ required }} />;
   }
 
   return <>{children}</>;

@@ -25,7 +25,7 @@
 - [x] Exibir metadados do usuário logado na interface (ex: nome, role, email)
 - [ ] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)
 - [ ] Painel admin com listagem de todos os usuários mockados
-- [ ] Página de acesso negado com mensagem contextual baseada na role exigida
+- [x] Página de acesso negado com mensagem contextual baseada na role exigida
 - [ ] Alteração de role por parte do admin (promover/demover usuários)
 
 ---

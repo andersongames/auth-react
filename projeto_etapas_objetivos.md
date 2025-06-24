@@ -166,3 +166,12 @@
 - Reforçar visualmente o contexto da sessão ativa
 - Facilitar testes e validação manual do controle de acesso durante o desenvolvimento
 - Demonstrar boas práticas de transparência, contexto e UX em interfaces autenticadas
+
+---
+
+✅ **Etapa: Página de acesso negado com mensagem contextual baseada na role exigida**
+🎯 **Objetivos:**
+- Exibir mensagens de acesso negado que indiquem qual role seria necessária para acessar a página
+- Melhorar a experiência do usuário e o feedback da interface
+- Facilitar testes e depuração ao mostrar o contexto do bloqueio
+- Tornar a interface mais educativa, especialmente em ambientes de demonstração técnica
