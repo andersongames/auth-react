@@ -1,10 +1,12 @@
 // This service simulates a POST request to /register and "saves" the data in localStorage as if it were a backend.
 
+import type { Role } from "../constants/roles";
+
 export type RegisterPayload = {
   name: string;
   email: string;
   password: string;
-  role?: string;
+  role?: Role;
 };
 
 export type StoredUser = {
@@ -12,7 +14,7 @@ export type StoredUser = {
   name: string;
   email: string;
   password: string;
-  role: string; // "admin", "user", etc.
+  role: Role; // "admin", "user", etc.
 };
 
 export async function registerUser(data: RegisterPayload): Promise<void> {
@@ -54,7 +56,7 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
 export async function loginUser(
   email: string,
   password: string
-): Promise<{ id: string; name: string, role: string }> {
+): Promise<{ id: string; name: string, email: string, role: Role }> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const users: StoredUser[] = JSON.parse(
@@ -80,7 +82,7 @@ export async function loginUser(
       }));
 
       // Return user data
-      resolve({ id: user.id, name: user.name, role: user.role });
+      resolve({ id: user.id, name: user.name, email: user.email, role: user.role });
     }, 1000);
   });
 }

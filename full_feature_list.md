@@ -22,7 +22,7 @@
 - [x] Página protegida exclusiva para usuários com role "user" (`/user-settings`)
 - [x] Página pública com conteúdo dinâmico baseado na role (ex: /about)
 - [x] Suporte a múltiplas roles no ProtectedRoute (ex: ["admin", "editor"])
-- [ ] Exibir metadados do usuário logado na interface (ex: nome, role, email)
+- [x] Exibir metadados do usuário logado na interface (ex: nome, role, email)
 - [ ] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)
 - [ ] Painel admin com listagem de todos os usuários mockados
 - [ ] Página de acesso negado com mensagem contextual baseada na role exigida

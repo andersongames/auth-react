@@ -18,7 +18,13 @@ export default function Dashboard() {
       <p className="mb-4 text-sm sm:text-base">
         Welcome, <strong>{user?.name}</strong>!
       </p>
-
+      {user && (
+        <div className="text-sm text-gray-700 dark:text-gray-300 mb-6">
+          <p><strong>Name:</strong> {user.name}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Role:</strong> {user.role}</p>
+        </div>
+      )}
       <a
         href="/about"
         className="text-blue-600 underline hover:text-blue-800 my-4 block"

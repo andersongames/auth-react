@@ -146,3 +146,23 @@
 - Exibir mensagens ou blocos de conteúdo diferentes com base no papel (role) do usuário
 - Demonstrar domínio de renderização condicional usando o contexto de autenticação e o componente RoleBased
 - Reforçar o conceito de UX personalizada por tipo de perfil
+
+---
+
+✅ **Etapa: Suporte a múltiplas roles e rota compartilhada por grupo (/manage-content)**
+🎯 **Objetivos:**
+- Adicionar suporte a múltiplos papéis (roles) no componente ProtectedRoute
+- Permitir que diferentes tipos de usuários tenham acesso às mesmas páginas de forma segura e controlada
+- Criar uma nova página protegida, acessível a usuários com os papéis "admin" ou "editor"
+- Demonstrar controle de acesso por grupo de papéis, reforçando a flexibilidade do sistema de permissões
+- Consolidar o uso de constantes e tipos (Role, ROLES) para garantir segurança de tipo e clareza no código
+- Oferecer uma base sólida para rotas que serão compartilhadas por diferentes tipos de usuário no futuro
+
+---
+
+✅ **Etapa: Exibir metadados do usuário logado na interface (nome, role, email)**
+🎯 **Objetivos:**
+- Mostrar ao usuário informações básicas do seu próprio perfil, como nome, e-mail e papel (role)
+- Reforçar visualmente o contexto da sessão ativa
+- Facilitar testes e validação manual do controle de acesso durante o desenvolvimento
+- Demonstrar boas práticas de transparência, contexto e UX em interfaces autenticadas
