@@ -14,7 +14,7 @@ const registerSchema = z
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must have at least 6 characters"),
     confirmPassword: z.string(),
-    role: z.enum(["user", "admin"], {
+    role: z.enum(["user", "admin", "editor"], {
       errorMap: () => ({ message: "Please select a valid role." }),
     }),
   })
@@ -145,6 +145,7 @@ export default function Register() {
           >
             <option value="user">User</option>
             <option value="admin">Admin</option>
+            <option value="editor">Editor</option>
           </select>
         </div>
 

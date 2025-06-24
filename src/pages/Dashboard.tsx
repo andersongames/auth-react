@@ -44,6 +44,15 @@ export default function Dashboard() {
         </a>
       </RoleBased>
 
+      <RoleBased allowedRoles={[ROLES.ADMIN, "editor"]}>
+        <a
+          href="/manage-content"
+          className="text-blue-600 underline hover:text-blue-800 my-4 block"
+        >
+          Manage Content
+        </a>
+      </RoleBased>
+
       <button
         onClick={async () => {
           setIsLoggingOut(true);

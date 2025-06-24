@@ -11,6 +11,8 @@ import Unauthorized from "./pages/Unauthorized";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserSettings from "./pages/UserSettings";
 import About from "./pages/About";
+import ManageContent from "./pages/ManageContent";
+import { ROLES } from "./constants/roles";
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
           <Route
             path="/admin-dashboard"
             element={
-              <ProtectedRoute requiredRole="admin">
+              <ProtectedRoute requiredRoles={[ROLES.ADMIN]}>
                 <AdminDashboard />
               </ProtectedRoute>
             }
@@ -41,8 +43,16 @@ function App() {
           <Route
             path="/user-settings"
             element={
-              <ProtectedRoute requiredRole="user">
+              <ProtectedRoute requiredRoles={[ROLES.USER]}>
                 <UserSettings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/manage-content"
+            element={
+              <ProtectedRoute requiredRoles={[ROLES.ADMIN, ROLES.EDITOR]}>
+                <ManageContent />
               </ProtectedRoute>
             }
           />

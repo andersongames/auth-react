@@ -27,7 +27,7 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
       }
 
       // ✅ Validate role
-      const validRoles = ["user", "admin"];
+      const validRoles = ["user", "admin", "editor"];
       const role = data.role || "user"; // default role if not provided
 
       if (!validRoles.includes(role)) {
