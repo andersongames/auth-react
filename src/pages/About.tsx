@@ -28,6 +28,13 @@ export default function About() {
       <RoleBased allowedRoles={["admin"]}>
         <p className="text-red-600 mt-4">Welcome, admin! You can manage users and system data.</p>
       </RoleBased>
+
+      <a
+        href="/dashboard"
+        className="text-blue-600 underline hover:text-blue-800 mt-4 block"
+      >
+        Go to Dashboard
+      </a>
     </div>
   );
 }

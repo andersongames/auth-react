@@ -175,3 +175,13 @@
 - Melhorar a experiência do usuário e o feedback da interface
 - Facilitar testes e depuração ao mostrar o contexto do bloqueio
 - Tornar a interface mais educativa, especialmente em ambientes de demonstração técnica
+
+---
+
+✅ **Etapa: Painel admin com listagem de todos os usuários mockados**
+🎯 **Objetivos:**
+- Exibir uma tabela com os dados dos usuários cadastrados (mockados via localStorage)
+- Restringir o acesso ao painel apenas para quem tem a role "admin"
+- Reforçar o uso do AuthContext e das roles no controle de acesso
+- Facilitar a visualização do estado atual do banco simulado
+- Demonstrar capacidade de consumir, mapear e renderizar dados de forma estruturada

@@ -13,6 +13,7 @@ import UserSettings from "./pages/UserSettings";
 import About from "./pages/About";
 import ManageContent from "./pages/ManageContent";
 import { ROLES } from "./constants/roles";
+import UserList from "./pages/UserList";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
             element={
               <ProtectedRoute requiredRoles={[ROLES.ADMIN]}>
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin-dashboard/user-list"
+            element={
+              <ProtectedRoute requiredRoles={[ROLES.ADMIN]}>
+                <UserList />
               </ProtectedRoute>
             }
           />

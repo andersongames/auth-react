@@ -8,6 +8,12 @@ export default function AdminDashboard() {
         <h1 className="text-3xl font-bold mb-2">Admin Panel</h1>
         <p className="text-lg">Only users with the admin role can see this page.</p>
         <a
+          href="/admin-dashboard/user-list"
+          className="text-blue-600 underline hover:text-blue-800 my-4 block"
+        >
+          View All Registered Users
+        </a>
+        <a
           href="/dashboard"
           className="text-blue-600 underline hover:text-blue-800 mt-4 block"
         >
