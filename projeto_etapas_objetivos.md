@@ -185,3 +185,13 @@
 - Reforçar o uso do AuthContext e das roles no controle de acesso
 - Facilitar a visualização do estado atual do banco simulado
 - Demonstrar capacidade de consumir, mapear e renderizar dados de forma estruturada
+
+---
+
+✅ **Etapa: Alteração de role por parte do admin (promover/demover usuários)**
+🎯 **Objetivos:**
+- Permitir que um usuário com role "admin" possa alterar o papel (role) de outros usuários através da interface
+- Atualizar os dados diretamente no localStorage (mock) de forma segura
+- Refletir a mudança na interface em tempo real
+- Impedir que o admin edite o próprio papel (para evitar bloqueios acidentais)
+- Demonstrar domínio de CRUD e controle de acesso de nível superior

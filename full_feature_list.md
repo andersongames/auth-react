@@ -26,7 +26,7 @@
 - [ ] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)
 - [x] Painel admin com listagem de todos os usuários mockados
 - [x] Página de acesso negado com mensagem contextual baseada na role exigida
-- [ ] Alteração de role por parte do admin (promover/demover usuários)
+- [x] Alteração de role por parte do admin (promover/demover usuários)
 
 ---
 

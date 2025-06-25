@@ -1,11 +1,24 @@
 // Admin-only page that displays a list of all registered users stored in localStorage.
-// Demonstrates role-based access control (RBAC) and interaction with mock user data.
+// Allows the admin to change the role of other users (promote/demote) via a dropdown interface.
+// Prevents the admin from changing their own role to avoid accidental lockout.
+// Demonstrates role-based access control (RBAC), persistent data mutation, and secure UI logic.
 
 import { useEffect, useState } from "react";
 import type { StoredUser } from "../services/authService";
+import type { Role } from "../constants/roles";
+import { useAuth } from "../context/AuthContext";
 
 export default function UserList() {
   const [users, setUsers] = useState<StoredUser[]>([]);
+  const { user: authUser } = useAuth();
+
+  const handleRoleChange = (userId: string, newRole: Role) => {
+    const updatedUsers = users.map((u) =>
+      u.id === userId ? { ...u, role: newRole } : u
+    );
+    setUsers(updatedUsers);
+    localStorage.setItem("mock_users", JSON.stringify(updatedUsers));
+  };
 
   useEffect(() => {
     const data = localStorage.getItem("mock_users");
@@ -50,6 +63,26 @@ export default function UserList() {
                   <td className="px-4 py-2">{user.name}</td>
                   <td className="px-4 py-2">{user.email}</td>
                   <td className="px-4 py-2">{user.role}</td>
+                  <td className="px-4 py-2">
+                  {!authUser || user.email === authUser.email ? (
+                    // Prevent self-edit
+                    <span
+                      title="You cannot change your own role"
+                      className="inline-block px-2 py-1 rounded bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400 cursor-default"
+                    >
+                      {user.role} (you)
+                    </span>
+                  ) : (
+                    <select
+                      value={user.role}
+                      onChange={(e) => handleRoleChange(user.id, e.target.value as Role)}
+                      className="border p-1 rounded dark:bg-gray-800 dark:border-gray-700"
+                    >
+                      <option value="user">user</option>
+                      <option value="admin">admin</option>
+                    </select>
+                  )}
+                </td>
                 </tr>
               ))}
             </tbody>
