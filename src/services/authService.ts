@@ -1,6 +1,7 @@
 // This service simulates a POST request to /register and "saves" the data in localStorage as if it were a backend.
 
 import type { Role } from "../constants/roles";
+import { isValidRole } from "../utils/validateRole";
 
 export type RegisterPayload = {
   name: string;
@@ -29,10 +30,9 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
       }
 
       // ✅ Validate role
-      const validRoles = ["user", "admin", "editor"];
-      const role = data.role || "user"; // default role if not provided
+      const role = data.role || "user";
 
-      if (!validRoles.includes(role)) {
+      if (!isValidRole(role)) {
         reject(new Error("Invalid user role."));
         return;
       }

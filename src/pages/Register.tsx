@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { ROLES } from "../constants/roles";
 
 // Schema validation using Zod
 const registerSchema = z
@@ -45,7 +46,7 @@ export default function Register() {
         name: data.name,
         email: data.email,
         password: data.password,
-         role: data.role,
+        role: data.role,
       });
 
       toast.success("User successfully registered!");
@@ -143,10 +144,15 @@ export default function Register() {
             {...register("role")}
             className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-            <option value="editor">Editor</option>
+            {Object.values(ROLES).map((role) => (
+              <option key={role} value={role}>
+                {role.charAt(0).toUpperCase() + role.slice(1)}
+              </option>
+            ))}
           </select>
+          {errors.role && (
+            <p className="text-red-500 text-sm">{errors.role.message}</p>
+          )}
         </div>
 
         <button

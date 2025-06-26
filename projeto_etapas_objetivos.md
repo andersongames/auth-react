@@ -195,3 +195,11 @@
 - Refletir a mudança na interface em tempo real
 - Impedir que o admin edite o próprio papel (para evitar bloqueios acidentais)
 - Demonstrar domínio de CRUD e controle de acesso de nível superior
+
+---
+
+✅ **Etapa: Validar role na alteração de papel de usuário**
+🎯 **Objetivo:**
+- Prevenir que valores inválidos de role sejam salvos no localStorage
+- Reforçar segurança e confiabilidade dos dados mockados
+- Reaproveitar a lógica de validação centralizada

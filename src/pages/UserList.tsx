@@ -5,17 +5,26 @@
 
 import { useEffect, useState } from "react";
 import type { StoredUser } from "../services/authService";
-import type { Role } from "../constants/roles";
+import { ROLES, type Role } from "../constants/roles";
 import { useAuth } from "../context/AuthContext";
+import { isValidRole } from "../utils/validateRole";
 
 export default function UserList() {
   const [users, setUsers] = useState<StoredUser[]>([]);
   const { user: authUser } = useAuth();
 
-  const handleRoleChange = (userId: string, newRole: Role) => {
+  const handleRoleChange = (userId: string, value: string) => {
+    if (!isValidRole(value)) {
+      alert("Invalid role selected.");
+      return;
+    }
+
+    const newRole = value as Role;
+
     const updatedUsers = users.map((u) =>
       u.id === userId ? { ...u, role: newRole } : u
     );
+
     setUsers(updatedUsers);
     localStorage.setItem("mock_users", JSON.stringify(updatedUsers));
   };
@@ -78,8 +87,11 @@ export default function UserList() {
                       onChange={(e) => handleRoleChange(user.id, e.target.value as Role)}
                       className="border p-1 rounded dark:bg-gray-800 dark:border-gray-700"
                     >
-                      <option value="user">user</option>
-                      <option value="admin">admin</option>
+                      {Object.values(ROLES).map((role) => (
+                        <option key={role} value={role}>
+                          {role.charAt(0).toUpperCase() + role.slice(1)}
+                        </option>
+                      ))}
                     </select>
                   )}
                 </td>
