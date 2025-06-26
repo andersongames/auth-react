@@ -23,7 +23,7 @@
 - [x] Página pública com conteúdo dinâmico baseado na role (ex: /about)
 - [x] Suporte a múltiplas roles no ProtectedRoute (ex: ["admin", "editor"])
 - [x] Exibir metadados do usuário logado na interface (ex: nome, role, email)
-- [ ] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)
+- [x] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)
 - [x] Painel admin com listagem de todos os usuários mockados
 - [x] Página de acesso negado com mensagem contextual baseada na role exigida
 - [x] Alteração de role por parte do admin (promover/demover usuários)

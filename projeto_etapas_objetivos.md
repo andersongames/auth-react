@@ -203,3 +203,13 @@
 - Prevenir que valores inválidos de role sejam salvos no localStorage
 - Reforçar segurança e confiabilidade dos dados mockados
 - Reaproveitar a lógica de validação centralizada
+
+---
+
+✅ **Etapa: Esconder ou desabilitar botões baseados na role**
+🎯 **Objetivos:**
+- Demonstrar controle de interface (visibilidade e ações) com base na role do usuário logado
+- Reforçar o uso do componente RoleBased como camada de autorização visual
+- Evitar exposição de ações e links para usuários sem permissão, mesmo em páginas protegidas
+- Promover uma experiência de usuário mais limpa e segura
+- Simular um comportamento comum em sistemas reais com múltiplas permissões (ex: admin, editor, user)
