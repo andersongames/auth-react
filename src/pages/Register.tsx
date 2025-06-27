@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { ROLES } from "../constants/roles";
+import Link from "../components/Link";
 
 // Schema validation using Zod
 const registerSchema = z
@@ -170,9 +171,7 @@ export default function Register() {
 
           <p className="text-sm sm:text-base mt-6 space-y-4 text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-blue-600 hover:underline">
-              Login
-            </a>
+            <Link to="/login">Login</Link>
           </p>
         </form>
       </div>

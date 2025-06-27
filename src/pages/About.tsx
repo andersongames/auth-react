@@ -1,6 +1,7 @@
 // Public page accessible to all users (authenticated or not).
 // Displays different content based on the user's role using conditional rendering.
 
+import Link from "../components/Link";
 import RoleBased from "../components/RoleBased";
 import { useAuth } from "../context/AuthContext";
 
@@ -30,12 +31,9 @@ export default function About() {
           <p className="text-red-600 mt-4">Welcome, admin! You can manage users and system data.</p>
         </RoleBased>
 
-        <a
-          href="/dashboard"
-          className="text-blue-600 underline hover:text-blue-800 mt-4 block"
-        >
+        <Link to="/dashboard">
           Go to Dashboard
-        </a>
+        </Link>
       </div>
     </div>
   );

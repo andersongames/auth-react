@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import Link from "../components/Link";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -115,9 +116,7 @@ export default function Login() {
 
           <p className="text-sm sm:text-base mt-6 space-y-4 text-center">
             Don't have an account?{" "}
-            <a href="/register" className="text-blue-600 hover:underline">
-              Register
-            </a>
+            <Link to="/register">Register</Link>
           </p>
         </form>
       </div>

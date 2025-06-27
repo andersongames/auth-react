@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import Link from "../components/Link";
 
 export default function Unauthorized() {
   const location = useLocation();
@@ -18,9 +19,9 @@ export default function Unauthorized() {
           </p>
         )}
 
-        <a href="/dashboard" className="text-blue-600 hover:underline">
+        <Link to="/dashboard">
           Go to Dashboard
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 // Protected page accessible to users with role "admin" or "editor".
 
+import Link from "../components/Link";
+
 export default function ManageContent() {
   return (
     <div className="min-h-[calc(100vh-var(--layout-offset))] flex items-center justify-center">
@@ -9,12 +11,9 @@ export default function ManageContent() {
           <p className="text-lg">
             This page is accessible to users with the <strong>admin</strong> or <strong>editor</strong> role.
           </p>
-          <a
-            href="/dashboard"
-            className="text-blue-600 underline hover:text-blue-800 mt-4 block"
-          >
+          <Link to="/dashboard">
             Go to Dashboard
-          </a>
+          </Link>
         </div>
       </div>
     </div>

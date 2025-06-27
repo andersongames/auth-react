@@ -1,6 +1,8 @@
 // Protected page accessible only to users with the "user" role.
 // Intended for displaying or managing user-specific settings.
 
+import Link from "../components/Link";
+
 export default function UserSettings() {
   return (
     <div className="min-h-[calc(100vh-var(--layout-offset))] flex items-center justify-center">
@@ -10,12 +12,9 @@ export default function UserSettings() {
           <p className="text-lg">
             This page is accessible only by users with the <strong>user</strong> role.
           </p>
-          <a
-            href="/dashboard"
-            className="text-blue-600 underline hover:text-blue-800 mt-4 block"
-          >
+          <Link to="/dashboard">
             Go to Dashboard
-          </a>
+          </Link>
         </div>
       </div>
     </div>

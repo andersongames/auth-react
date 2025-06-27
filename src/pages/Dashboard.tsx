@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../services/authService";
 import RoleBased from "../components/RoleBased";
 import { ROLES } from "../constants/roles";
+import Link from "../components/Link";
 
 export default function Dashboard() {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -27,38 +28,26 @@ export default function Dashboard() {
           </div>
         )}
         <div className="flex flex-col gap-1">
-          <a
-            href="/about"
-            className="text-blue-600 underline hover:text-blue-800 block"
-          >
+          <Link to="/about">
             Learn more about this app
-          </a>
+          </Link>
 
           <RoleBased allowedRoles={[ROLES.ADMIN]}>
-            <a
-              href="/admin-dashboard"
-              className="text-blue-600 underline hover:text-blue-800 block"
-            >
+            <Link to="/admin-dashboard">
               Go to Admin Panel
-            </a>
+            </Link>
           </RoleBased>
 
           <RoleBased allowedRoles={[ROLES.USER]}>
-            <a
-              href="/user-settings"
-              className="text-blue-600 underline hover:text-blue-800 block"
-            >
+            <Link to="/user-settings">
               Access Personal Settings
-            </a>
+            </Link>
           </RoleBased>
 
           <RoleBased allowedRoles={[ROLES.ADMIN, "editor"]}>
-            <a
-              href="/manage-content"
-              className="text-blue-600 underline hover:text-blue-800 block"
-            >
+            <Link to="/manage-content">
               Manage Content
-            </a>
+            </Link>
           </RoleBased>
         </div>
 

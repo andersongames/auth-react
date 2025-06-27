@@ -8,6 +8,7 @@ import type { StoredUser } from "../services/authService";
 import { ROLES, type Role } from "../constants/roles";
 import { useAuth } from "../context/AuthContext";
 import { isValidRole } from "../utils/validateRole";
+import Link from "../components/Link";
 
 export default function UserList() {
   const [users, setUsers] = useState<StoredUser[]>([]);
@@ -40,18 +41,12 @@ export default function UserList() {
     <div className="p-6 space-y-6 flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h1 className="text-3xl font-bold tracking-tight mb-6">All Registered Users</h1>
       <div className="flex flex-col sm:flex-row gap-4 mb-6 text-sm">
-        <a
-          href="/admin-dashboard"
-          className="text-blue-600 underline hover:text-blue-800"
-        >
+        <Link to="/admin-dashboard">
           ← Back to Admin Dashboard
-        </a>
-        <a
-          href="/dashboard"
-          className="text-blue-600 underline hover:text-blue-800"
-        >
+        </Link>
+        <Link to="/dashboard">
           Go to Main Dashboard →
-        </a>
+        </Link>
       </div>
 
       {users.length === 0 ? (

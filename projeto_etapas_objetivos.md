@@ -233,3 +233,11 @@
 - Refletir um padrão de layout moderno e responsivo com apoio do Tailwind CSS
 - Melhorar a legibilidade, organização e identidade visual da interface
 - Facilitar a manutenção futura e evitar repetição de estrutura entre páginas
+
+---
+
+✅ **Etapa: Substituir <a> por um componente Link**
+🎯 **Objetivo:**
+- Criar um componente <Link> reutilizável que aceite href, children, e estilização opcional
+- Aplicar Tailwind CSS diretamente (eliminando o CSS global antigo)
+- Manter acessibilidade, foco e responsividade
