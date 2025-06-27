@@ -6,7 +6,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setEnabled(!enabled)}
-      className="absolute top-4 right-4 text-xl cursor-pointer"
+      className="text-xl cursor-pointer"
       aria-label="Toggle theme"
     >
       {enabled ? "☀️" : "🌙"}

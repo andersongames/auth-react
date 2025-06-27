@@ -223,3 +223,13 @@
 - Garantir que a interface seja legível, intuitiva e amigável em diferentes tamanhos de tela e contextos de uso
 - Tornar a navegação por teclado clara e funcional, com foco visível e campos interativos bem destacados
 - Elevar a apresentação geral do projeto para demonstrações técnicas e entrevistas
+
+---
+
+✅ **Etapa: Implementação de layout base com Header e Footer (AppLayout)**
+🎯 **Objetivos:**
+- Criar uma estrutura visual consistente e reutilizável para todas as páginas da aplicação
+- Centralizar elementos comuns (como cabeçalho e rodapé) em um único ponto de controle
+- Refletir um padrão de layout moderno e responsivo com apoio do Tailwind CSS
+- Melhorar a legibilidade, organização e identidade visual da interface
+- Facilitar a manutenção futura e evitar repetição de estrutura entre páginas

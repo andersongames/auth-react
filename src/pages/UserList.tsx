@@ -37,7 +37,7 @@ export default function UserList() {
   }, []);
 
   return (
-    <div className="min-h-screen p-6 space-y-6 flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="p-6 space-y-6 flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h1 className="text-3xl font-bold tracking-tight mb-6">All Registered Users</h1>
       <div className="flex flex-col sm:flex-row gap-4 mb-6 text-sm">
         <a
@@ -64,6 +64,7 @@ export default function UserList() {
                 <th className="px-4 py-2 text-left">Name</th>
                 <th className="px-4 py-2 text-left">Email</th>
                 <th className="px-4 py-2 text-left">Role</th>
+                <th className="px-4 py-2 text-left">Change Role</th>
               </tr>
             </thead>
             <tbody>
