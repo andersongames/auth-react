@@ -213,3 +213,13 @@
 - Evitar exposição de ações e links para usuários sem permissão, mesmo em páginas protegidas
 - Promover uma experiência de usuário mais limpa e segura
 - Simular um comportamento comum em sistemas reais com múltiplas permissões (ex: admin, editor, user)
+
+---
+
+✅ **Etapa: Layout com design mais moderno e acessível**
+🎯 **Objetivos:**
+- Melhorar o aspecto visual e a usabilidade da interface com um visual mais atual, limpo e acessível
+- Aplicar boas práticas de design responsivo e visual com uso exclusivo de Tailwind CSS (sem bibliotecas pesadas como MUI ou Chakra)
+- Garantir que a interface seja legível, intuitiva e amigável em diferentes tamanhos de tela e contextos de uso
+- Tornar a navegação por teclado clara e funcional, com foco visível e campos interativos bem destacados
+- Elevar a apresentação geral do projeto para demonstrações técnicas e entrevistas

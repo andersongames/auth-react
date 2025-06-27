@@ -4,7 +4,7 @@ export default function ManageContent() {
   return (
     <div className="min-h-screen flex items-center justify-center p-6 text-center text-gray-900 dark:text-white">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Content Management</h1>
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Content Management</h1>
         <p className="text-lg">
           This page is accessible to users with the <strong>admin</strong> or <strong>editor</strong> role.
         </p>

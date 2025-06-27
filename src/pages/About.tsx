@@ -9,7 +9,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-      <h1 className="text-3xl font-bold mb-4">About this App</h1>
+      <h1 className="text-3xl font-bold tracking-tight mb-4">About this App</h1>
 
       <p className="mb-6 text-lg">
         This is a public page accessible by anyone.

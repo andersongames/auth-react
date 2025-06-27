@@ -74,10 +74,10 @@ export default function Register() {
 
   return (
     <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-      <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
+      <h2 className="text-2xl font-semibold tracking-tight mb-6">Sign Up</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
-          <label htmlFor="name" className="block text-sm sm:text-base">Name</label>
+          <label htmlFor="name" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Name</label>
           <input
             id="name"
             autoComplete="name"
@@ -90,7 +90,7 @@ export default function Register() {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm sm:text-base">Email</label>
+          <label htmlFor="email" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Email</label>
           <input
             id="email"
             autoComplete="email"
@@ -104,7 +104,7 @@ export default function Register() {
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm sm:text-base">Password</label>
+          <label htmlFor="password" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Password</label>
           <input
             id="password"
             autoComplete="new-password"
@@ -118,7 +118,7 @@ export default function Register() {
         </div>
 
         <div>
-          <label htmlFor="confirmPassword" className="block text-sm sm:text-base">Confirm Password</label>
+          <label htmlFor="confirmPassword" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Confirm Password</label>
           <input
             id="confirmPassword"
             autoComplete="new-password"
@@ -136,7 +136,7 @@ export default function Register() {
         {/* ⚠️ Role selection is only available here for demonstration/testing purposes.
           In a real-world application, roles would be assigned server-side and not exposed in a public signup form. */}
         <div className="mb-4">
-          <label htmlFor="role" className="block text-sm font-medium mb-1">
+          <label htmlFor="role" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-1">
             Select your role
           </label>
           <select
@@ -151,7 +151,7 @@ export default function Register() {
             ))}
           </select>
           {errors.role && (
-            <p className="text-red-500 text-sm">{errors.role.message}</p>
+            <p className="text-xs text-red-500 mt-1">{errors.role.message}</p>
           )}
         </div>
 

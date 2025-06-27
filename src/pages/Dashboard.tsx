@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   return (
     <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
-      <h2 className="text-2xl font-semibold mb-4">Dashboard</h2>
+      <h2 className="text-2xl font-semibold tracking-tight mb-4">Dashboard</h2>
       <p className="mb-4 text-sm sm:text-base">
         Welcome, <strong>{user?.name}</strong>!
       </p>

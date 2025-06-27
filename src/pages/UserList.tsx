@@ -38,7 +38,7 @@ export default function UserList() {
 
   return (
     <div className="min-h-screen p-6 text-gray-900 dark:text-white">
-      <h1 className="text-3xl font-bold mb-6">All Registered Users</h1>
+      <h1 className="text-3xl font-bold tracking-tight mb-6">All Registered Users</h1>
       <div className="flex flex-col sm:flex-row gap-4 mb-6 text-sm">
         <a
           href="/admin-dashboard"
