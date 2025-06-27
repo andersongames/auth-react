@@ -13,7 +13,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h2 className="text-2xl font-semibold tracking-tight mb-4">Dashboard</h2>
       <p className="mb-4 text-sm sm:text-base">
         Welcome, <strong>{user?.name}</strong>!
@@ -70,7 +70,7 @@ export default function Dashboard() {
           });
           setIsLoggingOut(false);
         }}
-        className="w-full bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+        className="w-full bg-red-600 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-red-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-500"
         disabled={isLoggingOut}
       >
         {isLoggingOut ? (

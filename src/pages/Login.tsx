@@ -68,7 +68,7 @@ export default function Login() {
   }, [isAuthenticated, loggedOut, expired, navigate]);
 
   return (
-    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h2 className="text-2xl font-semibold tracking-tight mb-4">Login</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
@@ -79,7 +79,7 @@ export default function Login() {
             autoComplete="email"
             type="email"
             {...register("email")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-2 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -93,7 +93,7 @@ export default function Login() {
             autoComplete="current-password"
             type="password"
             {...register("password")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-2 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.password && (
             <p className="text-xs text-red-500 mt-1">{errors.password.message}</p>
@@ -102,7 +102,7 @@ export default function Login() {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={isLoading}
         >
           {isLoading ? (
