@@ -13,7 +13,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl space-y-6 flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h2 className="text-2xl font-semibold tracking-tight mb-4">Dashboard</h2>
       <p className="mb-4 text-sm sm:text-base">
         Welcome, <strong>{user?.name}</strong>!
@@ -25,39 +25,41 @@ export default function Dashboard() {
           <p><strong>Role:</strong> {user.role}</p>
         </div>
       )}
-      <a
-        href="/about"
-        className="text-blue-600 underline hover:text-blue-800 my-4 block"
-      >
-        Learn more about this app
-      </a>
-
-      <RoleBased allowedRoles={[ROLES.ADMIN]}>
+      <div className="flex flex-col gap-1">
         <a
-          href="/admin-dashboard"
-          className="text-blue-600 underline hover:text-blue-800 my-4 block"
+          href="/about"
+          className="text-blue-600 underline hover:text-blue-800 block"
         >
-          Go to Admin Panel
+          Learn more about this app
         </a>
-      </RoleBased>
 
-      <RoleBased allowedRoles={[ROLES.USER]}>
-        <a
-          href="/user-settings"
-          className="text-blue-600 underline hover:text-blue-800 my-4 block"
-        >
-          Access Personal Settings
-        </a>
-      </RoleBased>
+        <RoleBased allowedRoles={[ROLES.ADMIN]}>
+          <a
+            href="/admin-dashboard"
+            className="text-blue-600 underline hover:text-blue-800 block"
+          >
+            Go to Admin Panel
+          </a>
+        </RoleBased>
 
-      <RoleBased allowedRoles={[ROLES.ADMIN, "editor"]}>
-        <a
-          href="/manage-content"
-          className="text-blue-600 underline hover:text-blue-800 my-4 block"
-        >
-          Manage Content
-        </a>
-      </RoleBased>
+        <RoleBased allowedRoles={[ROLES.USER]}>
+          <a
+            href="/user-settings"
+            className="text-blue-600 underline hover:text-blue-800 block"
+          >
+            Access Personal Settings
+          </a>
+        </RoleBased>
+
+        <RoleBased allowedRoles={[ROLES.ADMIN, "editor"]}>
+          <a
+            href="/manage-content"
+            className="text-blue-600 underline hover:text-blue-800 block"
+          >
+            Manage Content
+          </a>
+        </RoleBased>
+      </div>
 
       <button
         onClick={async () => {
@@ -70,7 +72,7 @@ export default function Dashboard() {
           });
           setIsLoggingOut(false);
         }}
-        className="w-full bg-red-600 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-red-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+        className="w-full bg-red-600 text-white px-4 py-2 mt-6 space-y-4 rounded-lg shadow-sm hover:bg-red-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-500"
         disabled={isLoggingOut}
       >
         {isLoggingOut ? (

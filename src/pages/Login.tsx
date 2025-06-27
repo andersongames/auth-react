@@ -68,11 +68,11 @@ export default function Login() {
   }, [isAuthenticated, loggedOut, expired, navigate]);
 
   return (
-    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl space-y-6 flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h2 className="text-2xl font-semibold tracking-tight mb-4">Login</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
-        <div>
+        <div className="flex flex-col gap-1">
           <label htmlFor="email" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Email</label>
           <input
             id="email"
@@ -86,7 +86,7 @@ export default function Login() {
           )}
         </div>
 
-        <div>
+        <div className="flex flex-col gap-1">
           <label htmlFor="password" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Password</label>
           <input
             id="password"
@@ -102,7 +102,7 @@ export default function Login() {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-blue-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-blue-600 text-white px-4 py-2 mt-6 space-y-4 rounded-lg shadow-sm hover:bg-blue-700 cursor-pointer disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -112,7 +112,7 @@ export default function Login() {
           )}
         </button>
 
-        <p className="text-sm sm:text-base mt-4 text-center">
+        <p className="text-sm sm:text-base mt-6 space-y-4 text-center">
           Don't have an account?{" "}
           <a href="/register" className="text-blue-600 hover:underline">
             Register

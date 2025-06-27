@@ -5,7 +5,7 @@ export default function Unauthorized() {
   const requiredRole = location.state?.required;
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 text-center bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="min-h-screen space-y-6 flex flex-col items-center justify-center p-6 text-center bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h1 className="text-3xl font-bold tracking-tight mb-2">Access Denied</h1>
       <p className="text-lg mb-4">
         You do not have permission to view this page.
