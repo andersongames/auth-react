@@ -73,7 +73,7 @@ export default function Register() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+    <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border rounded-xl shadow-md bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <h2 className="text-2xl font-semibold tracking-tight mb-6">Sign Up</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
         <div>
@@ -82,7 +82,7 @@ export default function Register() {
             id="name"
             autoComplete="name"
             {...register("name")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.name && (
             <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -96,7 +96,7 @@ export default function Register() {
             autoComplete="email"
             type="email"
             {...register("email")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -110,7 +110,7 @@ export default function Register() {
             autoComplete="new-password"
             type="password"
             {...register("password")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
@@ -124,7 +124,7 @@ export default function Register() {
             autoComplete="new-password"
             type="password"
             {...register("confirmPassword")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {errors.confirmPassword && (
             <p className="text-red-500 text-sm">
@@ -142,7 +142,7 @@ export default function Register() {
           <select
             id="role"
             {...register("role")}
-            className="w-full border p-2 rounded bg-white dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border p-2 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {Object.values(ROLES).map((role) => (
               <option key={role} value={role}>

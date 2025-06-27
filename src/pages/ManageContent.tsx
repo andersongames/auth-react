@@ -2,7 +2,7 @@
 
 export default function ManageContent() {
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 text-center text-gray-900 dark:text-white">
+    <div className="min-h-screen flex items-center justify-center p-6 text-center bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <div>
         <h1 className="text-3xl font-bold tracking-tight mb-2">Content Management</h1>
         <p className="text-lg">
