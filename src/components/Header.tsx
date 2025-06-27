@@ -7,16 +7,13 @@ export default function Header() {
   return (
     <header className="w-full border-b border-gray-200 dark:border-gray-800 py-4 px-6 bg-white dark:bg-gray-950">
       <div className="max-w-screen-lg mx-auto flex flex-wrap items-center justify-between gap-4">
-        {/* Branding + GitHub */}
+        {/* Branding */}
         <div className="flex items-center gap-4">
-          <h1 className="text-xl font-semibold tracking-tight">MyAuth Demo</h1>
           <a
-            href="https://github.com/seu-usuario/seu-repositorio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
+            href="/dashboard"
+            className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white hover:underline"
           >
-            GitHub Repo
+            MyAuth Demo
           </a>
         </div>
 

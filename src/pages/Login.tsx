@@ -68,7 +68,7 @@ export default function Login() {
   }, [isAuthenticated, loggedOut, expired, navigate]);
 
   return (
-    <div className="min-h-[calc(100vh-106px)] flex items-center justify-center">
+    <div className="min-h-[calc(100vh-var(--layout-offset))] flex items-center justify-center">
       <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl space-y-6 flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-2xl font-semibold tracking-tight mb-4">Login</h2>
 

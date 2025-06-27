@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* 
+  --layout-offset defines the total vertical space 
+  occupied by fixed layout elements such as <Header> and <Footer>. 
+
+  This value is subtracted from 100vh in page-level layouts 
+  to vertically center content without overlap or clipping.
+
+  If header or footer height changes, update this value accordingly.
+*/
+:root {
+  --layout-offset: 118px;
+}
+
 #root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
