@@ -18,20 +18,20 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-800 py-4 px-6 bg-white dark:bg-gray-950">
+    <header className="w-full border-b transition-colors border-gray-200 dark:border-gray-800 py-4 px-6 bg-white dark:bg-gray-950">
       <div className="mx-auto flex flex-wrap items-center justify-between gap-4">
         {/* Branding */}
         <div className="flex items-center gap-4">
           <a
             href="/dashboard"
-            className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white hover:underline"
+            className="text-xl font-semibold tracking-tight transition-colors text-gray-900 dark:text-white hover:underline"
           >
             MyAuth Demo
           </a>
         </div>
 
         {/* Actions: User Info + Theme + Logout */}
-        <div className="flex items-center gap-4 text-sm text-gray-700 dark:text-gray-300">
+        <div className="flex items-center gap-4 text-sm transition-colors text-gray-700 dark:text-gray-300">
           {user && (
             <>
               <p>

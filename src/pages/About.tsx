@@ -10,7 +10,7 @@ export default function About() {
 
   return (
     <div className="min-h-[calc(100vh-var(--layout-offset))] flex items-center justify-center">
-      <div className="space-y-6 flex flex-col items-center justify-center p-6 text-center bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      <div className="space-y-6 flex flex-col items-center justify-center p-6 text-center transition-colors bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <h1 className="text-3xl font-bold tracking-tight mb-4">About this App</h1>
 
         <p className="mb-6 text-lg">

@@ -3,7 +3,7 @@ import LinkedInIcon from "./icons/LinkedInIcon";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-gray-200 dark:border-gray-800 py-4 px-6 text-sm text-gray-600 dark:text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="w-full border-t transition-colors border-gray-200 dark:border-gray-800 py-4 px-6 text-sm text-gray-600 dark:text-gray-400 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p>Built for demo purposes – 2025</p>
       <div className="flex items-center gap-4">
         <a

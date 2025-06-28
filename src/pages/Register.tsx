@@ -75,7 +75,7 @@ export default function Register() {
 
   return (
     <div className="min-h-[calc(100vh-var(--layout-offset))] flex items-center justify-center">
-      <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl space-y-6 flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl space-y-6 flex flex-col transition-colors bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-2xl font-semibold tracking-tight mb-6">Sign Up</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
           <div className="flex flex-col gap-1">
@@ -84,7 +84,7 @@ export default function Register() {
               id="name"
               autoComplete="name"
               {...register("name")}
-              className="w-full border p-2 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.name && (
               <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -92,13 +92,13 @@ export default function Register() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="email" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Email</label>
+            <label htmlFor="email" className="block text-sm sm:text-base font-medium transition-colors text-gray-700 dark:text-gray-300">Email</label>
             <input
               id="email"
               autoComplete="email"
               type="email"
               {...register("email")}
-              className="w-full border p-2 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.email && (
               <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -106,13 +106,13 @@ export default function Register() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="password" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Password</label>
+            <label htmlFor="password" className="block text-sm sm:text-base font-medium transition-colors text-gray-700 dark:text-gray-300">Password</label>
             <input
               id="password"
               autoComplete="new-password"
               type="password"
               {...register("password")}
-              className="w-full border p-2 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.password && (
               <p className="text-red-500 text-sm">{errors.password.message}</p>
@@ -120,13 +120,13 @@ export default function Register() {
           </div>
 
           <div className="flex flex-col gap-1">
-            <label htmlFor="confirmPassword" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Confirm Password</label>
+            <label htmlFor="confirmPassword" className="block text-sm sm:text-base font-medium transition-colors text-gray-700 dark:text-gray-300">Confirm Password</label>
             <input
               id="confirmPassword"
               autoComplete="new-password"
               type="password"
               {...register("confirmPassword")}
-              className="w-full border p-2 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.confirmPassword && (
               <p className="text-red-500 text-sm mt-1">
@@ -138,13 +138,13 @@ export default function Register() {
           {/* ⚠️ Role selection is only available here for demonstration/testing purposes.
             In a real-world application, roles would be assigned server-side and not exposed in a public signup form. */}
           <div className="flex flex-col gap-1 mb-4">
-            <label htmlFor="role" className="block text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="role" className="block text-sm sm:text-base font-medium transition-colors text-gray-700 dark:text-gray-300 mb-1">
               Select your role
             </label>
             <select
               id="role"
               {...register("role")}
-              className="w-full border p-2 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {Object.values(ROLES).map((role) => (
                 <option key={role} value={role}>
