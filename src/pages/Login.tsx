@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Link from "../components/Link";
+import Input from "../components/Input";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -72,35 +73,23 @@ export default function Login() {
     <div className="min-h-[calc(100vh-var(--layout-offset))] flex items-center justify-center">
       <div className="w-full sm:w-[90%] md:w-[80%] max-w-md mx-auto p-4 sm:p-6 border shadow-md rounded-2xl space-y-6 flex flex-col transition-colors bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-2xl font-semibold tracking-tight mb-4">Login</h2>
-
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 flex flex-col">
-          <div className="flex flex-col gap-1">
-            <label htmlFor="email" className="block text-sm sm:text-base font-medium transition-colors text-gray-700 dark:text-gray-300">Email</label>
-            <input
-              id="email"
-              autoComplete="email"
-              type="email"
-              {...register("email")}
-              className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email.message}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <label htmlFor="password" className="block text-sm sm:text-base font-medium transition-colors text-gray-700 dark:text-gray-300">Password</label>
-            <input
-              id="password"
-              autoComplete="current-password"
-              type="password"
-              {...register("password")}
-              className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.password && (
-              <p className="text-xs text-red-500 mt-1">{errors.password.message}</p>
-            )}
-          </div>
+          <Input
+            id="email"
+            label="Email"
+            type="email"
+            autoComplete="email"
+            {...register("email")}
+            errorMessage={errors.email?.message}
+          />
+          <Input
+            id="password"
+            label="Password"
+            type="password"
+            autoComplete="new-password"
+            {...register("password")}
+            errorMessage={errors.password?.message}
+          />
 
           <button
             type="submit"

@@ -73,7 +73,7 @@
 
 ---
 
-✅ **Etapa: Responsividade do Formulário de Registro**
+✅ **Etapa: Responsividade do Formulário de Registro**  
 🎯 **Objetivo:**
 - Garantir que a tela de registro fique legível, fluida e bem espaçada em diferentes tamanhos de tela
 - Evitar overflow ou colapsos em dispositivos móveis
@@ -81,7 +81,7 @@
 
 ---
 
-✅ **Etapa: Acessibilidade e Navegação por Teclado**
+✅ **Etapa: Acessibilidade e Navegação por Teclado**  
 🎯 **Objetivos:**
 - Permitir que todo o formulário seja navegado com Tab
 - Garantir que todos os inputs tenham labels associadas corretamente
@@ -90,7 +90,7 @@
 
 ---
 
-✅ **Etapa: Substituir mensagens por Toasts**
+✅ **Etapa: Substituir mensagens por Toasts**  
 🎯 **Objetivo:**
 - Trocar mensagens de erro/sucesso fixas (ex: <p className="text-red-600">...) por toasts flutuantes
 - Usar uma biblioteca leve e fácil de integrar como react-hot-toast
@@ -102,7 +102,7 @@
 
 ---
 
-✅ **Etapa: Expiração de Sessão**
+✅ **Etapa: Expiração de Sessão**  
 🎯 **Objetivo:**
 - Encerrar a sessão do usuário automaticamente após um tempo determinado (ex: 30 minutos)
 - Redirecionar para /login com uma mensagem “Your session has expired”
@@ -110,7 +110,7 @@
 
 ---
 
-✅ **Etapa: Páginas de Erro (404 e Acesso Não Autorizado)**
+✅ **Etapa: Páginas de Erro (404 e Acesso Não Autorizado)**   
 🎯 **Objetivo:**
 - Exibir uma página amigável e clara para:
   - Rotas inexistentes (404)
@@ -120,7 +120,7 @@
 
 ---
 
-✅ **Etapa: Encapsular controle de visibilidade por role**
+✅ **Etapa: Encapsular controle de visibilidade por role**  
 🎯 **Objetivo:**
 - Criar uma estrutura reutilizável que permita exibir elementos da interface somente para usuários com determinados papéis (roles)
 - Reduzir repetições e comparações diretas de user?.role === "admin" espalhadas pelo código
@@ -130,7 +130,7 @@
 
 ---
 
-✅ **Etapa: Páginas e Rotas exclusivas por role (/admin-dashboard e /user-settings)**
+✅ **Etapa: Páginas e Rotas exclusivas por role (/admin-dashboard e /user-settings)**  
 🎯 **Objetivo:**
 - Criar páginas dedicadas para cada tipo de usuário (admin e user)
 - Proteger o acesso usando o componente ProtectedRoute com requiredRole
@@ -140,7 +140,7 @@
 
 ---
 
-✅ **Etapa: Página pública com conteúdo dinâmico baseado na role (/about)**
+✅ **Etapa: Página pública com conteúdo dinâmico baseado na role (/about)**  
 🎯 **Objetivo:**
 - Criar uma rota pública acessível a todos (visitantes e usuários autenticados)
 - Exibir mensagens ou blocos de conteúdo diferentes com base no papel (role) do usuário
@@ -149,7 +149,7 @@
 
 ---
 
-✅ **Etapa: Suporte a múltiplas roles e rota compartilhada por grupo (/manage-content)**
+✅ **Etapa: Suporte a múltiplas roles e rota compartilhada por grupo (/manage-content)**  
 🎯 **Objetivos:**
 - Adicionar suporte a múltiplos papéis (roles) no componente ProtectedRoute
 - Permitir que diferentes tipos de usuários tenham acesso às mesmas páginas de forma segura e controlada
@@ -160,7 +160,7 @@
 
 ---
 
-✅ **Etapa: Exibir metadados do usuário logado na interface (nome, role, email)**
+✅ **Etapa: Exibir metadados do usuário logado na interface (nome, role, email)**  
 🎯 **Objetivos:**
 - Mostrar ao usuário informações básicas do seu próprio perfil, como nome, e-mail e papel (role)
 - Reforçar visualmente o contexto da sessão ativa
@@ -169,7 +169,7 @@
 
 ---
 
-✅ **Etapa: Página de acesso negado com mensagem contextual baseada na role exigida**
+✅ **Etapa: Página de acesso negado com mensagem contextual baseada na role exigida**  
 🎯 **Objetivos:**
 - Exibir mensagens de acesso negado que indiquem qual role seria necessária para acessar a página
 - Melhorar a experiência do usuário e o feedback da interface
@@ -178,7 +178,7 @@
 
 ---
 
-✅ **Etapa: Painel admin com listagem de todos os usuários mockados**
+✅ **Etapa: Painel admin com listagem de todos os usuários mockados**  
 🎯 **Objetivos:**
 - Exibir uma tabela com os dados dos usuários cadastrados (mockados via localStorage)
 - Restringir o acesso ao painel apenas para quem tem a role "admin"
@@ -188,7 +188,7 @@
 
 ---
 
-✅ **Etapa: Alteração de role por parte do admin (promover/demover usuários)**
+✅ **Etapa: Alteração de role por parte do admin (promover/demover usuários)**  
 🎯 **Objetivos:**
 - Permitir que um usuário com role "admin" possa alterar o papel (role) de outros usuários através da interface
 - Atualizar os dados diretamente no localStorage (mock) de forma segura
@@ -198,7 +198,7 @@
 
 ---
 
-✅ **Etapa: Validar role na alteração de papel de usuário**
+✅ **Etapa: Validar role na alteração de papel de usuário**  
 🎯 **Objetivo:**
 - Prevenir que valores inválidos de role sejam salvos no localStorage
 - Reforçar segurança e confiabilidade dos dados mockados
@@ -206,7 +206,7 @@
 
 ---
 
-✅ **Etapa: Esconder ou desabilitar botões baseados na role**
+✅ **Etapa: Esconder ou desabilitar botões baseados na role**  
 🎯 **Objetivos:**
 - Demonstrar controle de interface (visibilidade e ações) com base na role do usuário logado
 - Reforçar o uso do componente RoleBased como camada de autorização visual
@@ -216,7 +216,7 @@
 
 ---
 
-✅ **Etapa: Layout com design mais moderno e acessível**
+✅ **Etapa: Layout com design mais moderno e acessível**  
 🎯 **Objetivos:**
 - Melhorar o aspecto visual e a usabilidade da interface com um visual mais atual, limpo e acessível
 - Aplicar boas práticas de design responsivo e visual com uso exclusivo de Tailwind CSS (sem bibliotecas pesadas como MUI ou Chakra)
@@ -226,7 +226,7 @@
 
 ---
 
-✅ **Etapa: Implementação de layout base com Header e Footer (AppLayout)**
+✅ **Etapa: Implementação de layout base com Header e Footer (AppLayout)**  
 🎯 **Objetivos:**
 - Criar uma estrutura visual consistente e reutilizável para todas as páginas da aplicação
 - Centralizar elementos comuns (como cabeçalho e rodapé) em um único ponto de controle
@@ -236,8 +236,18 @@
 
 ---
 
-✅ **Etapa: Substituir <a> por um componente Link**
+✅ **Etapa: Substituir <a> por um componente Link**  
 🎯 **Objetivo:**
 - Criar um componente <Link> reutilizável que aceite href, children, e estilização opcional
 - Aplicar Tailwind CSS diretamente (eliminando o CSS global antigo)
 - Manter acessibilidade, foco e responsividade
+
+---
+
+✅ **Etapa: Criar componente reutilizável Input**  
+🎯 **Objetivos:**
+- Reutilizar o mesmo estilo base em todos os inputs (visual, foco, dark mode, responsividade)
+- Reduzir repetição de código em páginas como Register.tsx e Login.tsx
+- Padronizar acessibilidade com id, aria-*, label, autoComplete, etc.
+- Suporte a erros do Zod, com exibição de mensagens de forma consistente
+- Facilitar manutenção futura (troca de estilos, interações, temas)
