@@ -9,6 +9,7 @@ import { ROLES, type Role } from "../constants/roles";
 import { useAuth } from "../context/AuthContext";
 import { isValidRole } from "../utils/validateRole";
 import Link from "../components/Link";
+import toast from "react-hot-toast";
 
 export default function UserList() {
   const [users, setUsers] = useState<StoredUser[]>([]);
@@ -16,7 +17,7 @@ export default function UserList() {
 
   const handleRoleChange = (userId: string, value: string) => {
     if (!isValidRole(value)) {
-      alert("Invalid role selected.");
+      toast.error("Invalid role selected.");
       return;
     }
 

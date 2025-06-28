@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Link from "../components/Link";
 import Input from "../components/Input";
+import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email"),
@@ -37,11 +38,7 @@ export default function Login() {
       await login(data.email, data.password);
       navigate("/dashboard");
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        toast.error(error.message);
-      } else {
-        toast.error("Login failed.");
-      }
+      handleUnexpectedError(error, "Login failed.");
     } finally {
       setIsLoading(false);
     }

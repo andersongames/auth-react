@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { ROLES } from "../constants/roles";
 import Link from "../components/Link";
 import Input from "../components/Input";
+import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 
 // Schema validation using Zod
 const registerSchema = z
@@ -58,11 +59,7 @@ export default function Register() {
         navigate("/login");
       }, 2000); // 2 seconds
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        toast.error(error.message);
-      } else {
-        toast.error("Registration failed.");
-      }
+      handleUnexpectedError(error, "Registration failed.");
     } finally {
       setIsLoading(false);
     }

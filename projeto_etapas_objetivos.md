@@ -251,3 +251,12 @@
 - Padronizar acessibilidade com id, aria-*, label, autoComplete, etc.
 - Suporte a erros do Zod, com exibição de mensagens de forma consistente
 - Facilitar manutenção futura (troca de estilos, interações, temas)
+
+---
+
+✅ **Etapa: Tratamento global de erros e mensagens padronizadas**  
+🎯 **Objetivos:**
+- Centralizar o tratamento de exceções inesperadas, garantindo que qualquer falha crítica (ex: parsing de localStorage, erros em serviços, falhas de permissão) seja corretamente capturada e exibida ao usuário.
+- Padronizar mensagens de erro, evitando duplicação de strings e facilitando a manutenção do projeto.
+- Melhorar a experiência do usuário com toasts de erro consistentes em todos os cenários, evitando erros silenciosos ou alertas bloqueantes.
+- Aumentar a confiabilidade da aplicação, evitando travamentos causados por falhas não tratadas no fluxo de autenticação ou alteração de roles.
