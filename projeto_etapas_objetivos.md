@@ -260,3 +260,15 @@
 - Padronizar mensagens de erro, evitando duplicação de strings e facilitando a manutenção do projeto.
 - Melhorar a experiência do usuário com toasts de erro consistentes em todos os cenários, evitando erros silenciosos ou alertas bloqueantes.
 - Aumentar a confiabilidade da aplicação, evitando travamentos causados por falhas não tratadas no fluxo de autenticação ou alteração de roles.
+
+✅ **Etapa: Implementação do userService e melhorias no UserList**  
+🎯 **Objetivos:**
+- Criar um serviço dedicado (userService) para encapsular operações com usuários mockados usando localStorage
+- Garantir consistência com os outros serviços (authService), simulando delays de rede via Promise + setTimeout
+- Centralizar e reutilizar lógica de acesso aos dados dos usuários (como getAllUsers e updateUserRole)
+- Eliminar o uso direto de localStorage no componente UserList, favorecendo separação de responsabilidades
+- Adicionar feedback visual com estados de loading durante:
+- Carregamento inicial da lista de usuários
+- Atualização de role individual
+- Exibir feedback de sucesso com toast.success(...) após alteração bem-sucedida de role
+- Usar handleUnexpectedError(...) para capturar e notificar falhas inesperadas

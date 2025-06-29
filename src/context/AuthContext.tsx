@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loginUser, type StoredUser } from "../services/authService";
+import { loginUser } from "../services/authService";
 import type { Role } from "../constants/roles";
+import type { StoredUser } from "../types/user";
 
 type AuthContextType = {
   isAuthenticated: boolean;
@@ -43,7 +44,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     setLoading(false);
 
-    // 🔁 Monitorar expiração a cada 30 segundos
+    // 🔁 Monitor expiration every 30 seconds
     const interval = setInterval(() => {
       const sessionData = localStorage.getItem("mock_auth");
       if (sessionData) {
