@@ -4,31 +4,26 @@
 // Demonstrates role-based access control (RBAC), persistent data mutation, and secure UI logic.
 
 import { useEffect, useState } from "react";
-import type { StoredUser } from "../services/authService";
+import type { StoredUser } from "../types/user";
 import { ROLES, type Role } from "../constants/roles";
 import { useAuth } from "../context/AuthContext";
-import { isValidRole } from "../utils/validateRole";
 import Link from "../components/Link";
-import toast from "react-hot-toast";
+import { updateUserRole } from "../services/userService";
+import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 
 export default function UserList() {
   const [users, setUsers] = useState<StoredUser[]>([]);
   const { user: authUser } = useAuth();
 
   const handleRoleChange = (userId: string, value: string) => {
-    if (!isValidRole(value)) {
-      toast.error("Invalid role selected.");
-      return;
+    try {
+      updateUserRole(userId, value);
+      setUsers((prev) =>
+        prev.map((u) => (u.id === userId ? { ...u, role: value as Role } : u))
+      );
+    } catch (error) {
+      handleUnexpectedError(error, "Unable to update user role.");
     }
-
-    const newRole = value as Role;
-
-    const updatedUsers = users.map((u) =>
-      u.id === userId ? { ...u, role: newRole } : u
-    );
-
-    setUsers(updatedUsers);
-    localStorage.setItem("mock_users", JSON.stringify(updatedUsers));
   };
 
   useEffect(() => {
