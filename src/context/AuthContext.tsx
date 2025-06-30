@@ -1,7 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loginUser } from "../services/authService";
+import { loginUser, logoutUser } from "../services/authService";
 import type { Role } from "../constants/roles";
-import type { StoredUser } from "../types/user";
+import { getAuthSession } from "../services/sessionService";
+import { getAllUsers } from "../services/userService";
+import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 
 type AuthContextType = {
   isAuthenticated: boolean;
@@ -18,31 +20,42 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem("mock_auth");
-    const users = localStorage.getItem("mock_users");
+    async function restoreSession() {
+      try {
+        const session = await getAuthSession();
+        if (!session) {
+          setLoading(false);
+          return;
+        }
 
-    if (stored && users) {
-      const session = JSON.parse(stored);
-      const expiresAt = session.expiresAt;
-      const now = Date.now();
+        const now = Date.now();
+        if (session.expiresAt && now > session.expiresAt) {
+          await logoutUser();
+          setUser(null);
+          window.location.href = "/login?expired=true";
+          return;
+        }
 
-      if (expiresAt && now > expiresAt) {
-        localStorage.removeItem("mock_auth");
+        const users = await getAllUsers();
+        const currentUser = users.find((u) => u.id === session.userId);
+
+        if (currentUser) {
+          setUser({
+            id: currentUser.id,
+            name: currentUser.name,
+            email: currentUser.email,
+            role: currentUser.role,
+          });
+        }
+      } catch (error) {
+        handleUnexpectedError(error, "Failed to restore session.");
         setUser(null);
-        window.location.href = "/login?expired=true";
-        return;
-      }
-
-      const { userId } = session;
-      const parsedUsers: StoredUser[] = JSON.parse(users);
-      const currentUser = parsedUsers.find((u) => u.id === userId);
-
-      if (currentUser) {
-        setUser({ id: currentUser.id, name: currentUser.name, email: currentUser.email, role: currentUser.role });
+      } finally {
+        setLoading(false);
       }
     }
 
-    setLoading(false);
+    restoreSession();
 
     // 🔁 Monitor expiration every 30 seconds
     const interval = setInterval(() => {

@@ -2,7 +2,7 @@ import { isValidRole } from "../utils/validateRole";
 import type { StoredUser } from "../types/user";
 import type { Role } from "../constants/roles";
 
-export function getAllUsers(): Promise<StoredUser[]> {
+export async function getAllUsers(): Promise<StoredUser[]> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       try {
@@ -16,7 +16,7 @@ export function getAllUsers(): Promise<StoredUser[]> {
   });
 }
 
-export function updateUserRole(userId: string, newRole: string): Promise<void> {
+export async function updateUserRole(userId: string, newRole: string): Promise<void> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (!isValidRole(newRole)) {
