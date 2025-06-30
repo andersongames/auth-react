@@ -65,8 +65,8 @@ export async function loginUser(
         return;
       }
 
-      const expiration = new Date().getTime() + 5000; // 5 secs for testing
-      // const expiration = new Date().getTime() + 30 * 60 * 1000; // 30 minutes
+      // const expiration = new Date().getTime() + 5000; // 5 secs for testing
+      const expiration = new Date().getTime() + 30 * 60 * 1000; // 30 minutes
 
       // Simulate auth token/session
       localStorage.setItem("mock_auth", JSON.stringify({

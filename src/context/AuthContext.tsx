@@ -60,22 +60,40 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // 🔁 Monitor expiration every 30 seconds
     const interval = setInterval(async () => {
       try {
-        const sessionData = await getAuthSession();
-        if (sessionData) {
-          if (sessionData.expiresAt && Date.now() > sessionData.expiresAt) {
-            await logoutUser();
-            setUser(null);
-            window.location.href = "/login?expired=true";
-          }
+        const session = await getAuthSession();
+        const now = Date.now();
+
+        if (session?.expiresAt && now > session.expiresAt) {
+          await logoutUser();
+          setUser(null);
+          window.location.href = "/login?expired=true";
         }
       } catch {
-        // Silently fail if session is malformed
-        logoutUser();
+        // We avoid showing visual feedback (like a toast) here because this check runs
+        // automatically in the background at fixed intervals. If the session becomes
+        // invalid or malformed, we clear it and redirect silently without interrupting
+        // the user with duplicate or confusing messages.
+        console.warn("Session data is malformed or unreadable. Clearing session...");
+        await logoutUser();
         setUser(null);
       }
-    }, 30000); // 30 segundos
+    }, 30000);
 
-    return () => clearInterval(interval);
+    // ✅ Watch for session removal from other tabs or DevTools (storage event only fires in other tabs).
+    const handleStorageChange = (event: StorageEvent) => {
+      if (event.key === "mock_auth" && event.newValue === null) {
+        logoutUser();
+        setUser(null);
+        window.location.href = "/login?expired=true";
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
   const login = async (email: string, password: string) => {

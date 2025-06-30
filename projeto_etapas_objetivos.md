@@ -272,3 +272,13 @@
 - Atualização de role individual
 - Exibir feedback de sucesso com toast.success(...) após alteração bem-sucedida de role
 - Usar handleUnexpectedError(...) para capturar e notificar falhas inesperadas
+
+---
+
+✅ **Etapa: Gerenciamento de Sessão e Monitoramento de Expiração**  
+🎯 **Objetivos:**
+- Centralizar a lógica de leitura da sessão (mock_auth) em um serviço reutilizável (getAuthSession)
+- Remover acessos diretos ao localStorage dentro do AuthContext, favorecendo coesão e manutenção
+- Tratar falhas de leitura da sessão com segurança, evitando exceções silenciosas
+- Implementar verificação automática de expiração da sessão com um setInterval que revoga a sessão quando necessário
+- Adicionar monitoramento via evento storage para capturar remoções manuais da sessão em outras abas ou via DevTools
