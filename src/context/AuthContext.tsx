@@ -4,6 +4,7 @@ import type { Role } from "../constants/roles";
 import { getAuthSession } from "../services/sessionService";
 import { getAllUsers } from "../services/userService";
 import { handleUnexpectedError } from "../utils/handleUnexpectedError";
+import { errorMessages } from "../constants/errorMessages";
 
 type AuthContextType = {
   isAuthenticated: boolean;
@@ -48,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           });
         }
       } catch (error) {
-        handleUnexpectedError(error, "Failed to restore session.");
+        handleUnexpectedError(error, errorMessages.sessionRestoreFail);
         setUser(null);
       } finally {
         setLoading(false);

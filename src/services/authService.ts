@@ -1,5 +1,6 @@
 // This service simulates a POST request to /register and "saves" the data in localStorage as if it were a backend.
 
+import { errorMessages } from "../constants/errorMessages";
 import type { Role } from "../constants/roles";
 import type { StoredUser } from "../types/user";
 import { isValidRole } from "../utils/validateRole";
@@ -18,7 +19,7 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
 
       const userExists = users.some((user) => user.email === data.email);
       if (userExists) {
-        reject(new Error("Email already registered."));
+        reject(new Error(errorMessages.emailAlreadyRegistered));
         return;
       }
 
@@ -26,7 +27,7 @@ export async function registerUser(data: RegisterPayload): Promise<void> {
       const role = data.role || "user";
 
       if (!isValidRole(role)) {
-        reject(new Error("Invalid user role."));
+        reject(new Error(errorMessages.invalidRole));
         return;
       }
 
@@ -61,7 +62,7 @@ export async function loginUser(
       );
 
       if (!user) {
-        reject(new Error("Invalid email or password."));
+        reject(new Error(errorMessages.invalidCredentials));
         return;
       }
 

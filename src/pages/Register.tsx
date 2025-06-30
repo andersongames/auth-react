@@ -10,20 +10,21 @@ import { ROLES } from "../constants/roles";
 import Link from "../components/Link";
 import Input from "../components/Input";
 import { handleUnexpectedError } from "../utils/handleUnexpectedError";
+import { errorMessages } from "../constants/errorMessages";
 
 // Schema validation using Zod
 const registerSchema = z
   .object({
-    name: z.string().min(2, "Name must have at least 2 characters"),
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(6, "Password must have at least 6 characters"),
+    name: z.string().min(2, errorMessages.nameTooShort),
+    email: z.string().email(errorMessages.invalidEmail),
+    password: z.string().min(6, errorMessages.passwordTooShort),
     confirmPassword: z.string(),
     role: z.enum(["user", "admin", "editor"], {
-      errorMap: () => ({ message: "Please select a valid role." }),
+      errorMap: () => ({ message: errorMessages.invalidRole }),
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
+    message: errorMessages.passwordsDontMatch,
     path: ["confirmPassword"],
   });
 
@@ -52,14 +53,14 @@ export default function Register() {
         role: data.role,
       });
 
-      toast.success("User successfully registered!");
+      toast.success(errorMessages.registrationSuccess);
 
       // Redirect after short delay
       setTimeout(() => {
         navigate("/login");
       }, 2000); // 2 seconds
     } catch (error: unknown) {
-      handleUnexpectedError(error, "Registration failed.");
+      handleUnexpectedError(error, errorMessages.registrationFailed);
     } finally {
       setIsLoading(false);
     }

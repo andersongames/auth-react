@@ -8,10 +8,11 @@ import toast from "react-hot-toast";
 import Link from "../components/Link";
 import Input from "../components/Input";
 import { handleUnexpectedError } from "../utils/handleUnexpectedError";
+import { errorMessages } from "../constants/errorMessages";
 
 const loginSchema = z.object({
-  email: z.string().email("Invalid email"),
-  password: z.string().min(1, "Password is required"),
+  email: z.string().email(errorMessages.invalidEmail),
+  password: z.string().min(1, errorMessages.requiredPassword),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -38,7 +39,7 @@ export default function Login() {
       await login(data.email, data.password);
       navigate("/dashboard");
     } catch (error: unknown) {
-      handleUnexpectedError(error, "Login failed.");
+      handleUnexpectedError(error, errorMessages.loginFailed);
     } finally {
       setIsLoading(false);
     }
@@ -61,7 +62,7 @@ export default function Login() {
     }
 
     if (expired === "true") {
-      toast.error("Your session has expired.", { id: "expired-toast" });
+      toast.error(errorMessages.sessionExpired, { id: "expired-toast" });
       navigate("/login", { replace: true });
     }
   }, [isAuthenticated, loggedOut, expired, navigate]);

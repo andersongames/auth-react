@@ -1,6 +1,7 @@
 import { isValidRole } from "../utils/validateRole";
 import type { StoredUser } from "../types/user";
 import type { Role } from "../constants/roles";
+import { errorMessages } from "../constants/errorMessages";
 
 export async function getAllUsers(): Promise<StoredUser[]> {
   return new Promise((resolve, reject) => {
@@ -10,7 +11,7 @@ export async function getAllUsers(): Promise<StoredUser[]> {
         const users = data ? JSON.parse(data) : [];
         resolve(users);
       } catch {
-        reject(new Error("Failed to load user list."));
+        reject(new Error(errorMessages.failedToLoadUsers));
       }
     }, 1000);
   });
@@ -20,7 +21,7 @@ export async function updateUserRole(userId: string, newRole: string): Promise<v
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (!isValidRole(newRole)) {
-        reject(new Error("Invalid role selected."));
+        reject(new Error(errorMessages.invalidRole));
         return;
       }
 
@@ -35,7 +36,7 @@ export async function updateUserRole(userId: string, newRole: string): Promise<v
         localStorage.setItem("mock_users", JSON.stringify(updatedUsers));
         resolve();
       } catch {
-        reject(new Error("Failed to update user role."));
+        reject(new Error(errorMessages.failedToUpdateRole));
       }
     }, 2000);
   });

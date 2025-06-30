@@ -6,6 +6,7 @@ import Link from "../components/Link";
 import { updateUserRole, getAllUsers } from "../services/userService";
 import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 import toast from "react-hot-toast";
+import { errorMessages } from "../constants/errorMessages";
 
 export default function UserList() {
   const [users, setUsers] = useState<StoredUser[]>([]);
@@ -20,9 +21,9 @@ export default function UserList() {
       setUsers((prev) =>
         prev.map((u) => (u.id === userId ? { ...u, role: value as Role } : u))
       );
-      toast.success("Role updated successfully.");
+      toast.success(errorMessages.updateRoleSuccess);
     } catch (error) {
-      handleUnexpectedError(error, "Unable to update user role.");
+      handleUnexpectedError(error, errorMessages.failedToUpdateRole);
     } finally {
       setUpdatingUserId(null);
     }
@@ -35,7 +36,7 @@ export default function UserList() {
         const data = await getAllUsers();
         setUsers(data);
       } catch (error) {
-        handleUnexpectedError(error, "Failed to load users.");
+        handleUnexpectedError(error, errorMessages.failedToLoadUsers);
       } finally {
         setIsLoadingUsers(false);
       }

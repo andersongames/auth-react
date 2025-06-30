@@ -1,3 +1,5 @@
+import { errorMessages } from "../constants/errorMessages";
+
 export interface AuthSession {
   userId: string;
   expiresAt: number;
@@ -16,7 +18,7 @@ export async function getAuthSession(): Promise<AuthSession | null> {
         const session: AuthSession = JSON.parse(raw);
         resolve(session);
       } catch {
-        reject(new Error("Failed to retrieve session."));
+        reject(new Error(errorMessages.sessionRetrieveFail));
       }
     }, 1000);
   });
