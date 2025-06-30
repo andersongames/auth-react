@@ -58,15 +58,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     restoreSession();
 
     // 🔁 Monitor expiration every 30 seconds
-    const interval = setInterval(() => {
-      const sessionData = localStorage.getItem("mock_auth");
-      if (sessionData) {
-        const { expiresAt } = JSON.parse(sessionData);
-        if (expiresAt && Date.now() > expiresAt) {
-          localStorage.removeItem("mock_auth");
-          setUser(null);
-          window.location.href = "/login?expired=true";
+    const interval = setInterval(async () => {
+      try {
+        const sessionData = await getAuthSession();
+        if (sessionData) {
+          if (sessionData.expiresAt && Date.now() > sessionData.expiresAt) {
+            await logoutUser();
+            setUser(null);
+            window.location.href = "/login?expired=true";
+          }
         }
+      } catch {
+        // Silently fail if session is malformed
+        logoutUser();
+        setUser(null);
       }
     }, 30000); // 30 segundos
 
