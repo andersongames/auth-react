@@ -16,9 +16,16 @@ import { successMessages } from "../constants/successMessages";
 // Schema validation using Zod
 const registerSchema = z
   .object({
-    name: z.string().min(2, errorMessages.nameTooShort),
-    email: z.string().email(errorMessages.invalidEmail),
-    password: z.string().min(6, errorMessages.passwordTooShort),
+    name: z.string().min(2, errorMessages.nameTooShort).max(50, errorMessages.nameTooLong),
+    email: z.string().email(errorMessages.invalidEmail).max(100, errorMessages.emailTooLong),
+    password: z
+      .string()
+      .min(8, errorMessages.passwordTooShort)
+      .max(72, errorMessages.passwordTooLong)
+      .regex(/[A-Z]/, errorMessages.passwordMissingUppercase)
+      .regex(/[a-z]/, errorMessages.passwordMissingLowercase)
+      .regex(/[0-9]/, errorMessages.passwordMissingNumber)
+      .regex(/[^A-Za-z0-9]/, errorMessages.passwordMissingSymbol),
     confirmPassword: z.string(),
     role: z.enum(["user", "admin", "editor"], {
       errorMap: () => ({ message: errorMessages.invalidRole }),
@@ -33,6 +40,7 @@ type RegisterFormData = z.infer<typeof registerSchema>;
 
 export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordValue, setPasswordValue] = useState("");
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -101,7 +109,28 @@ export default function Register() {
             autoComplete="new-password"
             {...register("password")}
             errorMessage={errors.password?.message}
+            onChange={(e) => {
+              setPasswordValue(e.target.value);
+            }}
           />
+          {/* Password requirements list */}
+          <ul className="text-xs space-y-1 ml-1 mt-1" aria-live="polite">
+            <li className={passwordValue.length >= 8 ? "text-green-600" : "text-red-600"}>
+              • At least 8 characters
+            </li>
+            <li className={/[A-Z]/.test(passwordValue) ? "text-green-600" : "text-red-600"}>
+              • One uppercase letter
+            </li>
+            <li className={/[a-z]/.test(passwordValue) ? "text-green-600" : "text-red-600"}>
+              • One lowercase letter
+            </li>
+            <li className={/[0-9]/.test(passwordValue) ? "text-green-600" : "text-red-600"}>
+              • One number
+            </li>
+            <li className={/[^A-Za-z0-9]/.test(passwordValue) ? "text-green-600" : "text-red-600"}>
+              • One special character
+            </li>
+          </ul>
           <Input
             id="confirmPassword"
             label="Confirm Password"
