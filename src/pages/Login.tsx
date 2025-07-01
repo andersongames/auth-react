@@ -9,6 +9,7 @@ import Link from "../components/Link";
 import Input from "../components/Input";
 import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 import { errorMessages } from "../constants/errorMessages";
+import { successMessages } from "../constants/successMessages";
 
 const loginSchema = z.object({
   email: z.string().email(errorMessages.invalidEmail),
@@ -57,7 +58,7 @@ export default function Login() {
     }
 
     if (loggedOut === "true") {
-      toast.success("You have been logged out.", { id: "logout-toast" });
+      toast.success(successMessages.loggedOut, { id: "logout-toast" });
       navigate("/login", { replace: true });
     }
 

@@ -11,6 +11,7 @@ import Link from "../components/Link";
 import Input from "../components/Input";
 import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 import { errorMessages } from "../constants/errorMessages";
+import { successMessages } from "../constants/successMessages";
 
 // Schema validation using Zod
 const registerSchema = z
@@ -53,7 +54,7 @@ export default function Register() {
         role: data.role,
       });
 
-      toast.success(errorMessages.registrationSuccess);
+      toast.success(successMessages.registrationSuccess);
 
       // Redirect after short delay
       setTimeout(() => {
