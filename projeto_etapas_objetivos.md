@@ -293,3 +293,16 @@
 - Simular atraso de rede com setTimeout para representar uma operação real de backend.
 - Garantir que o botão “Delete” não seja visível para usuários que não sejam admin.
 - Impedir que o admin delete a si mesmo (autoexclusão).
+
+---
+
+✅ **Etapa: Confirmação inline para exclusão de usuário**
+🎯 **Objetivos:**
+- Adicionar uma etapa de confirmação visual antes da exclusão definitiva de um usuário
+- Substituir o botão "Delete" por dois botões "Confirm" e "Cancel" de forma inline, sem modais
+- Prevenir exclusões acidentais com uma interface simples, clara e acessível
+- Implementar a lógica com useState(confirmingUserId) para controle da confirmação
+- Restaurar o botão original se o usuário clicar em "Cancel"
+- Manter consistência visual com o restante do projeto (cores, acessibilidade e responsividade com TailwindCSS)
+- Garantir que o botão "Confirm" invoque a função de exclusão com segurança
+- Tornar a funcionalidade mais robusta e alinhada com boas práticas de UX e prevenção de erro

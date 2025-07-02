@@ -13,9 +13,12 @@ export default function UserList() {
   const [users, setUsers] = useState<StoredUser[]>([]);
   const [isLoadingUsers, setIsLoadingUsers] = useState(true);
   const [updatingUserId, setUpdatingUserId] = useState<string | null>(null);
+  const [confirmingUserId, setConfirmingUserId] = useState<string | null>(null);
   const { user: authUser } = useAuth();
 
   async function handleRoleChange(userId: string, value: string) {
+    if (!userId || !value || updatingUserId) return;
+
     setUpdatingUserId(userId);
     try {
       await updateUserRole(userId, value);
@@ -31,6 +34,8 @@ export default function UserList() {
   };
 
   async function handleDeleteUser(userId: string) {
+    if (!userId || updatingUserId) return;
+
     setUpdatingUserId(userId);
     try {
       await deleteUser(userId);
@@ -93,7 +98,7 @@ export default function UserList() {
                   <td className="px-4 py-2">{user.email}</td>
                   <td className="px-4 py-2">{user.role}</td>
                   <td className="px-4 py-2">
-                    {!authUser || user.email === authUser.email ? (
+                    {!authUser || user.id === authUser.id ? (
                       <span
                         title="You cannot change your own role"
                         className="inline-block px-2 py-1 rounded transition-colors bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400 cursor-default"
@@ -116,7 +121,7 @@ export default function UserList() {
                     )}
                   </td>
                   <td className="px-4 py-2">
-                    {!authUser || user.email === authUser.email ? (
+                    {!authUser || user.id === authUser.id ? (
                       <span
                         title="You cannot delete yourself"
                         className="inline-block px-2 py-1 rounded transition-colors bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400 cursor-default"
@@ -124,18 +129,37 @@ export default function UserList() {
                         {user.role} (you)
                       </span>
                     ) : (
-                      <button
-                        type="button"
-                        disabled={updatingUserId === user.id}
-                        onClick={() => handleDeleteUser(user.id)}
-                        className="min-w-16 bg-red-600 text-white px-2 py-1 rounded-lg font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-red-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-500"
-                      >
-                        {updatingUserId === user.id ? (
-                          <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+                      <>
+                        {confirmingUserId === user.id ? (
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => handleDeleteUser(user.id)}
+                              className="min-w-16 bg-red-600 text-white px-2 py-1 rounded font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-red-700"
+                            >
+                              {updatingUserId === user.id ? (
+                                <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+                              ) : (
+                                "Confirm"
+                              )}
+                            </button>
+                            <button
+                              onClick={() => setConfirmingUserId(null)}
+                              className="bg-gray-300 dark:bg-gray-700 text-black dark:text-white px-2 py-1 rounded font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-gray-400 dark:hover:bg-gray-600"
+                            >
+                              Cancel
+                            </button>
+                          </div>
                         ) : (
-                          "Delete"
+                          <button
+                            type="button"
+                            disabled={updatingUserId === user.id}
+                            onClick={() => setConfirmingUserId(user.id)}
+                            className="min-w-16 bg-red-600 text-white px-2 py-1 rounded font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-red-700 disabled:opacity-50"
+                          >
+                            Delete
+                          </button>
                         )}
-                      </button>
+                      </>
                     )}
                   </td>
                 </tr>
