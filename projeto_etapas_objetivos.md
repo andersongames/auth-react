@@ -282,3 +282,14 @@
 - Tratar falhas de leitura da sessão com segurança, evitando exceções silenciosas
 - Implementar verificação automática de expiração da sessão com um setInterval que revoga a sessão quando necessário
 - Adicionar monitoramento via evento storage para capturar remoções manuais da sessão em outras abas ou via DevTools
+
+---
+
+✅ **Etapa: Admin pode deletar usuários na página UserList**
+🎯 **Objetivos:**
+- Permitir que um usuário com role "admin" remova permanentemente usuários da lista.
+- Demonstrar controle de interface e permissão com base na role atual.
+- Exibir feedback visual claro (toast de sucesso ou erro) após a ação.
+- Simular atraso de rede com setTimeout para representar uma operação real de backend.
+- Garantir que o botão “Delete” não seja visível para usuários que não sejam admin.
+- Impedir que o admin delete a si mesmo (autoexclusão).

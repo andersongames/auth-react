@@ -3,7 +3,7 @@ import type { StoredUser } from "../types/user";
 import { ROLES, type Role } from "../constants/roles";
 import { useAuth } from "../context/AuthContext";
 import Link from "../components/Link";
-import { updateUserRole, getAllUsers } from "../services/userService";
+import { updateUserRole, getAllUsers, deleteUser } from "../services/userService";
 import { handleUnexpectedError } from "../utils/handleUnexpectedError";
 import toast from "react-hot-toast";
 import { errorMessages } from "../constants/errorMessages";
@@ -15,7 +15,7 @@ export default function UserList() {
   const [updatingUserId, setUpdatingUserId] = useState<string | null>(null);
   const { user: authUser } = useAuth();
 
-  const handleRoleChange = async (userId: string, value: string) => {
+  async function handleRoleChange(userId: string, value: string) {
     setUpdatingUserId(userId);
     try {
       await updateUserRole(userId, value);
@@ -25,6 +25,21 @@ export default function UserList() {
       toast.success(successMessages.updateRoleSuccess);
     } catch (error) {
       handleUnexpectedError(error, errorMessages.failedToUpdateRole);
+    } finally {
+      setUpdatingUserId(null);
+    }
+  };
+
+  async function handleDeleteUser(userId: string) {
+    setUpdatingUserId(userId);
+    try {
+      await deleteUser(userId);
+      setUsers((prev) =>
+        prev.filter((u) => u.id !== userId)
+      );
+      toast.success(successMessages.deleteUserSuccess);
+    } catch (error) {
+      handleUnexpectedError(error, errorMessages.failedToDeleteUser);
     } finally {
       setUpdatingUserId(null);
     }
@@ -68,6 +83,7 @@ export default function UserList() {
                 <th className="px-4 py-2 text-left">Email</th>
                 <th className="px-4 py-2 text-left">Role</th>
                 <th className="px-4 py-2 text-left">Change Role</th>
+                <th className="px-4 py-2 text-left">Delete User</th>
               </tr>
             </thead>
             <tbody>
@@ -97,6 +113,29 @@ export default function UserList() {
                           </option>
                         ))}
                       </select>
+                    )}
+                  </td>
+                  <td className="px-4 py-2">
+                    {!authUser || user.email === authUser.email ? (
+                      <span
+                        title="You cannot delete yourself"
+                        className="inline-block px-2 py-1 rounded transition-colors bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400 cursor-default"
+                      >
+                        {user.role} (you)
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        disabled={updatingUserId === user.id}
+                        onClick={() => handleDeleteUser(user.id)}
+                        className="min-w-16 bg-red-600 text-white px-2 py-1 rounded-lg font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-red-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+                      >
+                        {updatingUserId === user.id ? (
+                          <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+                        ) : (
+                          "Delete"
+                        )}
+                      </button>
                     )}
                   </td>
                 </tr>

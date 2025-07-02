@@ -41,3 +41,23 @@ export async function updateUserRole(userId: string, newRole: string): Promise<v
     }, 2000);
   });
 }
+
+export async function deleteUser(userId: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      try {
+        const data = localStorage.getItem("mock_users");
+        const users: StoredUser[] = data ? JSON.parse(data) : [];
+
+        const updatedUsers = users.filter((u) =>
+          u.id !== userId
+        );
+
+        localStorage.setItem("mock_users", JSON.stringify(updatedUsers));
+        resolve();
+      } catch {
+        reject(new Error(errorMessages.failedToDeleteUser));
+      }
+    }, 2000);
+  });
+}

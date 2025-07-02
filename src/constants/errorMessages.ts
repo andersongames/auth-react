@@ -15,6 +15,7 @@ export const errorMessages = {
   invalidCredentials: "Invalid email or password.",
   registrationFailed: "Registration failed.",
   loginFailed: "Login failed.",
+  failedToDeleteUser: "Failed to delete user.",
   failedToUpdateRole: "Failed to update user role.",
   invalidRole: "Invalid user role.",
   sessionRestoreFail: "Failed to restore session.",

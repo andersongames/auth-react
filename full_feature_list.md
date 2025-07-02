@@ -27,7 +27,7 @@
 - [x] Painel admin com listagem de todos os usuários mockados
 - [x] Página de acesso negado com mensagem contextual baseada na role exigida
 - [x] Alteração de role por parte do admin (promover/demover usuários)
-- [ ] Delete de users por parte do admin
+- [x] Delete de users por parte do admin
 
 ---
 
