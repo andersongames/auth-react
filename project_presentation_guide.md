@@ -46,6 +46,7 @@ Este roteiro serve para apresentar as funcionalidades atuais do projeto. Ele pod
 - Página `/admin-dashboard/user-list`
 - Listagem de todos os usuários mockados
 - Alteração segura da role dos usuários com validação
+- Exclusão segura usuários dos usuários com validação
 - Proteção contra autoedição de role (admin não pode se despromover)
 - Feedback de sucesso e erro com toasts
 
