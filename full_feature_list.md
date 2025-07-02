@@ -27,6 +27,7 @@
 - [x] Painel admin com listagem de todos os usuários mockados
 - [x] Página de acesso negado com mensagem contextual baseada na role exigida
 - [x] Alteração de role por parte do admin (promover/demover usuários)
+- [ ] Delete de users por parte do admin
 
 ---
 
@@ -49,12 +50,24 @@
 ---
 
 ## 🧪 Testes
+### ✅ Testes Unitários
 - [ ] Criar testes unitários para o formulário de registro (React Testing Library)
 - [ ] Criar testes unitários para o formulário de login
 - [ ] Criar testes para o `AuthContext`
-- [ ] Criar testes para `ProtectedRoute`
-- [ ] Testes unitários para o componente ProtectedRoute
+- [ ] Criar testes unitários para o componente ProtectedRoute
+- [ ] Testar comportamento do `handleUnexpectedError`
+
+### ✅ Testes de Integração
+- [ ] Testar troca de role pelo admin (UserList)
+- [ ] Testar delete de user pelo admin (UserList)
+- [ ] Testar controle de acesso por role nas rotas protegidas
+- [ ] Testar persistência de sessão em múltiplas abas
+- [ ] Testar expiração automática de sessão
+- [ ] Testar feedback visual nos formulários (mensagens, loading, toasts)
+
+### ✅ Testes de ponta a ponta (E2E)
 - [ ] Validar navegação e redirecionamentos com testes e2e (Cypress ou Playwright)
+- [ ] Testar fluxo completo de login + redirecionamento (e2e)
 
 ---
 
