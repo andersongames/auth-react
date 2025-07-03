@@ -1,4 +1,7 @@
-import { defineConfig } from 'vitest/config';
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
@@ -8,9 +11,12 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  test: {
+  test: { 
     globals: true,
-    environment: 'node',
-    setupFiles: './src/jest.setup.ts',
+    environment: 'jsdom',
+    setupFiles: ['./src/vitest.setup.ts'],
+    css: true,
+    testTimeout: 5000,
+    reporters: ['verbose'],
   },
 })
