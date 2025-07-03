@@ -44,6 +44,7 @@ Simulam o comportamento real do usuário final, com navegação, preenchimento d
 
 **🧠 Objetivo:** Garantir que o app funcione do ponto de vista do usuário final, cobrindo fluxos completos.
 
+## 🧭 Comparativo rápido
 | Tipo       | Escopo                | Velocidade ⚡ | Confiabilidade 🔒 | Custo de Manutenção 💸 |
 | ---------- | --------------------- | ------------ | ----------------- | ---------------------- |
 | Unitário   | Uma função/componente | Alta         | Alta              | Baixo                  |
@@ -65,6 +66,7 @@ Ex: Funções como handleUnexpectedError, isValidRole.
 Testes E2E são mais lentos e caros de manter, então use apenas nos fluxos mais importantes.
 Testes unitários são baratos e rápidos, então são ideais para lógica isolada.
 
+## 🧪 Recomendação para seu projeto atual
 | Parte                             | Teste Ideal(es)       | Justificativa                                |
 | --------------------------------- | --------------------- | -------------------------------------------- |
 | `AuthContext`                     | Integração            | Interage com storage, contexto, navegação    |
@@ -75,7 +77,7 @@ Testes unitários são baratos e rápidos, então são ideais para lógica isola
 | Toasts, loading                   | UI / Integração       | Verifica feedback visual                     |
 | Sessão (expiração, persistência)  | Integração + E2E      | Complexidade e importância                   |
 
-
+## Guidelines
 🔸 Comece com testes unitários para lógica isolada  
 🔸 Use testes de integração para contextos, páginas e interações  
 🔸 Reserve testes E2E para fluxos críticos e completos  

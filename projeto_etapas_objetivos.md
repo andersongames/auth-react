@@ -306,3 +306,17 @@
 - Manter consistência visual com o restante do projeto (cores, acessibilidade e responsividade com TailwindCSS)
 - Garantir que o botão "Confirm" invoque a função de exclusão com segurança
 - Tornar a funcionalidade mais robusta e alinhada com boas práticas de UX e prevenção de erro
+
+---
+
+**✅ Etapa: Início da Implementação de Testes (Formulário de Registro)**
+**🎯 Objetivos:**
+- Iniciar a cobertura de testes do projeto, começando por testes unitários
+- Criar testes para o componente Register.tsx, focando em:
+- Renderização do formulário
+- Comportamento dos inputs e validação
+- Bloqueio do botão submit quando o formulário estiver inválido
+- Exibição de mensagens de erro com dados incorretos
+- Utilizar as ferramentas jest e @testing-library/react
+- Seguir as diretrizes definidas em tests_guidelines.md
+- Garantir testes confiáveis, simples e com bom custo-benefício de manutenção

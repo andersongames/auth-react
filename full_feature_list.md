@@ -51,7 +51,7 @@
 
 ## 🧪 Testes
 ### ✅ Testes Unitários
-- [ ] Criar testes unitários para o formulário de registro (React Testing Library)
+- [ ] Criar testes unitários para o formulário de registro
 - [ ] Criar testes unitários para o formulário de login
 - [ ] Criar testes para o `AuthContext`
 - [ ] Criar testes unitários para o componente ProtectedRoute
@@ -83,3 +83,4 @@
 - [x] Exibir erro padrão para qualquer falha inesperada
 - [x] Separar as mensagens de erro em um arquivo utilitário para reutilização
 - [x] Usar Toasts em vez de `<p>` para mensagens de sucesso/erro (usando `react-hot-toast` ou similar)
+- [ ] Redigir um README
