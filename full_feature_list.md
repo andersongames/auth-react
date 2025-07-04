@@ -69,6 +69,9 @@
 - [ ] Validar navegação e redirecionamentos com testes e2e (Cypress ou Playwright)
 - [ ] Testar fluxo completo de login + redirecionamento (e2e)
 
+### ✅ Utilitários e Qualidade de Testes
+- [ ] Configurar relatório de cobertura de testes com `vitest --coverage`
+
 ---
 
 ## 🚀 Integração e Deploy
