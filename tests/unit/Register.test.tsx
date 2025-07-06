@@ -1,14 +1,13 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Register from "../../src/pages/Register";
 import { errorMessages } from "../../src/constants/errorMessages";
 import { renderWithProviders } from "../test-utils";
 
-describe('Register Page', () => {
+describe('Register Page - unit tests (validation & UI)', () => {
   it('should render the registration form with required fields', () => {
     renderWithProviders(<Register />);
 
-    // use strings or regex /name/i or 'Name'??
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText('Password', { exact: true })).toBeInTheDocument();
@@ -40,5 +39,63 @@ describe('Register Page', () => {
     await user.click(screen.getByRole('button', { name: /sign up/i }));
 
     expect(await screen.findByText(errorMessages.passwordsDontMatch)).toBeInTheDocument();
+  });
+
+  it('should show error when name has less than 2 characters', async () => {
+    const user = userEvent.setup({ delay: 0 });
+    renderWithProviders(<Register />);
+
+    await user.type(screen.getByLabelText('Name', { exact: true }), 'A');
+    await user.click(screen.getByRole('button', { name: /sign up/i }));
+
+    expect(await screen.findByText(errorMessages.nameTooShort)).toBeInTheDocument();
+  });
+
+  it('should show error for invalid email format', async () => {
+    const user = userEvent.setup({ delay: 0 });
+    renderWithProviders(<Register />);
+
+    await user.type(screen.getByLabelText('Email', { exact: true }), 'invalid@email');
+    await user.click(screen.getByRole('button', { name: /sign up/i }));
+
+    expect(await screen.findByText(errorMessages.invalidEmail)).toBeInTheDocument();
+  });
+
+  it('should show error when password is too short', async () => {
+    const user = userEvent.setup({ delay: 0 });
+    renderWithProviders(<Register />);
+
+    await user.type(screen.getByLabelText('Password', { exact: true }), 'aB1!');
+    await user.click(screen.getByRole('button', { name: /sign up/i }));
+
+    expect(await screen.findByText(errorMessages.passwordTooShort)).toBeInTheDocument();
+  });
+
+  it('should highlight password requirements as user types', async () => {
+    const user = userEvent.setup({ delay: 0 });
+    renderWithProviders(<Register />);
+
+    const passwordInput = screen.getByLabelText('Password', { exact: true });
+
+    // Start typing a partial password
+    await user.type(passwordInput, 'abc');
+    expect(screen.getByText(/at least 8 characters/i)).toHaveClass('text-red-600');
+    expect(screen.getByText(/one uppercase letter/i)).toHaveClass('text-red-600');
+    expect(screen.getByText(/one lowercase letter/i)).toHaveClass('text-green-600');
+    expect(screen.getByText(/one number/i)).toHaveClass('text-red-600');
+    expect(screen.getByText(/one special character/i)).toHaveClass('text-red-600');
+
+    // Complete with a strong password
+    await user.clear(passwordInput);
+    await user.type(passwordInput, 'Abc123!@');
+
+    // Wait for UI to reflect all password requirements as met
+    await waitFor(() => {
+      expect(screen.getByText(/at least 8 characters/i)).toHaveClass('text-green-600');
+      expect(screen.getByText(/one uppercase letter/i)).toHaveClass('text-green-600');
+      expect(screen.getByText(/one lowercase letter/i)).toHaveClass('text-green-600');
+      expect(screen.getByText(/one number/i)).toHaveClass('text-green-600');
+      expect(screen.getByText(/one special character/i)).toHaveClass('text-green-600');
+    });
   });
 });
