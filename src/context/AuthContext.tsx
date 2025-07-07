@@ -128,3 +128,7 @@ export const useAuth = () => {
   }
   return context;
 };
+
+// 🧪 export for tests
+export { AuthContext };
+export type { AuthContextType };
