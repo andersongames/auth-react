@@ -11,5 +11,6 @@ afterEach(() => {
   const testName = expect.getState().currentTestName;
   const duration = performance.now() - startTime;
   console.log(`🧪 Finished: ${testName} (${duration.toFixed(2)} ms)`);
+  localStorage.clear();
   cleanup();
 });

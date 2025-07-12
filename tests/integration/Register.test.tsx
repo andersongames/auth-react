@@ -7,14 +7,10 @@ import * as authService from '../../src/services/authService';
 import { successMessages } from '../../src/constants/successMessages';
 import { errorMessages } from '../../src/constants/errorMessages';
 import { AuthContext, type AuthContextType } from '../../src/context/AuthContext';
-import * as toastModule from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
-// Declare mocks fora para usar em múltiplos testes
 const mockNavigate = vi.fn();
-// const mockToastSuccess = vi.fn();
-// const mockToastError = vi.fn();
 
-// Mocks globais
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
   return {
@@ -23,18 +19,8 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-vi.mock('react-hot-toast', async () => {
-  const actual = await vi.importActual<typeof import('react-hot-toast')>('react-hot-toast');
-  return {
-    ...actual,
-    toast: {
-      success: vi.fn(),
-      error: vi.fn(),
-    },
-  };
-});
+vi.mock('react-hot-toast');
 
-// mock AuthContext
 const mockAuthContext: AuthContextType = {
   isAuthenticated: true,
   loading: false,
@@ -68,9 +54,9 @@ describe('Register Page - integration tests', () => {
         password: 'Abc123!@',
         role: 'admin',
       });
-      expect(toastModule.toast.success).toHaveBeenCalledWith(successMessages.registrationSuccess);
+      expect(toast.success).toHaveBeenCalledWith(successMessages.registrationSuccess);
       expect(mockNavigate).toHaveBeenCalledWith('/login');
-    });
+    }, { timeout: 3000 });
   });
 
   it('should show toast error when registerUser throws known error', async () => {
@@ -87,7 +73,7 @@ describe('Register Page - integration tests', () => {
     await user.click(screen.getByRole('button', { name: /sign up/i }));
 
     await waitFor(() => {
-      expect(toastModule.toast.error).toHaveBeenCalledWith(errorMessages.emailAlreadyRegistered);
+      expect(toast.error).toHaveBeenCalledWith(errorMessages.emailAlreadyRegistered);
     });
   });
 

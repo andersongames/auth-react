@@ -66,7 +66,7 @@ export default function Register() {
 
       // Redirect after short delay
       setTimeout(() => {
-        navigate("/login");
+        navigate('/login');
       }, 2000); // 2 seconds
     } catch (error: unknown) {
       handleUnexpectedError(error, errorMessages.registrationFailed);
@@ -77,7 +77,7 @@ export default function Register() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/dashboard");
+      navigate('/dashboard');
     }
   }, [isAuthenticated, navigate]);
 
