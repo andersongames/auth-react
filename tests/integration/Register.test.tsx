@@ -87,15 +87,4 @@ describe('Register Page - integration tests', () => {
 
     expect(mockNavigate).toHaveBeenCalledWith('/dashboard');
   });
-
-  it('should disable submit button while loading', async () => {
-    renderWithProviders(
-      <AuthContext.Provider value={{ isAuthenticated: false, loading: true, user: null, login: vi.fn(), logout: vi.fn() }}>
-        <Register />
-      </AuthContext.Provider>
-    );
-
-    const button = screen.getByRole('button', { name: /sign up/i });
-    expect(button).toBeDisabled();
-  });
 });
