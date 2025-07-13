@@ -5,7 +5,7 @@ import { errorMessages } from "../../src/constants/errorMessages";
 import { renderWithProviders } from "../test-utils";
 
 describe('Register Page - unit tests (validation & UI)', () => {
-  it('should render the registration form with required fields', () => {
+  it('should render the registration form with required fields', async () => {
     renderWithProviders(<Register />);
 
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
@@ -13,6 +13,23 @@ describe('Register Page - unit tests (validation & UI)', () => {
     expect(screen.getByLabelText('Password', { exact: true })).toBeInTheDocument();
     expect(screen.getByLabelText('Confirm Password', { exact: true })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /sign up/i })).toBeInTheDocument();
+  });
+
+  it('should disable submit button when internal isLoading is true', async () => {
+    const user = userEvent.setup({ delay: 0 });
+    renderWithProviders(<Register />);
+
+    await user.type(screen.getByLabelText('Name', { exact: true }), 'John');
+    await user.type(screen.getByLabelText('Email', { exact: true }), 'john@example.com');
+    await user.type(screen.getByLabelText('Password', { exact: true }), 'Abc123!@');
+    await user.type(screen.getByLabelText('Confirm Password', { exact: true }), 'Abc123!@');
+
+    const submitButton = screen.getByRole('button', { name: /sign up/i })
+    await user.click(submitButton);
+
+    await waitFor(() => {
+      expect(submitButton).toBeDisabled();
+    });
   });
 
   it('should show errors when trying to submit with empty fields', async () => {

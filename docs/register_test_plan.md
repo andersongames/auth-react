@@ -3,28 +3,26 @@
 Testam elementos e comportamentos isolados do formulário.  
 
 **Campos e renderização**
-- [ ] Renderiza todos os campos obrigatórios (name, email, password, confirmPassword, role)
+- [x] Renderiza todos os campos obrigatórios (name, email, password, confirmPassword, role)
 - [ ] Renderiza o botão "Sign Up" habilitado/desabilitado corretamente
-- [ ] Exibe mensagens de erro quando:
-  - [ ] Nome tem menos de 2 caracteres
-  - [ ] Email inválido
-  - [ ] Senha com menos de 8 caracteres
-  - [ ] Senha sem número, símbolo, maiúscula ou minúscula
-  - [ ] Senhas diferentes
-- [ ] Mostra os requisitos da senha com cor correta (verde/vermelho) ao digitar
+- [x] Exibe mensagens de erro quando:
+  - [x] Nome tem menos de 2 caracteres
+  - [x] Email inválido
+  - [x] Senha com menos de 8 caracteres
+  - [x] Senha sem número, símbolo, maiúscula ou minúscula
+  - [x] Senhas diferentes
+- [x] Mostra os requisitos da senha com cor correta (verde/vermelho) ao digitar
 
 ### 🔄 Testes de Integração
 Verificam a interação entre o formulário, o contexto de autenticação, serviços, navegação e toasts.  
 
-- [ ] Submete com dados válidos e:
-  - [ ] Chama registerUser() com os dados corretos
-  - [ ] Mostra toast de sucesso (toast.success(...))
-  - [ ] Redireciona para /login após 2 segundos
-- [ ] Mostra toast.error(...) se o registerUser() lançar erro
-- [ ] Verifica se handleUnexpectedError() é chamado em erros desconhecidos
-- [ ] Redireciona imediatamente para /dashboard se isAuthenticated for true (simulado via AuthContext)
-- [ ] Desabilita o botão "Sign Up" enquanto isLoading é true
-- [ ] Mostra spinner de loading durante submissão
+- [x] Submete com dados válidos e:
+  - [x] Chama registerUser() com os dados corretos
+  - [x] Mostra toast de sucesso (toast.success(...))
+  - [x] Redireciona para /login após 2 segundos
+- [x] Mostra toast.error(...) se o registerUser() lançar erro
+- [x] Verifica se handleUnexpectedError() é chamado em erros desconhecidos
+- [x] Redireciona imediatamente para /dashboard se isAuthenticated for true (simulado via AuthContext)
 
 ### 🌐 Testes de Ponta a Ponta (E2E)
 Requerem ambiente com navegador real (Cypress ou Playwright), focam no fluxo real de uso.  

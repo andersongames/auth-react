@@ -39,7 +39,6 @@ const registerSchema = z
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 export default function Register() {
-  const [isLoading, setIsLoading] = useState(false);
   const [passwordValue, setPasswordValue] = useState("");
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -47,13 +46,12 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
   });
 
   async function onSubmit(data: RegisterFormData) {
-    setIsLoading(true);
     try {
       await registerUser({
         name: data.name,
@@ -70,8 +68,6 @@ export default function Register() {
       }, 2000); // 2 seconds
     } catch (error: unknown) {
       handleUnexpectedError(error, errorMessages.registrationFailed);
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -148,6 +144,7 @@ export default function Register() {
             </label>
             <select
               id="role"
+              defaultValue="admin"
               {...register("role")}
               className="w-full border p-2 rounded-lg shadow-sm transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
@@ -165,9 +162,9 @@ export default function Register() {
           <button
             type="submit"
             className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-blue-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
+            disabled={isSubmitting}
           >
-            {isLoading ? (
+            {isSubmitting ? (
               <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
             ) : (
               "Sign Up"

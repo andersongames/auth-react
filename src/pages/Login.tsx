@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -22,12 +22,11 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
   });
 
-  const [isLoading, setIsLoading] = useState(false);
   const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,14 +34,11 @@ export default function Login() {
   const expired = new URLSearchParams(location.search).get("expired");
 
   async function onSubmit(data: LoginFormData) {
-    setIsLoading(true);
     try {
       await login(data.email, data.password);
       navigate("/dashboard");
     } catch (error: unknown) {
       handleUnexpectedError(error, errorMessages.loginFailed);
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -93,9 +89,9 @@ export default function Login() {
           <button
             type="submit"
             className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-medium cursor-pointer transition-colors duration-200 ease-in-out hover:bg-blue-700 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
+            disabled={isSubmitting}
           >
-            {isLoading ? (
+            {isSubmitting ? (
               <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
             ) : (
               "Login"

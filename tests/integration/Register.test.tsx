@@ -30,10 +30,6 @@ const mockAuthContext: AuthContextType = {
 };
 
 describe('Register Page - integration tests', () => {
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
-
   it('should submit valid form, call registerUser, show success toast and redirect', async () => {
     const user = userEvent.setup({ delay: 0 });
     const mockRegisterUser = vi.spyOn(authService, 'registerUser').mockResolvedValue(undefined);

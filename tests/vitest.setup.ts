@@ -13,4 +13,5 @@ afterEach(() => {
   console.log(`🧪 Finished: ${testName} (${duration.toFixed(2)} ms)`);
   localStorage.clear();
   cleanup();
+  vi.clearAllMocks();
 });
