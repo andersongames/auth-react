@@ -27,11 +27,11 @@ Verificam a interação entre o formulário, o contexto de autenticação, servi
 ### 🌐 Testes de Ponta a Ponta (E2E)
 Requerem ambiente com navegador real (Cypress ou Playwright), focam no fluxo real de uso.  
 
-- [ ] Acessar /register, preencher dados válidos e confirmar redirecionamento para /login
-- [ ] Acessar /register já autenticado → redirecionado para /dashboard
-- [ ] Preencher dados inválidos e verificar mensagens de erro inline
-- [ ] Preencher senha com Abc123!@#, verificar destaque visual dos requisitos (verde)
-- [ ] Clicar em "Already have an account? Login" e verificar redirecionamento para /login
+- [x] Acessar /register, preencher dados válidos e confirmar redirecionamento para /login
+- [x] Acessar /register já autenticado → redirecionado para /dashboard
+- [x] Preencher dados inválidos e verificar mensagens de erro inline
+- [x] Preencher senha com Abc123!@#, verificar destaque visual dos requisitos (verde)
+- [x] Clicar em "Already have an account? Login" e verificar redirecionamento para /login
 
 ### 🧠 Observações técnicas
 - Os testes unitários devem ser feitos com @testing-library/react e userEvent.setup()
