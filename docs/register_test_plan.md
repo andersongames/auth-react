@@ -36,4 +36,4 @@ Requerem ambiente com navegador real (Cypress ou Playwright), focam no fluxo rea
 ### 🧠 Observações técnicas
 - Os testes unitários devem ser feitos com @testing-library/react e userEvent.setup()
 - Os testes de integração devem usar renderWithProviders() com MemoryRouter + AuthProvider
-- Os testes E2E devem ser isolados em /tests/e2e/register.cy.ts (com Cypress ou Playwright)
+- Os testes E2E devem ser isolados em /tests/e2e/Register.test.ts (Playwright)
