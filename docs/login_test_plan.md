@@ -19,15 +19,15 @@ Testam elementos e comportamentos isolados do formulário.
 ## 🔄 Testes de Integração  
 Verificam a interação entre o formulário, AuthContext, navegação, toasts e feedbacks.
 
-- [ ] Submete com dados válidos e:
-  - [ ] Chama `login()` com os dados corretos (mockado)
-  - [ ] Redireciona para `/dashboard`
-- [ ] Submete com credenciais inválidas:
-  - [ ] Mostra `toast.error(...)` (via `handleUnexpectedError`)
-- [ ] Redireciona imediatamente para `/dashboard` se `isAuthenticated` for `true` (simulado via contexto)
-- [ ] Exibe `toast.success(...)` se `?loggedOut=true` na URL
-- [ ] Exibe `toast.error(...)` se `?expired=true` na URL
-- [ ] Navega corretamente para `/register` ao clicar em "Don't have an account?"
+- [x] Submete com dados válidos e:
+  - [x] Chama `login()` com os dados corretos (mockado)
+  - [x] Redireciona para `/dashboard`
+- [x] Submete com credenciais inválidas:
+  - [x] Mostra `toast.error(...)` (via `handleUnexpectedError`)
+- [x] Redireciona imediatamente para `/dashboard` se `isAuthenticated` for `true` (simulado via contexto)
+- [x] Exibe `toast.success(...)` se `?loggedOut=true` na URL
+- [x] Exibe `toast.error(...)` se `?expired=true` na URL
+- [x] Navega corretamente para `/register` ao clicar em "Don't have an account?"
 
 ---
 
