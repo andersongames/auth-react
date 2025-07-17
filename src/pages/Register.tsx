@@ -165,7 +165,7 @@ export default function Register() {
             disabled={isSubmitting}
           >
             {isSubmitting ? (
-              <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+              <span data-testid="spinner" className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
             ) : (
               "Sign Up"
             )}

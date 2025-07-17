@@ -34,12 +34,12 @@ Verificam a interação entre o formulário, AuthContext, navegação, toasts e 
 ## 🌐 Testes de Ponta a Ponta (E2E)  
 Validação completa no navegador com Playwright.
 
-- [ ] Acessar `/login`, preencher dados válidos e verificar redirecionamento para `/dashboard`
-- [ ] Tentar logar com dados inválidos → exibe erro (mock do backend ou validação real)
-- [ ] Acessar `/login?loggedOut=true` → exibe toast de logout e redireciona para `/login`
-- [ ] Acessar `/login?expired=true` → exibe toast de sessão expirada e redireciona para `/login`
-- [ ] Se usuário já estiver logado (mock session), acessar `/login` → redireciona para `/dashboard`
-- [ ] Clicar em "Register" → redireciona para `/register`
+- [x] Acessar `/login`, preencher dados válidos e verificar redirecionamento para `/dashboard`
+- [x] Tentar logar com dados inválidos → exibe erro (mock do backend ou validação real)
+- [x] Acessar `/login?loggedOut=true` → exibe toast de logout e redireciona para `/login`
+- [x] Acessar `/login?expired=true` → exibe toast de sessão expirada e redireciona para `/login`
+- [x] Se usuário já estiver logado (mock session), acessar `/login` → redireciona para `/dashboard`
+- [x] Clicar em "Register" → redireciona para `/register`
 
 ---
 

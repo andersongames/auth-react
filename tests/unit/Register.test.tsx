@@ -24,7 +24,7 @@ describe('Register Page - unit tests (validation & UI)', () => {
     await user.type(screen.getByLabelText('Password', { exact: true }), 'Abc123!@');
     await user.type(screen.getByLabelText('Confirm Password', { exact: true }), 'Abc123!@');
 
-    const submitButton = screen.getByRole('button', { name: /sign up/i })
+    const submitButton = screen.getByRole('button', { name: /sign up/i });
     await user.click(submitButton);
 
     await waitFor(() => {

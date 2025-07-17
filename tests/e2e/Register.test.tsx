@@ -13,18 +13,18 @@ test.describe('Register Page - E2E', () => {
     await page.selectOption('select[name="role"]', 'admin');
     await page.click('button[type="submit"]');
 
-    // Aguarda redirecionamento
-    await page.waitForURL('/login', { timeout: 5000 });
-    await expect(page).toHaveURL('/login');
+    await expect(page.getByTestId('spinner')).toBeVisible();
+    await page.waitForURL('/login');
+    await expect(page).toHaveURL('/login', { timeout: 5000 });
   });
 
   test('should redirect to /dashboard if already authenticated', async ({ page }) => {
     // simulate login
     await page.evaluate(() => {
       localStorage.setItem('mock_users', JSON.stringify([{
-        email: "anderson_adm@mail.com",
+        email: "test_adm@mail.com",
         id: "4248dd16-8ab9-4ef9-b65a-5a53335a3a65",
-        name: "anderson",
+        name: "adm",
         password: "FdT&8njCbVF5WAPF",
         role: "admin",
       }]));
