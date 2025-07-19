@@ -9,33 +9,47 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 ## 1. 🔐 Controle de Acesso a Rotas (RBAC)
 **Tipo de teste recomendado:** E2E (Playwright)
 
-| Página/Rota | Requisitos de acesso | Cenários de teste |
-|-------------|----------------------|-------------------|
-| `/admin-dashboard` | Apenas `admin` | - Redirecionar usuários não autenticados para `/login`<br>- Redirecionar usuários autenticados com role diferente de `admin` para `/unauthorized`<br>- Renderizar a página corretamente para usuários com role `admin` |
-| `/manage-content` | `admin` ou `editor` | - Redirecionar usuários não autenticados para `/login`<br>- Redirecionar usuários com role `user` para `/unauthorized`<br>- Renderizar para usuários com role `admin` ou `editor` |
-| `/dashboard` | Qualquer usuário autenticado | - Redirecionar usuários não autenticados para `/login`<br>- Renderizar corretamente para qualquer usuário autenticado |
-| `/user-settings` | Qualquer usuário autenticado | - Redirecionar usuários não autenticados para `/login`<br>- Renderizar corretamente para usuários autenticados |
-| `/unauthorized` | Pública | - Acessível por qualquer usuário<br>- Deve exibir mensagem de acesso negado |
+#### /admin-dashboard
+- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
+- [ ] Deve redirecionar usuários autenticados com role diferente de `admin` para `/unauthorized`.
+- [ ] Deve renderizar corretamente para usuários com role `admin`.
+
+#### /manage-content
+- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
+- [ ] Deve redirecionar usuários com role `user` para `/unauthorized`.
+- [ ] Deve renderizar corretamente para usuários com role `admin` ou `editor`.
+
+#### /dashboard
+- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
+- [ ] Deve renderizar corretamente para qualquer usuário autenticado.
+
+#### /user-settings
+- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
+- [ ] Deve renderizar corretamente para qualquer usuário autenticado.
+
+#### /unauthorized
+- [ ] Deve ser acessível por qualquer usuário (autenticado ou não).
+- [ ] Deve exibir mensagem de acesso negado.
 
 ---
 
 ## 2. 🎭 Renderização Condicional de Conteúdo
 **Tipo de teste recomendado:** Integração (Vitest + Testing Library)
 
-### Página: `/about`
+### About.tsx
 
-| Condição | Elementos esperados |
-|----------|---------------------|
-| Usuário não autenticado | - Texto: "You are not logged in. Log in here." com link para `/login`<br>- **Não** deve renderizar as mensagens específicas de role |
-| Usuário autenticado com role `user` | - Mensagem: "Welcome, user! You have access to basic features." |
-| Usuário autenticado com role `admin` | - Mensagem: "Welcome, admin! You can manage users and system data." |
+- [ ] Deve exibir o texto "You are not logged in. Log in here." com link para `/login` apenas para usuários **não autenticados**.
+- [ ] Não deve exibir mensagens de role quando o usuário **não estiver autenticado**.
+- [ ] Deve exibir o texto "Welcome, user! You have access to basic features." apenas para usuários com role `user`.
+- [ ] Deve exibir o texto "Welcome, admin! You can manage users and system data." apenas para usuários com role `admin`.
 
-### Página: `/manage-content`
 
-| Condição | Elementos esperados |
-|----------|---------------------|
-| Usuário com role `admin` ou `editor` | - Renderização da página com título "Content Management" e instruções |
-| Qualquer outro usuário | - Não acessa essa página (testado como parte do RBAC) |
+### Dashboard.tsx
+
+- [ ] Deve exibir o nome, email e role do usuário autenticado.
+- [ ] Deve exibir o link "Go to Admin Panel" apenas para usuários com role `admin`.
+- [ ] Deve exibir o link "Access Personal Settings" apenas para usuários com role `user`.
+- [ ] Deve exibir o link "Manage Content" apenas para usuários com role `admin` ou `editor`.
 
 ---
 
