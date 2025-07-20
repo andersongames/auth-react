@@ -38,10 +38,10 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 
 ### About.tsx
 
-- [ ] Deve exibir o texto "You are not logged in. Log in here." com link para `/login` apenas para usuários **não autenticados**.
-- [ ] Não deve exibir mensagens de role quando o usuário **não estiver autenticado**.
-- [ ] Deve exibir o texto "Welcome, user! You have access to basic features." apenas para usuários com role `user`.
-- [ ] Deve exibir o texto "Welcome, admin! You can manage users and system data." apenas para usuários com role `admin`.
+- [x] Deve exibir o texto "You are not logged in. Log in here." com link para `/login` apenas para usuários **não autenticados**.
+- [x] Não deve exibir mensagens de role quando o usuário **não estiver autenticado**.
+- [x] Deve exibir o texto "Welcome, user! You have access to basic features." apenas para usuários com role `user`.
+- [x] Deve exibir o texto "Welcome, admin! You can manage users and system data." apenas para usuários com role `admin`.
 
 
 ### Dashboard.tsx

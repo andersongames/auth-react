@@ -31,9 +31,11 @@ export default function About() {
           <p className="text-red-600 mt-4">Welcome, admin! You can manage users and system data.</p>
         </RoleBased>
 
-        <Link to="/dashboard">
-          Go to Dashboard
-        </Link>
+        {isAuthenticated && (
+          <Link to="/dashboard">
+            Go to Dashboard
+          </Link>
+        )}
       </div>
     </div>
   );
