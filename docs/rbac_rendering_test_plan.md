@@ -46,10 +46,10 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 
 ### Dashboard.tsx
 
-- [ ] Deve exibir o nome, email e role do usuário autenticado.
-- [ ] Deve exibir o link "Go to Admin Panel" apenas para usuários com role `admin`.
-- [ ] Deve exibir o link "Access Personal Settings" apenas para usuários com role `user`.
-- [ ] Deve exibir o link "Manage Content" apenas para usuários com role `admin` ou `editor`.
+- [x] Deve exibir o nome, email e role do usuário autenticado.
+- [x] Deve exibir o link "Go to Admin Panel" apenas para usuários com role `admin`.
+- [x] Deve exibir o link "Access Personal Settings" apenas para usuários com role `user`.
+- [x] Deve exibir o link "Manage Content" apenas para usuários com role `admin` ou `editor`.
 
 ---
 
