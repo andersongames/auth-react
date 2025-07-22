@@ -28,7 +28,10 @@ test.describe('Register Page - E2E', () => {
         password: "FdT&8njCbVF5WAPF",
         role: "admin",
       }]));
-      localStorage.setItem('mock_auth', JSON.stringify({ expiresAt: 9999999999999, userId: "4248dd16-8ab9-4ef9-b65a-5a53335a3a65" }));
+      localStorage.setItem('mock_auth', JSON.stringify({
+        expiresAt: Date.now() + 10000,
+        userId: "4248dd16-8ab9-4ef9-b65a-5a53335a3a65",
+      }));
     });
 
     await page.goto('/register');

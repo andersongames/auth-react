@@ -10,9 +10,10 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 **Tipo de teste recomendado:** E2E (Playwright)
 
 #### /admin-dashboard
-- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
-- [ ] Deve redirecionar usuários autenticados com role diferente de `admin` para `/unauthorized`.
-- [ ] Deve renderizar corretamente para usuários com role `admin`.
+- [x] Deve redirecionar usuários **não autenticados** para `/login`.
+- [x] Deve redirecionar usuários autenticados com role diferente de `admin` para `/unauthorized`.
+- [x] Deve renderizar corretamente para usuários com role `admin`.
+- [x] Deve navegar para `/user-list` ao clicar em "View All Registered Users".
 
 #### /manage-content
 - [ ] Deve redirecionar usuários **não autenticados** para `/login`.
