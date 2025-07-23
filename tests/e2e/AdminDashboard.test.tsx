@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('/admin-dashboard - Access Control', () => {
+test.describe('Admin Dashboard - Access Control', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/admin-dashboard');
   });
@@ -31,7 +31,7 @@ test.describe('/admin-dashboard - Access Control', () => {
     await page.goto('/admin-dashboard');
     await page.waitForURL('/unauthorized', { timeout: 3000 });
     await expect(page).toHaveURL('/unauthorized');
-    await expect(page.getByText('This page requires admin')).toBeVisible();
+    await expect(page.getByText(/this page requires admin/i)).toBeVisible();
   });
 
   test('should allow access and render page for admin users', async ({ page }) => {

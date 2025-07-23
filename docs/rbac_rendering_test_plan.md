@@ -16,9 +16,10 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 - [x] Deve navegar para `/user-list` ao clicar em "View All Registered Users".
 
 #### /manage-content
-- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
-- [ ] Deve redirecionar usuários com role `user` para `/unauthorized`.
-- [ ] Deve renderizar corretamente para usuários com role `admin` ou `editor`.
+- [x] Deve redirecionar usuários **não autenticados** para `/login`.
+- [x] Deve redirecionar usuários com role `user` para `/unauthorized`.
+- [x] Deve renderizar corretamente para usuários com role `admin` ou `editor`.
+- [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
 
 #### /dashboard
 - [ ] Deve redirecionar usuários **não autenticados** para `/login`.
@@ -31,6 +32,7 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 #### /unauthorized
 - [ ] Deve ser acessível por qualquer usuário (autenticado ou não).
 - [ ] Deve exibir mensagem de acesso negado.
+- [ ] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
 
 ---
 
