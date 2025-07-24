@@ -7,7 +7,7 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 ---
 
 ## 1. 🔐 Controle de Acesso a Rotas (RBAC)
-**Tipo de teste recomendado:** E2E (Playwright)
+### **Testes End-to-End (e2e):**
 
 #### /admin-dashboard
 - [x] Deve redirecionar usuários **não autenticados** para `/login`.
@@ -22,8 +22,12 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 - [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
 
 #### /dashboard
-- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
-- [ ] Deve renderizar corretamente para qualquer usuário autenticado.
+- [x] Deve redirecionar usuários **não autenticados** para `/login`.
+- [x] Deve renderizar corretamente para qualquer usuário autenticado.
+- [x] Deve navegar para `/about` ao clicar em "Learn more about this app".
+- [x] Deve navegar para `/admin-dashboard` ao clicar em "Go to Admin Panel".
+- [x] Deve navegar para `/user-settings` ao clicar em "Access Personal Settings".
+- [x] Deve navegar para `/manage-content` ao clicar em "Manage Content".
 
 #### /user-settings
 - [ ] Deve redirecionar usuários **não autenticados** para `/login`.
@@ -33,6 +37,18 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 - [ ] Deve ser acessível por qualquer usuário (autenticado ou não).
 - [ ] Deve exibir mensagem de acesso negado.
 - [ ] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
+
+### **Testes Unitários:**
+### Componente: `ProtectedRoute`
+
+- [ ] Deve renderizar o conteúdo filho se o usuário estiver autenticado e tiver a role necessária.
+- [ ] Deve redirecionar para `/unauthorized` se o usuário estiver autenticado mas não tiver a role necessária.
+- [ ] Deve redirecionar para `/login` se o usuário não estiver autenticado.
+
+### Componente: `RoleBased`
+
+- [ ] Deve renderizar os elementos filhos se o usuário possuir uma das roles permitidas.
+- [ ] Não deve renderizar os elementos filhos se o usuário não possuir nenhuma das roles permitidas.
 
 ---
 
