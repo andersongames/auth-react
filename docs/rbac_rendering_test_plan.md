@@ -30,8 +30,9 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 - [x] Deve navegar para `/manage-content` ao clicar em "Manage Content".
 
 #### /user-settings
-- [ ] Deve redirecionar usuários **não autenticados** para `/login`.
-- [ ] Deve renderizar corretamente para qualquer usuário autenticado.
+- [x] Deve redirecionar usuários **não autenticados** para `/login`.
+- [x] Deve renderizar corretamente para qualquer usuário autenticado.
+- [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
 
 #### /unauthorized
 - [ ] Deve ser acessível por qualquer usuário (autenticado ou não).
