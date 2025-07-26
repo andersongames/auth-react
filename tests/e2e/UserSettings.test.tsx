@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('/user-settings', () => {
-    test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('/user-settings');
   });
 
@@ -30,7 +30,7 @@ test.describe('/user-settings', () => {
     await expect(page.getByRole('heading', { name: /user settings/i })).toBeVisible();
   });
 
-  test('should navigate to daashboard page when clicking the Go to Dashboard link', async ({ page }) => {
+  test('should navigate to dashboard page when clicking the Back to Dashboard link', async ({ page }) => {
     await page.evaluate(() => {
       localStorage.setItem('mock_users', JSON.stringify([
         {
@@ -47,7 +47,7 @@ test.describe('/user-settings', () => {
       }));
     });
 
-    await page.getByRole('link', { name: /go to dashboard/i }).click();
+    await page.getByRole('link', { name: /back to dashboard/i }).click();
     await expect(page).toHaveURL('/dashboard');
   });
 });

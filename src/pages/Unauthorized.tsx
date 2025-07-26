@@ -1,9 +1,12 @@
 import { useLocation } from "react-router-dom";
 import Link from "../components/Link";
+import { useAuth } from "../context/AuthContext";
 
 export default function Unauthorized() {
   const location = useLocation();
   const requiredRole = location.state?.required;
+  const { user } = useAuth();
+  const redirectPath = user ? "/dashboard" : "/login";
 
   return (
     <div className="min-h-[calc(100vh-var(--layout-offset))] flex items-center justify-center">
@@ -19,8 +22,8 @@ export default function Unauthorized() {
           </p>
         )}
 
-        <Link to="/dashboard">
-          Go to Dashboard
+        <Link to={redirectPath}>
+          {user ? "Back to dashboard" : "Back to login"}
         </Link>
       </div>
     </div>

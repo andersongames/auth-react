@@ -35,9 +35,10 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 - [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
 
 #### /unauthorized
-- [ ] Deve ser acessível por qualquer usuário (autenticado ou não).
-- [ ] Deve exibir mensagem de acesso negado.
-- [ ] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
+- [x] Deve ser acessível por qualquer usuário (autenticado ou não).
+- [x] Deve exibir mensagem de acesso negado.
+- [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard" se autenticado.
+- [x] Deve navegar para `/login` ao clicar em "Back to Login" se não autenticado.
 
 ### **Testes Unitários:**
 ### Componente: `ProtectedRoute`
