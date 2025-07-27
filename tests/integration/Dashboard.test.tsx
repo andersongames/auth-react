@@ -1,10 +1,10 @@
 import { screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Dashboard from '../../src/pages/Dashboard';
-import { AuthContext } from '../../src/context/AuthContext';
+import { AuthContext, type AuthContextType } from '../../src/context/AuthContext';
 import { renderWithProviders } from '../test-utils';
 
-const renderDashboardWithAuth = (contextValue: React.ContextType<typeof AuthContext>) => {
+const renderDashboardWithAuth = (contextValue: AuthContextType) => {
   return renderWithProviders(
     <AuthContext.Provider value={contextValue}>
       <Dashboard />

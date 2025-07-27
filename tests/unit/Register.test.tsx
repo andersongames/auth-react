@@ -5,9 +5,11 @@ import { errorMessages } from "../../src/constants/errorMessages";
 import { renderWithProviders } from "../test-utils";
 
 describe('Register Page - unit tests (validation & UI)', () => {
-  it('should render the registration form with required fields', async () => {
+  beforeEach(() => {
     renderWithProviders(<Register />);
+  });
 
+  it('should render the registration form with required fields', async () => {
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
     expect(screen.getByLabelText('Password', { exact: true })).toBeInTheDocument();
@@ -17,7 +19,6 @@ describe('Register Page - unit tests (validation & UI)', () => {
 
   it('should disable submit button when internal isLoading is true', async () => {
     const user = userEvent.setup({ delay: 0 });
-    renderWithProviders(<Register />);
 
     await user.type(screen.getByLabelText('Name', { exact: true }), 'John');
     await user.type(screen.getByLabelText('Email', { exact: true }), 'john@example.com');
@@ -33,8 +34,6 @@ describe('Register Page - unit tests (validation & UI)', () => {
   });
 
   it('should show errors when trying to submit with empty fields', async () => {
-    renderWithProviders(<Register />);
-
     const submitButton = screen.getByRole('button', { name: /sign up/i });
     await userEvent.click(submitButton);
 
@@ -44,8 +43,6 @@ describe('Register Page - unit tests (validation & UI)', () => {
   });
 
   it('should show error if passwords are different', async () => {
-    renderWithProviders(<Register />);
-
     // Creates a user interaction instance with zero delay between keystrokes.
     // This speeds up tests by removing the default artificial typing delay.
     const user = userEvent.setup({ delay: 0 });
@@ -60,7 +57,6 @@ describe('Register Page - unit tests (validation & UI)', () => {
 
   it('should show error when name has less than 2 characters', async () => {
     const user = userEvent.setup({ delay: 0 });
-    renderWithProviders(<Register />);
 
     await user.type(screen.getByLabelText('Name', { exact: true }), 'A');
     await user.click(screen.getByRole('button', { name: /sign up/i }));
@@ -70,7 +66,6 @@ describe('Register Page - unit tests (validation & UI)', () => {
 
   it('should show error for invalid email format', async () => {
     const user = userEvent.setup({ delay: 0 });
-    renderWithProviders(<Register />);
 
     await user.type(screen.getByLabelText('Email', { exact: true }), 'invalid@email');
     await user.click(screen.getByRole('button', { name: /sign up/i }));
@@ -80,7 +75,6 @@ describe('Register Page - unit tests (validation & UI)', () => {
 
   it('should show error when password is too short', async () => {
     const user = userEvent.setup({ delay: 0 });
-    renderWithProviders(<Register />);
 
     await user.type(screen.getByLabelText('Password', { exact: true }), 'aB1!');
     await user.click(screen.getByRole('button', { name: /sign up/i }));
@@ -90,8 +84,6 @@ describe('Register Page - unit tests (validation & UI)', () => {
 
   it('should highlight password requirements as user types', async () => {
     const user = userEvent.setup({ delay: 0 });
-    renderWithProviders(<Register />);
-
     const passwordInput = screen.getByLabelText('Password', { exact: true });
 
     // Start typing a partial password
