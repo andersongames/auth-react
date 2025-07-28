@@ -43,8 +43,8 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 ### **Testes Unitários:**
 ### Componente: `ProtectedRoute`
 
-- [ ] Deve renderizar o conteúdo filho se o usuário estiver autenticado e tiver a role necessária.
-- [ ] Deve redirecionar para `/unauthorized` se o usuário estiver autenticado mas não tiver a role necessária.
+- [x] Deve renderizar o conteúdo filho se o usuário estiver autenticado e tiver a role necessária.
+- [x] Deve redirecionar para `/unauthorized` se o usuário estiver autenticado mas não tiver a role necessária.
 - [ ] Deve redirecionar para `/login` se o usuário não estiver autenticado.
 
 ### Componente: `RoleBased`
