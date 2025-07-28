@@ -13,15 +13,13 @@ const mockUser = {
   role: ROLES.ADMIN,
 };
 
-const mockAuthContext = {
+const mockAuthContext: AuthContextType = {
   isAuthenticated: true,
   loading: false,
   user: null,
   login: vi.fn(),
   logout: vi.fn(),
 };
-
-const TestPage = () => <div>Protected Content</div>;
 
 function renderWithAuth(authContextValue: AuthContextType, requiredRoles?: Role[]) {
   return renderWithProviders(
@@ -31,7 +29,7 @@ function renderWithAuth(authContextValue: AuthContextType, requiredRoles?: Role[
           path="/protected"
           element={
             <ProtectedRoute requiredRoles={requiredRoles}>
-              <TestPage />
+              <div>Protected Content</div>
             </ProtectedRoute>
           }
         />

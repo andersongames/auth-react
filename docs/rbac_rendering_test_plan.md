@@ -45,12 +45,12 @@ Este plano cobre dois aspectos fundamentais da aplicação:
 
 - [x] Deve renderizar o conteúdo filho se o usuário estiver autenticado e tiver a role necessária.
 - [x] Deve redirecionar para `/unauthorized` se o usuário estiver autenticado mas não tiver a role necessária.
-- [ ] Deve redirecionar para `/login` se o usuário não estiver autenticado.
+- [x] Deve redirecionar para `/login` se o usuário não estiver autenticado.
 
 ### Componente: `RoleBased`
 
-- [ ] Deve renderizar os elementos filhos se o usuário possuir uma das roles permitidas.
-- [ ] Não deve renderizar os elementos filhos se o usuário não possuir nenhuma das roles permitidas.
+- [x] Deve renderizar os elementos filhos se o usuário possuir uma das roles permitidas.
+- [x] Não deve renderizar os elementos filhos se o usuário não possuir nenhuma das roles permitidas.
 
 ---
 
