@@ -1,89 +1,89 @@
-# ✅ Itens que Podem Ser Implementados
+# ✅ Items That Can Be Implemented
 
-## 🔒 Funcionalidades de Autenticação
-- [x] Registro de usuário com validação
-- [x] Login de usuário com validação
-- [x] Logout com limpeza de sessão
-- [x] Persistência de sessão com localStorage
-- [x] Proteção de rotas via `ProtectedRoute`
-- [x] Contexto de autenticação global (`AuthContext`)
-- [x] Redirecionar usuários autenticados da página de login
-- [x] Redirecionar usuários autenticados da página de registro
-- [x] Redirecionar usuário automaticamente para `/dashboard` após login
-- [x] Redirecionar usuário automaticamente para `/login` após registro
-- [x] Adicionar navegação entre `/register` e `/login`
-- [x] Expiração de sessão (por inatividade ou tempo fixo)
-- [x] Migrar `id` do usuário para tipo `string` com UUID
-
----
-
-## 🎯 Controle de Acesso por Papel (RBAC)
-- [x] Página protegida exclusiva para usuários com role "admin" (`/admin-dashboard`)
-- [x] Página protegida exclusiva para usuários com role "user" (`/user-settings`)
-- [x] Página pública com conteúdo dinâmico baseado na role (ex: /about)
-- [x] Suporte a múltiplas roles no ProtectedRoute (ex: ["admin", "editor"])
-- [x] Exibir metadados do usuário logado na interface (ex: nome, role, email)
-- [x] Esconder ou desabilitar botões baseados na role (ex: "Delete User" apenas para admin)
-- [x] Painel admin com listagem de todos os usuários mockados
-- [x] Página de acesso negado com mensagem contextual baseada na role exigida
-- [x] Alteração de role por parte do admin (promover/demover usuários)
-- [x] Delete de users por parte do admin
+## 🔒 Authentication Features
+- [x] User registration with validation
+- [x] User login with validation
+- [x] Logout with session cleanup
+- [x] Session persistence with `localStorage`
+- [x] Route protection via `ProtectedRoute`
+- [x] Global authentication context (`AuthContext`)
+- [x] Redirect authenticated users from the login page
+- [x] Redirect authenticated users from the registration page
+- [x] Automatically redirect user to `/dashboard` after login
+- [x] Automatically redirect user to `/login` after registration
+- [x] Add navigation between `/register` and `/login`
+- [x] Session expiration (due to inactivity or fixed time)
+- [x] Migrate user `id` to `string` type with UUID
 
 ---
 
-## 🎨 Experiência do Usuário (UX)
-- [x] Feedback visual de carregamento (spinners) durante login, registro, etc.
-- [x] Desabilitar botão de submit enquanto envia dados
-- [x] Mensagem de confirmação visual após logout
-- [x] Navegação por teclado totalmente funcional
-- [x] Labels associadas corretamente aos inputs (acessibilidade)
-- [x] Responsividade completa em dispositivos móveis
+## 🎯 Role-Based Access Control (RBAC)
+- [x] Protected page exclusive for users with "admin" role (`/admin-dashboard`)
+- [x] Protected page exclusive for users with "user" role (`/user-settings`)
+- [x] Public page with dynamic content based on the role (ex: /about)
+- [x] Support for multiple roles in `ProtectedRoute` (ex: ["admin", "editor"])
+- [x] Display logged-in user metadata on the interface (ex: name, role, email)
+- [x] Hide or disable buttons based on the role (ex: "Delete User" only for admin)
+- [x] Admin panel with a list of all mocked users
+- [x] Denied access page with a contextual message based on the required role
+- [x] Role change by admin (promote/demote users)
+- [x] Delete users by admin
 
 ---
 
-## 🌙 Tema e Estilo
-- [x] Implementar modo escuro (Dark Mode Toggle)
-- [x] Layout com design mais moderno e acessível
-- [x] Mostrar nome do usuário logado no `Dashboard` (em vez do ID)
-- [x] Página de erro 404 / acesso não autorizado
+## 🎨 User Experience (UX)
+- [x] Visual loading feedback (spinners) during login, registration, etc.
+- [x] Disable submit button while sending data
+- [x] Visual confirmation message after logout
+- [x] Fully functional keyboard navigation
+- [x] Labels correctly associated with inputs (accessibility)
+- [x] Full responsiveness on mobile devices
 
 ---
 
-## 🧪 Testes
-### ✅ Testes Unitários
-- [ ] Criar testes unitários para o formulário de registro
-- [ ] Criar testes unitários para o formulário de login
-- [ ] Criar testes para o `AuthContext`
-- [ ] Criar testes unitários para o componente ProtectedRoute
-- [ ] Testar comportamento do `handleUnexpectedError`
-
-### ✅ Testes de Integração
-- [ ] Testar troca de role pelo admin (UserList)
-- [ ] Testar delete de user pelo admin (UserList)
-- [ ] Testar controle de acesso por role nas rotas protegidas
-- [ ] Testar persistência de sessão em múltiplas abas
-- [ ] Testar expiração automática de sessão
-- [ ] Testar feedback visual nos formulários (mensagens, loading, toasts)
-
-### ✅ Testes de ponta a ponta (E2E)
-- [ ] Validar navegação e redirecionamentos com testes e2e (Cypress ou Playwright)
-- [ ] Testar fluxo completo de login + redirecionamento (e2e)
-
-### ✅ Utilitários e Qualidade de Testes
-- [ ] Configurar relatório de cobertura de testes com `vitest --coverage`
+## 🌙 Theme and Style
+- [x] Implement dark mode (Dark Mode Toggle)
+- [x] Layout with a more modern and accessible design
+- [x] Show logged-in user name on the `Dashboard` (instead of ID)
+- [x] 404 / unauthorized access error page
 
 ---
 
-## 🚀 Integração e Deploy
-- [ ] Deploy do projeto no Vercel ou Netlify
-- [ ] Adicionar CI/CD simples com GitHub Actions
-- [ ] Linter e formatação automática (ESLint + Prettier)
-- [ ] Integração com OAuth (Google, GitHub) como alternativa de login
+## 🧪 Tests
+### ✅ Unit Tests
+- [ ] Create unit tests for the registration form
+- [ ] Create unit tests for the login form
+- [ ] Create tests for the `AuthContext`
+- [ ] Create unit tests for the `ProtectedRoute` component
+- [ ] Test `handleUnexpectedError` behavior
+
+### ✅ Integration Tests
+- [ ] Test role change by admin (UserList)
+- [ ] Test user deletion by admin (UserList)
+- [ ] Test role-based access control on protected routes
+- [ ] Test session persistence across multiple tabs
+- [ ] Test automatic session expiration
+- [ ] Test visual feedback in forms (messages, loading, toasts)
+
+### ✅ End-to-end (E2E) Tests
+- [ ] Validate navigation and redirects with e2e tests (Cypress or Playwright)
+- [ ] Test complete login flow + redirect (e2e)
+
+### ✅ Test Utilities and Quality
+- [ ] Configure test coverage report with `vitest --coverage`
+
+---
+
+## 🚀 Integration and Deploy
+- [ ] Deploy the project on Vercel or Netlify
+- [ ] Add simple CI/CD with GitHub Actions
+- [ ] Automatic linter and formatting (ESLint + Prettier)
+- [ ] Integration with OAuth (Google, GitHub) as an alternative login
 
 ---
 
 ## 📄 Extras
-- [x] Exibir erro padrão para qualquer falha inesperada
-- [x] Separar as mensagens de erro em um arquivo utilitário para reutilização
-- [x] Usar Toasts em vez de `<p>` para mensagens de sucesso/erro (usando `react-hot-toast` ou similar)
-- [ ] Redigir um README
+- [x] Display a standard error for any unexpected failure
+- [x] Separate error messages into a utility file for reuse
+- [x] Use Toasts instead of `<p>` for success/error messages (using `react-hot-toast` or similar)
+- [ ] Write a README

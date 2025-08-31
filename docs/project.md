@@ -1,99 +1,99 @@
-# 💼 Projeto Técnico: Autenticação com ReactJS (Login e Sign Up)
+# 💼 Technical Project: Authentication with ReactJS (Login and Sign Up)
 
-## 🎯 Objetivo
+## 🎯 Objective
 
-Construir uma aplicação web com **ReactJS** que implemente funcionalidades completas de **Login**, **Cadastro (Sign Up)** e **Proteção de Rotas**, utilizando boas práticas de autenticação e segurança.
+Build a web application with **ReactJS** that implements complete **Login**, **Sign Up**, and **Route Protection** functionalities, using authentication and security best practices.
 
-A aplicação deve simular um sistema de autenticação de usuários com backend fictício ou real (você pode usar uma API mockada ou implementar um backend simples com Node.js, Firebase ou qualquer BaaS), e permitir:
+The application should simulate a user authentication system with a fictitious or real backend (you can use a mocked API or implement a simple backend with Node.js, Firebase, or any BaaS), and allow:
 
-- Criação de conta com e-mail e senha
-- Login com e-mail e senha
-- Manutenção da sessão autenticada
-- Redirecionamento e proteção de rotas privadas
+- Account creation with email and password
+- Login with email and password
+- Maintenance of the authenticated session
+- Redirection and protection of private routes
 - Logout
 
 ---
 
-## 📦 Stack Tecnológica
+## 📦 Technology Stack
 
 ### ✅ Frontend
-- **ReactJS (com Hooks e functional components)**
-- **React Router DOM** – para controle de navegação e rotas protegidas
-- **Zod ou Yup** – para validação de formulários
-- **React Hook Form** – para gerenciar os inputs de forma eficiente
-- **Axios ou Fetch API** – para comunicação com backend
-- **JWT (simulado ou real)** – para simular autenticação baseada em token
-- **TailwindCSS ou CSS Modules** – para estilização
+- **ReactJS (with Hooks and functional components)**
+- **React Router DOM** – for navigation control and protected routes
+- **Zod or Yup** – for form validation
+- **React Hook Form** – for efficient input management
+- **Axios or Fetch API** – for backend communication
+- **JWT (simulated or real)** – to simulate token-based authentication
+- **TailwindCSS or CSS Modules** – for styling
 
-### ⚙️ (Opcional) Backend
+### ⚙️ (Optional) Backend
 - Node.js + Express + Prisma/SQLite/PostgreSQL
-- Firebase Authentication (alternativa rápida)
-- JSON Server ou mock API
+- Firebase Authentication (quick alternative)
+- JSON Server or mock API
 
 ---
 
-## 🔐 Requisitos de Segurança
+## 🔐 Security Requirements
 
-- **Validação do lado cliente e servidor (se aplicável)**
-- **Armazenamento do token apenas em `httpOnly cookies` (se tiver backend real)** ou, se simulado, **simular armazenamento seguro no localStorage/sessionStorage com aviso das limitações**
-- **Uso de HTTPS na comunicação (mesmo que local com um proxy)**
-- **Sanitização de inputs**
-- **Mensagens de erro genéricas para evitar enumeração de usuários**
+- **Client-side and server-side validation (if applicable)**
+- **Store the token only in `httpOnly cookies` (if using a real backend)** or, if simulated, **simulate secure storage in localStorage/sessionStorage with a warning about limitations**
+- **Use HTTPS for communication (even if local with a proxy)**
+- **Sanitize inputs**
+- **Use generic error messages to prevent user enumeration**
 
 ---
 
-## 📋 Funcionalidades Esperadas
+## 📋 Expected Functionalities
 
 ### 1. **Sign Up**
-- Formulário com campos: nome, e-mail, senha, confirmação de senha
-- Validação de dados (mínimo de caracteres, formato de e-mail, senhas iguais, etc)
-- Envio dos dados para o backend simulado/real
-- Redirecionamento para login após sucesso
+- Form with fields: name, email, password, password confirmation
+- Data validation (minimum characters, email format, matching passwords, etc.)
+- Submission of data to the simulated/real backend
+- Redirection to login upon success
 
 ### 2. **Login**
-- Formulário com e-mail e senha
-- Validação de campos
-- Armazenamento do token de autenticação (simulado ou real)
-- Redirecionamento para uma área autenticada
+- Form with email and password
+- Field validation
+- Storage of the authentication token (simulated or real)
+- Redirection to an authenticated area
 
-### 3. **Área Protegida**
-- Página que só pode ser acessada com o usuário logado
-- Redirecionamento automático para login se não autenticado
-- Exibição de dados do usuário (nome ou e-mail, por exemplo)
-- Botão de logout
+### 3. **Protected Area**
+- A page that can only be accessed by a logged-in user
+- Automatic redirection to login if not authenticated
+- Display of user data (e.g., name or email)
+- Logout button
 
-### 4. **Persistência de Sessão**
-- Manter usuário autenticado ao recarregar a página
-- Logout limpa corretamente o token e redireciona
-
----
-
-## 🧠 O que será avaliado tecnicamente
-
-| Capacidade                 | Avaliação                                                  |
-|---------------------------|------------------------------------------------------------|
-| **Organização do projeto**| Separação de componentes, estrutura de pastas              |
-| **Qualidade de código**   | Clareza, coesão, legibilidade, uso adequado de hooks       |
-| **Boas práticas de segurança** | Validação, armazenamento seguro de credenciais     |
-| **Gerenciamento de estado**| Uso correto do estado global/local e contexto se necessário|
-| **Conhecimento de autenticação**| Entendimento do ciclo de login/logout/token/session |
-| **Experiência do usuário (UX)**| Feedback de erros, carregamento, navegação fluida   |
-| **Estilização**           | Layout limpo e responsivo, uso adequado de classes/utilitários |
-| **Documentação leve**     | Um README explicando como rodar o projeto e tecnologias usadas |
+### 4. **Session Persistence**
+- Keep the user authenticated on page refresh
+- Logout correctly clears the token and redirects
 
 ---
 
-## 📌 Extras (Diferenciais)
+## 🧠 What will be technically evaluated
+
+| Capability                  | Evaluation                                                  |
+|-----------------------------|-------------------------------------------------------------|
+| **Project organization** | Separation of components, folder structure                  |
+| **Code quality** | Clarity, cohesion, readability, proper use of hooks         |
+| **Security best practices** | Validation, secure credential storage                       |
+| **State management** | Correct use of global/local state and context if needed     |
+| **Authentication knowledge**| Understanding the login/logout/token/session lifecycle      |
+| **User Experience (UX)** | Feedback for errors, loading, fluid navigation              |
+| **Styling** | Clean and responsive layout, proper use of classes/utilities|
+| **Light documentation** | A README explaining how to run the project and technologies used |
+
+---
+
+## 📌 Extras (Differentiators)
 
 - Dark mode toggle
-- Testes unitários com Jest + Testing Library
-- Integração com OAuth (Google, GitHub, etc)
-- Deploy no Vercel ou Netlify com link de demonstração
-- CI/CD simples (GitHub Actions para lint ou build)
+- Unit tests with Jest + Testing Library
+- OAuth integration (Google, GitHub, etc.)
+- Deploy on Vercel or Netlify with a demo link
+- Simple CI/CD (GitHub Actions for lint or build)
 
 ---
 
-## 📁 Estrutura Sugerida do Projeto
+## 📁 Suggested Project Structure
 
 ```
 /src
@@ -116,11 +116,11 @@ A aplicação deve simular um sistema de autenticação de usuários com backend
 
 ---
 
-## 📝 Entrega
+## 📝 Delivery
 
-Você pode subir o projeto no GitHub, com um README explicativo contendo:
+You can upload the project to GitHub, with an explanatory README containing:
 
-- Tecnologias usadas
-- Como rodar localmente
-- Explicação das principais decisões técnicas
-- Link do deploy, se houver
+- Technologies used
+- How to run locally
+- Explanation of key technical decisions
+- Link to the deploy, if any

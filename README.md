@@ -11,7 +11,7 @@ The complete project will be a user authentication and management system divided
 - **Backend (Node.js + Fastify + Keycloak + PostgreSQL via Drizzle ORM)**
   - Keycloak manages user authentication and roles (JWT tokens).
   - REST APIs expose user CRUD operations and integration with Keycloak.
-  - Modular structure, validated with Zod, organized like the NLW Agents - Backend project.
+  - Modular structure, use tools like: Node.js + TypeScript + Fastify + Drizzle ORM + Zod + Docker.
   - PostgreSQL database can be used to persist additional metadata (e.g., profile, preferences), while Keycloak maintains authentication data.
 
 - **Monorepo**

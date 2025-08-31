@@ -1,50 +1,50 @@
-# ✅ Plano de Testes — Página Login.tsx
+# ✅ Test Plan — Login.tsx Page
 
-## 🧪 Testes Unitários  
-Testam elementos e comportamentos isolados do formulário.
+## 🧪 Unit Tests
+Test isolated elements and behaviors of the form.
 
-**Campos e renderização**
-- [x] Renderiza todos os campos obrigatórios (email, password)
-- [x] Renderiza o botão "Login" habilitado/desabilitado corretamente
+**Fields and Rendering**
+- [x] Renders all required fields (email, password)
+- [x] Renders the "Login" button correctly enabled/disabled
 
-**Mensagens de erro**
-- [x] Exibe mensagem se o email for inválido
-- [x] Exibe mensagem se o campo de senha estiver vazio
+**Error Messages**
+- [x] Displays a message if the email is invalid
+- [x] Displays a message if the password field is empty
 
-**Feedback visual**
-- [x] Mostra o spinner enquanto `isSubmitting` estiver `true`
-
----
-
-## 🔄 Testes de Integração  
-Verificam a interação entre o formulário, AuthContext, navegação, toasts e feedbacks.
-
-- [x] Submete com dados válidos e:
-  - [x] Chama `login()` com os dados corretos (mockado)
-  - [x] Redireciona para `/dashboard`
-- [x] Submete com credenciais inválidas:
-  - [x] Mostra `toast.error(...)` (via `handleUnexpectedError`)
-- [x] Redireciona imediatamente para `/dashboard` se `isAuthenticated` for `true` (simulado via contexto)
-- [x] Exibe `toast.success(...)` se `?loggedOut=true` na URL
-- [x] Exibe `toast.error(...)` se `?expired=true` na URL
-- [x] Navega corretamente para `/register` ao clicar em "Don't have an account?"
+**Visual Feedback**
+- [x] Shows a spinner while `isSubmitting` is `true`
 
 ---
 
-## 🌐 Testes de Ponta a Ponta (E2E)  
-Validação completa no navegador com Playwright.
+## 🔄 Integration Tests
+Verify the interaction between the form, AuthContext, navigation, toasts, and feedback.
 
-- [x] Acessar `/login`, preencher dados válidos e verificar redirecionamento para `/dashboard`
-- [x] Tentar logar com dados inválidos → exibe erro (mock do backend ou validação real)
-- [x] Acessar `/login?loggedOut=true` → exibe toast de logout e redireciona para `/login`
-- [x] Acessar `/login?expired=true` → exibe toast de sessão expirada e redireciona para `/login`
-- [x] Se usuário já estiver logado (mock session), acessar `/login` → redireciona para `/dashboard`
-- [x] Clicar em "Register" → redireciona para `/register`
+- [x] Submits with valid data and:
+  - [x] Calls `login()` with the correct data (mocked)
+  - [x] Redirects to `/dashboard`
+- [x] Submits with invalid credentials:
+  - [x] Shows `toast.error(...)` (via `handleUnexpectedError`)
+- [x] Redirects immediately to `/dashboard` if `isAuthenticated` is `true` (simulated via context)
+- [x] Displays `toast.success(...)` if `?loggedOut=true` in the URL
+- [x] Displays `toast.error(...)` if `?expired=true` in the URL
+- [x] Correctly navigates to `/register` when clicking on "Don't have an account?"
 
 ---
 
-## 🧠 Observações técnicas
+## 🌐 End-to-End (E2E) Tests
+Complete browser validation with Playwright.
 
-- Os testes unitários devem ser feitos com `@testing-library/react` e `userEvent.setup()`
-- Os testes de integração devem usar `renderWithProviders()` com `MemoryRouter + AuthProvider`
-- Os testes E2E devem ser implementados em `/tests/e2e/Login.test.ts` com Playwright
+- [x] Access `/login`, fill in valid data, and verify redirection to `/dashboard`
+- [x] Try to log in with invalid data → shows an error (backend mock or real validation)
+- [x] Access `/login?loggedOut=true` → displays logout toast and redirects to `/login`
+- [x] Access `/login?expired=true` → displays expired session toast and redirects to `/login`
+- [x] If the user is already logged in (mock session), access `/login` → redirects to `/dashboard`
+- [x] Click on "Register" → redirects to `/register`
+
+---
+
+## 🧠 Technical Observations
+
+- Unit tests should be done with `@testing-library/react` and `userEvent.setup()`
+- Integration tests should use `renderWithProviders()` with `MemoryRouter + AuthProvider`
+- E2E tests should be implemented in `/tests/e2e/Login.test.ts` with Playwright

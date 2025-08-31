@@ -1,82 +1,82 @@
 # ✅ RBAC and Role-Based Rendering Test Plan
 
-Este plano cobre dois aspectos fundamentais da aplicação:
-1. Controle de acesso a rotas protegidas (RBAC).
-2. Renderização condicional com base na role do usuário.
+This plan covers two fundamental aspects of the application:
+1. Access control to protected routes (RBAC).
+2. Conditional rendering based on the user's role.
 
 ---
 
-## 1. 🔐 Controle de Acesso a Rotas (RBAC)
-### **Testes End-to-End (e2e):**
+## 1. 🔐 Route Access Control (RBAC)
+### **End-to-End (e2e) Tests:**
 
 #### /admin-dashboard
-- [x] Deve redirecionar usuários **não autenticados** para `/login`.
-- [x] Deve redirecionar usuários autenticados com role diferente de `admin` para `/unauthorized`.
-- [x] Deve renderizar corretamente para usuários com role `admin`.
-- [x] Deve navegar para `/user-list` ao clicar em "View All Registered Users".
+- [x] Should redirect **unauthenticated** users to `/login`.
+- [x] Should redirect authenticated users with a role other than `admin` to `/unauthorized`.
+- [x] Should render correctly for users with the `admin` role.
+- [x] Should navigate to `/user-list` when clicking on "View All Registered Users".
 
 #### /manage-content
-- [x] Deve redirecionar usuários **não autenticados** para `/login`.
-- [x] Deve redirecionar usuários com role `user` para `/unauthorized`.
-- [x] Deve renderizar corretamente para usuários com role `admin` ou `editor`.
-- [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
+- [x] Should redirect **unauthenticated** users to `/login`.
+- [x] Should redirect users with the `user` role to `/unauthorized`.
+- [x] Should render correctly for users with the `admin` or `editor` role.
+- [x] Should navigate to `/dashboard` when clicking on "Go to Dashboard".
 
 #### /dashboard
-- [x] Deve redirecionar usuários **não autenticados** para `/login`.
-- [x] Deve renderizar corretamente para qualquer usuário autenticado.
-- [x] Deve navegar para `/about` ao clicar em "Learn more about this app".
-- [x] Deve navegar para `/admin-dashboard` ao clicar em "Go to Admin Panel".
-- [x] Deve navegar para `/user-settings` ao clicar em "Access Personal Settings".
-- [x] Deve navegar para `/manage-content` ao clicar em "Manage Content".
+- [x] Should redirect **unauthenticated** users to `/login`.
+- [x] Should render correctly for any authenticated user.
+- [x] Should navigate to `/about` when clicking on "Learn more about this app".
+- [x] Should navigate to `/admin-dashboard` when clicking on "Go to Admin Panel".
+- [x] Should navigate to `/user-settings` when clicking on "Access Personal Settings".
+- [x] Should navigate to `/manage-content` when clicking on "Manage Content".
 
 #### /user-settings
-- [x] Deve redirecionar usuários **não autenticados** para `/login`.
-- [x] Deve renderizar corretamente para qualquer usuário autenticado.
-- [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard".
+- [x] Should redirect **unauthenticated** users to `/login`.
+- [x] Should render correctly for any authenticated user.
+- [x] Should navigate to `/dashboard` when clicking on "Go to Dashboard".
 
 #### /unauthorized
-- [x] Deve ser acessível por qualquer usuário (autenticado ou não).
-- [x] Deve exibir mensagem de acesso negado.
-- [x] Deve navegar para `/dashboard` ao clicar em "Go to Dashboard" se autenticado.
-- [x] Deve navegar para `/login` ao clicar em "Back to Login" se não autenticado.
+- [x] Should be accessible by any user (authenticated or not).
+- [x] Should display an access denied message.
+- [x] Should navigate to `/dashboard` when clicking on "Go to Dashboard" if authenticated.
+- [x] Should navigate to `/login` when clicking on "Back to Login" if not authenticated.
 
-### **Testes Unitários:**
-### Componente: `ProtectedRoute`
+### **Unit Tests:**
+### Component: `ProtectedRoute`
 
-- [x] Deve renderizar o conteúdo filho se o usuário estiver autenticado e tiver a role necessária.
-- [x] Deve redirecionar para `/unauthorized` se o usuário estiver autenticado mas não tiver a role necessária.
-- [x] Deve redirecionar para `/login` se o usuário não estiver autenticado.
+- [x] Should render the child content if the user is authenticated and has the necessary role.
+- [x] Should redirect to `/unauthorized` if the user is authenticated but does not have the necessary role.
+- [x] Should redirect to `/login` if the user is not authenticated.
 
-### Componente: `RoleBased`
+### Component: `RoleBased`
 
-- [x] Deve renderizar os elementos filhos se o usuário possuir uma das roles permitidas.
-- [x] Não deve renderizar os elementos filhos se o usuário não possuir nenhuma das roles permitidas.
+- [x] Should render the child elements if the user has one of the allowed roles.
+- [x] Should not render the child elements if the user does not have any of the allowed roles.
 
 ---
 
-## 2. 🎭 Renderização Condicional de Conteúdo
-**Tipo de teste recomendado:** Integração (Vitest + Testing Library)
+## 2. 🎭 Conditional Content Rendering
+**Recommended test type:** Integration (Vitest + Testing Library)
 
 ### About.tsx
 
-- [x] Deve exibir o texto "You are not logged in. Log in here." com link para `/login` apenas para usuários **não autenticados**.
-- [x] Não deve exibir mensagens de role quando o usuário **não estiver autenticado**.
-- [x] Deve exibir o texto "Welcome, user! You have access to basic features." apenas para usuários com role `user`.
-- [x] Deve exibir o texto "Welcome, admin! You can manage users and system data." apenas para usuários com role `admin`.
+- [x] Should display the text "You are not logged in. Log in here." with a link to `/login` only for **unauthenticated** users.
+- [x] Should not display role messages when the user is **not authenticated**.
+- [x] Should display the text "Welcome, user! You have access to basic features." only for users with the `user` role.
+- [x] Should display the text "Welcome, admin! You can manage users and system data." only for users with the `admin` role.
 
 
 ### Dashboard.tsx
 
-- [x] Deve exibir o nome, email e role do usuário autenticado.
-- [x] Deve exibir o link "Go to Admin Panel" apenas para usuários com role `admin`.
-- [x] Deve exibir o link "Access Personal Settings" apenas para usuários com role `user`.
-- [x] Deve exibir o link "Manage Content" apenas para usuários com role `admin` ou `editor`.
+- [x] Should display the authenticated user's name, email, and role.
+- [x] Should display the link "Go to Admin Panel" only for users with the `admin` role.
+- [x] Should display the link "Access Personal Settings" only for users with the `user` role.
+- [x] Should display the link "Manage Content" only for users with the `admin` or `editor` role.
 
 ---
 
-## Observações
+## Observations
 
-- Testes de RBAC devem simular autenticação e diferentes roles no armazenamento (ex: cookies, localStorage ou mocks do backend).
-- Testes de renderização condicional devem utilizar contexto de autenticação mockado (`AuthContext.Provider`) com diferentes combinações de `isAuthenticated` e `user.role`.
+- RBAC tests should simulate authentication and different roles in storage (e.g., cookies, localStorage, or backend mocks).
+- Conditional rendering tests should use a mocked authentication context (`AuthContext.Provider`) with different combinations of `isAuthenticated` and `user.role`.
 
 ---

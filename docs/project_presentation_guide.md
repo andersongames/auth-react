@@ -1,103 +1,102 @@
-# Projeto de Autenticação com ReactJS
+# ReactJS Authentication Project
 
-## 1. 📄 Resumo da Proposta/Objetivo do Projeto
+## 1. 📄 Proposal Summary/Project Objective
 
-Este projeto consiste em uma aplicação de autenticação desenvolvida com **ReactJS**, cujo objetivo é demonstrar domínio técnico em construção de **interfaces protegidas por autenticação e controle de acesso por papéis (RBAC)**.
+This project is an authentication application developed with **ReactJS**. Its objective is to demonstrate technical proficiency in building **interfaces protected by authentication and role-based access control (RBAC)**.
 
-Inicialmente proposto como um sistema básico de login e cadastro, o projeto evoluiu para uma plataforma mais completa, com ênfase em:
+Initially proposed as a basic login and registration system, the project evolved into a more complete platform, with an emphasis on:
 
-- Boas práticas de organização e reutilização de código (componentes, serviços, contextos)
-- Simulação de backend com `localStorage` e delays artificiais
-- Controle de sessão (persistência, expiração e logout automático)
-- Diferenciação de acessos por tipo de usuário (admin, user, editor)
-- Melhoria contínua de UX e acessibilidade
-- Experiência visual moderna com responsividade e dark mode
-- Tratamento robusto de erros e mensagens padronizadas
+- Good practices for code organization and reusability (components, services, contexts)
+- Backend simulation with `localStorage` and artificial delays
+- Session control (persistence, expiration, and automatic logout)
+- Differentiated access by user type (admin, user, editor)
+- Continuous improvement of UX and accessibility
+- Modern visual experience with responsiveness and dark mode
+- Robust error handling and standardized messages
 
-Além de demonstrar habilidades técnicas com React, Hooks, Context API, validação com Zod, estilização com Tailwind, e uso de toasts com `react-hot-toast`, o projeto reflete a capacidade de entregar código limpo, seguro, escalável e focado em usabilidade.
+In addition to demonstrating technical skills with React, Hooks, Context API, Zod validation, Tailwind styling, and `react-hot-toast` usage, the project reflects the ability to deliver clean, secure, scalable, and usability-focused code.
 
 ---
 
-## 2. 🔮 Guia para Apresentação do Projeto
+## 2. 🔮 Project Presentation Guide
 
-Este roteiro serve para apresentar as funcionalidades atuais do projeto. Ele pode ser adaptado conforme novas funcionalidades forem adicionadas.
+This script serves to present the project's current functionalities. It can be adapted as new functionalities are added.
 
-### 🔐 Autenticação e Sessão
-- Cadastro de usuário com validação robusta (`zod`) e feedback dinâmico nos requisitos da senha
-- Login com verificação e redirecionamento condicional
-- Persistência da sessão com `localStorage`
-- Logout com feedback visual e remoção segura do estado
-- Monitoramento de sessão em múltiplas abas (evento `storage`)
-- Expiração automática de sessão com redirecionamento
+### 🔐 Authentication and Session
+- User registration with robust validation (`zod`) and dynamic feedback on password requirements
+- Login with verification and conditional redirection
+- Session persistence with `localStorage`
+- Logout with visual feedback and secure state removal
+- Session monitoring across multiple tabs (`storage` event)
+- Automatic session expiration with redirection
 
-### 🌟 Controle de Acesso por Papel (RBAC)
-- Papéis suportados: `admin`, `user`, `editor`
-- Controle refinado de rotas e elementos da interface com:
-  - `ProtectedRoute` (inclusive com múltiplos papéis permitidos)
-  - `RoleBased` (para condicional de interface)
-- Rotas exclusivas:
+### 🌟 Role-Based Access Control (RBAC)
+- Supported roles: `admin`, `user`, `editor`
+- Fine-grained control of routes and interface elements with:
+  - `ProtectedRoute` (including with multiple allowed roles)
+  - `RoleBased` (for interface conditionals)
+- Exclusive routes:
   - `/admin-dashboard`
   - `/user-settings`
-  - `/manage-content` (acesso por grupo de roles)
-- Páginas públicas dinâmicas com conteúdo adaptado à role (`/about`)
-- Página de acesso negado com mensagem contextual
+  - `/manage-content` (access by role group)
+- Dynamic public pages with content adapted to the role (`/about`)
+- Access denied page with a contextual message
 
-### 👨‍💼 Administração
-- Página `/admin-dashboard/user-list`
-- Listagem de todos os usuários mockados
-- Alteração segura da role dos usuários com validação
-- Exclusão segura usuários dos usuários com validação
-- Proteção contra autoedição de role (admin não pode se despromover)
-- Feedback de sucesso e erro com toasts
+### 👨‍💼 Administration
+- `/admin-dashboard/user-list` page
+- Listing of all mocked users
+- Secure role change for users with validation
+- Secure deletion of users with validation
+- Protection against self-editing a role (admin cannot demote themselves)
+- Success and error feedback with toasts
 
-### 🌙 Tema e Estilo
-- Dark Mode com toggle e persistência
-- Layout moderno com Tailwind CSS
-- Componentes reutilizáveis:
+### 🌙 Theme and Style
+- Dark Mode with toggle and persistence
+- Modern layout with Tailwind CSS
+- Reusable components:
   - `Input`
   - `Link`
-- Layout base com `AppLayout` (header e footer)
-- Centralização por página com CSS customizado (`--layout-offset`)
-- Estilização responsiva e acessível
-- Uso de ícones SVG customizados no footer
-- Transições suaves com `transition-colors`
+- Base layout with `AppLayout` (header and footer)
+- Page centralization with custom CSS (`--layout-offset`)
+- Responsive and accessible styling
+- Use of custom SVG icons in the footer
+- Smooth transitions with `transition-colors`
 
-### 🧐 UX e Acessibilidade
-- Navegação por teclado totalmente funcional
-- Labels associadas corretamente aos inputs
-- Campos com `autoComplete` configurado
-- Foco visível e acessível
-- Feedback imediato com loading spinner e botões desabilitados durante submissão
+### 🧐 UX and Accessibility
+- Fully functional keyboard navigation
+- Labels correctly associated with inputs
+- Fields with `autoComplete` configured
+- Visible and accessible focus
+- Immediate feedback with a loading spinner and disabled buttons during submission
 
-### ⚙️ Boas Práticas e Arquitetura
-- Separação clara entre lógica de interface, serviços e contexto
-- Serviços com simulação de atraso (delay com `setTimeout`)
-- `handleUnexpectedError` padroniza tratamento de erros
-- `errorMessages.ts` e `successMessages.ts` centralizam mensagens
-- Tipagens centralizadas com `Role`, `StoredUser`, `RegisterPayload`, etc.
-- Organização em pastas: `/services`, `/context`, `/utils`, `/types`, etc.
+### ⚙️ Good Practices and Architecture
+- Clear separation between interface logic, services, and context
+- Services with simulated delay (`setTimeout`)
+- `handleUnexpectedError` standardizes error handling
+- `errorMessages.ts` and `successMessages.ts` centralize messages
+- Centralized typings with `Role`, `StoredUser`, `RegisterPayload`, etc.
+- Folder organization: `/services`, `/context`, `/utils`, `/types`, etc.
 
 ---
 
-## 3. 📝 Avaliação Técnica (como desenvolvedor sênior)
+## 3. 📝 Technical Evaluation (as a senior developer)
 
-### ✅ Pontos fortes do projeto:
-- Excelente organização do código: divisão clara entre responsabilidades (serviços, contexto, componentes, páginas)
-- Alto grau de atenção à experiência do usuário (feedback visual, navegação por teclado, foco visível)
-- Uso consistente de boas práticas modernas do React (Hooks, Context, tipagem com TypeScript)
-- Implementação sólida de controle de acesso por papel (RBAC), com suporte a múltiplas roles e renderização condicional
-- Adição de diferenciais valiosos como dark mode, toasts, layout responsivo e branding básico
-- Tratamento robusto de erros e centralização de mensagens, elevando a confiabilidade
-- Código limpo, coeso, com boa legibilidade e facilidade de manutenção
+### ✅ Project Strengths:
+- Excellent code organization: clear separation of responsibilities (services, context, components, pages)
+- High degree of attention to user experience (visual feedback, keyboard navigation, visible focus)
+- Consistent use of modern React best practices (Hooks, Context, TypeScript typings)
+- Solid implementation of role-based access control (RBAC), with support for multiple roles and conditional rendering
+- Addition of valuable differentiators like dark mode, toasts, responsive layout, and basic branding
+- Robust error handling and message centralization, increasing reliability
+- Clean, cohesive code with good readability and ease of maintenance
 
-### ⚠️ Oportunidades de melhoria (futuras evoluções):
-- Adição de testes automatizados (React Testing Library ou Cypress)
-- Integração com backend real ou serviços como Firebase para autenticação
-- Criação de um painel real de administração com filtros e ações CRUD completas
-- Deploy do projeto com integração contínua
-- Internacionalização (i18n) de mensagens
+### ⚠️ Opportunities for Improvement (future evolutions):
+- Addition of automated tests (React Testing Library or Cypress)
+- Integration with a real backend or services like Firebase for authentication
+- Creation of a real administration panel with filters and complete CRUD actions
+- Project deployment with continuous integration
+- Internationalization (i18n) of messages
 
-### 💬 Conclusão como avaliador técnico:
-> Este projeto demonstra domínio técnico consistente em React, atenção aos detalhes de UX e segurança, além de organização de código exemplar.  
-> A evolução progressiva da aplicação, somada à clareza nas decisões técnicas, mostra maturidade e excelente preparo para atuar em times de desenvolvimento front-end modernos.
-
+### 💬 Conclusion as a technical evaluator:
+> This project demonstrates consistent technical proficiency in React, attention to UX and security details, and exemplary code organization.
+> The progressive evolution of the application, combined with clear technical decisions, shows maturity and excellent preparation to work on modern front-end development teams.

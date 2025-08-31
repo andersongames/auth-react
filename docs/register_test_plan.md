@@ -1,39 +1,39 @@
-## ✅ Página Register.tsx — Plano de Testes
-### 🧪 Testes Unitários
-Testam elementos e comportamentos isolados do formulário.  
+## ✅ Register.tsx Page — Test Plan
+### 🧪 Unit Tests
+Test isolated elements and behaviors of the form.
 
-**Campos e renderização**
-- [x] Renderiza todos os campos obrigatórios (name, email, password, confirmPassword, role)
-- [ ] Renderiza o botão "Sign Up" habilitado/desabilitado corretamente
-- [x] Exibe mensagens de erro quando:
-  - [x] Nome tem menos de 2 caracteres
-  - [x] Email inválido
-  - [x] Senha com menos de 8 caracteres
-  - [x] Senha sem número, símbolo, maiúscula ou minúscula
-  - [x] Senhas diferentes
-- [x] Mostra os requisitos da senha com cor correta (verde/vermelho) ao digitar
+**Fields and Rendering**
+- [x] Renders all mandatory fields (name, email, password, confirmPassword, role)
+- [ ] Renders the "Sign Up" button correctly enabled/disabled
+- [x] Displays error messages when:
+  - [x] Name has less than 2 characters
+  - [x] Invalid email
+  - [x] Password has less than 8 characters
+  - [x] Password is missing a number, symbol, uppercase, or lowercase letter
+  - [x] Passwords don't match
+- [x] Shows password requirements with the correct color (green/red) while typing
 
-### 🔄 Testes de Integração
-Verificam a interação entre o formulário, o contexto de autenticação, serviços, navegação e toasts.  
+### 🔄 Integration Tests
+Verify the interaction between the form, authentication context, services, navigation, and toasts.
 
-- [x] Submete com dados válidos e:
-  - [x] Chama registerUser() com os dados corretos
-  - [x] Mostra toast de sucesso (toast.success(...))
-  - [x] Redireciona para /login após 2 segundos
-- [x] Mostra toast.error(...) se o registerUser() lançar erro
-- [x] Verifica se handleUnexpectedError() é chamado em erros desconhecidos
-- [x] Redireciona imediatamente para /dashboard se isAuthenticated for true (simulado via AuthContext)
+- [x] Submits with valid data and:
+  - [x] Calls registerUser() with the correct data
+  - [x] Shows a success toast (toast.success(...))
+  - [x] Redirects to /login after 2 seconds
+- [x] Shows toast.error(...) if registerUser() throws an error
+- [x] Verifies if handleUnexpectedError() is called on unknown errors
+- [x] Redirects immediately to /dashboard if isAuthenticated is true (simulated via AuthContext)
 
-### 🌐 Testes de Ponta a Ponta (E2E)
-Requerem ambiente com navegador real (Cypress ou Playwright), focam no fluxo real de uso.  
+### 🌐 End-to-End (E2E) Tests
+Require a real browser environment (Cypress or Playwright), focus on the real user flow.
 
-- [x] Acessar /register, preencher dados válidos e confirmar redirecionamento para /login
-- [x] Acessar /register já autenticado → redirecionado para /dashboard
-- [x] Preencher dados inválidos e verificar mensagens de erro inline
-- [x] Preencher senha com Abc123!@#, verificar destaque visual dos requisitos (verde)
-- [x] Clicar em "Already have an account? Login" e verificar redirecionamento para /login
+- [x] Access /register, fill in valid data, and confirm redirection to /login
+- [x] Access /register already authenticated → redirected to /dashboard
+- [x] Fill in invalid data and check for inline error messages
+- [x] Fill in password with Abc123!@#, check for visual highlight of requirements (green)
+- [x] Click on "Already have an account? Login" and verify redirection to /login
 
-### 🧠 Observações técnicas
-- Os testes unitários devem ser feitos com @testing-library/react e userEvent.setup()
-- Os testes de integração devem usar renderWithProviders() com MemoryRouter + AuthProvider
-- Os testes E2E devem ser isolados em /tests/e2e/Register.test.ts (Playwright)
+### 🧠 Technical Notes
+- Unit tests should be done with @testing-library/react and userEvent.setup()
+- Integration tests should use renderWithProviders() with MemoryRouter + AuthProvider
+- E2E tests should be isolated in /tests/e2e/Register.test.ts (Playwright)

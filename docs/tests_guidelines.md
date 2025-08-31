@@ -1,83 +1,83 @@
-## ✅ Tipos de Testes em Aplicações Front-End
-### 1. 🧪 Testes Unitários (Unit Tests)
-**👉 O que são:**  
-Testam uma única função, componente ou lógica isoladamente, sem depender de outros módulos, navegação ou estado global.
+## ✅ Types of Tests in Front-End Applications
+### 1. 🧪 Unit Tests
+**👉 What they are:**
+They test a single function, component, or piece of logic in isolation, without depending on other modules, navigation, or global state.
 
-**✅ Exemplos no seu projeto:**
-- Validar que o componente Input renderiza corretamente.
-- Verificar que handleUnexpectedError() chama o toast certo.
-- Testar que ProtectedRoute mostra ou bloqueia o filho baseado na role.
+**✅ Examples in your project:**
+- Validate that the Input component renders correctly.
+- Verify that handleUnexpectedError() calls the correct toast.
+- Test that ProtectedRoute shows or blocks the child based on the role.
 
-**🛠️ Ferramentas comuns:**
+**🛠️ Common tools:**
 - jest
 - @testing-library/react
 
-**🧠 Objetivo:** Garantir que cada unidade de código funcione como esperado em todos os casos de uso possíveis.
+**🧠 Objective:** Ensure that each unit of code works as expected in all possible use cases.
 
-### 2. 🔄 Testes de Integração (Integration Tests)
-**👉 O que são:**
-Testam a interação entre duas ou mais partes da aplicação: componentes, hooks, contextos, serviços ou navegação local.
+### 2. 🔄 Integration Tests
+**👉 What they are:**
+They test the interaction between two or more parts of the application: components, hooks, contexts, services, or local navigation.
 
-**✅ Exemplos no seu projeto:**
-- Testar se AuthContext define user corretamente após login.
-- Verificar se o toast de erro aparece após falha na submissão de formulário.
-- Garantir que a UserList renderize corretamente os dados vindos do service.
+**✅ Examples in your project:**
+- Test if AuthContext correctly sets the user after login.
+- Verify if the error toast appears after a form submission failure.
+- Ensure that UserList correctly renders data from the service.
 
-**🛠️ Ferramentas comuns:**
+**🛠️ Common tools:**
 - jest + @testing-library/react
-- Simulações de contexto (renderWithContext, MemoryRouter, etc.)
+- Context simulations (renderWithContext, MemoryRouter, etc.)
 
-**🧠 Objetivo:** Verificar se as peças se integram corretamente sem depender de uma interface real.
+**🧠 Objective:** Verify that the pieces integrate correctly without depending on a real interface.
 
-### 3. 🌐 Testes de Ponta a Ponta (End-to-End / E2E)
-**👉 O que são:**
-Simulam o comportamento real do usuário final, com navegação, preenchimento de formulários, cliques e redirecionamentos, em um navegador real ou simulado.
+### 3. 🌐 End-to-End (E2E) Tests
+**👉 What they are:**
+They simulate the real behavior of the end user, with navigation, form filling, clicks, and redirections, in a real or simulated browser.
 
-**✅ Exemplos no seu projeto:**
-- Abrir a aplicação, se registrar, fazer login, ser redirecionado para /dashboard
-- Entrar como admin e alterar a role de um usuário
-- Verificar se um usuário com role inválida é bloqueado na navegação
+**✅ Examples in your project:**
+- Open the application, register, log in, be redirected to /dashboard
+- Log in as an admin and change a user's role
+- Verify if a user with an invalid role is blocked from navigation
 
-**🛠️ Ferramentas comuns:**
+**🛠️ Common tools:**
 - Cypress
 - Playwright
 
-**🧠 Objetivo:** Garantir que o app funcione do ponto de vista do usuário final, cobrindo fluxos completos.
+**🧠 Objective:** Ensure that the app works from the end user's perspective, covering complete flows.
 
-## 🧭 Comparativo rápido
-| Tipo       | Escopo                | Velocidade ⚡ | Confiabilidade 🔒 | Custo de Manutenção 💸 |
-| ---------- | --------------------- | ------------ | ----------------- | ---------------------- |
-| Unitário   | Uma função/componente | Alta         | Alta              | Baixo                  |
-| Integração | Vários módulos        | Média        | Média             | Médio                  |
-| E2E        | Fluxo completo real   | Baixa        | Alta              | Alto                   |
+## 🧭 Quick Comparison
+| Type        | Scope                | Speed ⚡ | Reliability 🔒 | Maintenance Cost 💸 |
+|-------------|----------------------|----------|----------------|----------------------|
+| Unit        | A function/component | High     | High           | Low                  |
+| Integration | Several modules      | Medium   | Medium         | Medium               |
+| E2E         | Full real flow       | Low      | High           | High                 |
 
-## ✅ Estratégia recomendada
-A decisão de qual tipo de teste usar depende de 3 fatores principais:
+## ✅ Recommended Strategy
+The decision of which type of test to use depends on 3 main factors:
 
-**1. Importância da funcionalidade**
-Se for crítico para o negócio ou segurança, teste com mais profundidade.
-Ex: Login, persistência de sessão, controle de acesso → merecem integração e E2E.
+**1. Importance of the functionality**
+If it's critical for business or security, test it in more depth.
+Ex: Login, session persistence, access control → deserve integration and E2E tests.
 
-**2. Complexidade do código**
-Códigos simples e isolados → geralmente bastam testes unitários.
-Ex: Funções como handleUnexpectedError, isValidRole.
+**2. Code complexity**
+Simple and isolated code → usually only requires unit tests.
+Ex: Functions like handleUnexpectedError, isValidRole.
 
-**3. Custo-benefício**
-Testes E2E são mais lentos e caros de manter, então use apenas nos fluxos mais importantes.
-Testes unitários são baratos e rápidos, então são ideais para lógica isolada.
+**3. Cost-benefit**
+E2E tests are slower and more expensive to maintain, so use them only for the most important flows.
+Unit tests are cheap and fast, so they are ideal for isolated logic.
 
-## 🧪 Recomendação para seu projeto atual
-| Parte                             | Teste Ideal(es)       | Justificativa                                |
-| --------------------------------- | --------------------- | -------------------------------------------- |
-| `AuthContext`                     | Integração            | Interage com storage, contexto, navegação    |
-| Formulários (`Register`, `Login`) | Unitário + Integração | Valida entradas + comportamento de submit    |
-| ProtectedRoute / RoleBased        | Unitário              | Lógica pura baseada em props                 |
-| Fluxo completo de login           | E2E                   | Valida do ponto de vista do usuário final    |
-| Altera role em UserList           | Integração            | Precisa simular alteração e verificar efeito |
-| Toasts, loading                   | UI / Integração       | Verifica feedback visual                     |
-| Sessão (expiração, persistência)  | Integração + E2E      | Complexidade e importância                   |
+## 🧪 Recommendation for your current project
+| Part                              | Ideal Test(s)      | Justification                                      |
+|-----------------------------------|--------------------|----------------------------------------------------|
+| `AuthContext`                     | Integration        | Interacts with storage, context, navigation        |
+| Forms (`Register`, `Login`)       | Unit + Integration | Validates inputs + submission behavior             |
+| ProtectedRoute / RoleBased        | Unit               | Pure logic based on props                          |
+| Full login flow                   | E2E                | Validates from the end user's perspective          |
+| Change role in UserList           | Integration        | Needs to simulate the change and verify the effect |
+| Toasts, loading                   | UI / Integration   | Verifies visual feedback                           |
+| Session (expiration, persistence) | Integration + E2E  | Complexity and importance                          |
 
 ## Guidelines
-🔸 Comece com testes unitários para lógica isolada  
-🔸 Use testes de integração para contextos, páginas e interações  
-🔸 Reserve testes E2E para fluxos críticos e completos  
+🔸 Start with unit tests for isolated logic
+🔸 Use integration tests for contexts, pages, and interactions
+🔸 Reserve E2E tests for critical and complete flows
